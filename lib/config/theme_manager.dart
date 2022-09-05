@@ -13,12 +13,15 @@ ThemeData getApplicationTheme() {
     primaryColorDark: ColorManager.darkPrimary,
     disabledColor: ColorManager.grey1,
     splashColor: ColorManager.lightPrimary,
+
     // ripple effect color
+
     // card view theme
     cardTheme: CardTheme(
         color: ColorManager.white,
         shadowColor: ColorManager.grey,
         elevation: AppSize.s4),
+
     // app bar theme
     appBarTheme: AppBarTheme(
         centerTitle: true,
@@ -27,6 +30,7 @@ ThemeData getApplicationTheme() {
         shadowColor: ColorManager.lightPrimary,
         titleTextStyle:
             getRegularStyle(fontSize: FontSize.s16, color: ColorManager.white)),
+
     // button theme
     buttonTheme: ButtonThemeData(
         shape: const StadiumBorder(),
@@ -43,6 +47,7 @@ ThemeData getApplicationTheme() {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(AppSize.s12)))),
 
+    // text theme
     textTheme: TextTheme(
         displayLarge: getSemiBoldStyle(
             color: ColorManager.darkGrey, fontSize: FontSize.s16),
@@ -50,6 +55,8 @@ ThemeData getApplicationTheme() {
             color: ColorManager.darkGrey, fontSize: FontSize.s16),
         headlineMedium: getRegularStyle(
             color: ColorManager.darkGrey, fontSize: FontSize.s14),
+        titleLarge:
+            getMediumStyle(color: ColorManager.white, fontSize: FontSize.s50),
         titleMedium:
             getMediumStyle(color: ColorManager.primary, fontSize: FontSize.s16),
         titleSmall:
@@ -63,8 +70,10 @@ ThemeData getApplicationTheme() {
 
     // input decoration theme (text form field)
     inputDecorationTheme: InputDecorationTheme(
+
         // content padding
         contentPadding: const EdgeInsets.all(AppPadding.p8),
+
         // hint style
         hintStyle:
             getRegularStyle(color: ColorManager.grey, fontSize: FontSize.s14),
@@ -89,11 +98,11 @@ ThemeData getApplicationTheme() {
             borderSide:
                 BorderSide(color: ColorManager.error, width: AppSize.s1_5),
             borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
+
         // focused border style
         focusedErrorBorder: OutlineInputBorder(
             borderSide:
                 BorderSide(color: ColorManager.primary, width: AppSize.s1_5),
             borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)))),
-    // label style
   );
 }

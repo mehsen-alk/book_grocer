@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:book_grocer/config/font_manager.dart';
 import 'package:book_grocer/config/strings_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +28,6 @@ class _SplashViewState extends State<SplashView> {
 
   _goNext() async {
     _appPreferences.isUserLoggedIn().then((isUserLoggedIn) {
-      print('h');
       if (isUserLoggedIn) {
         // navigate to main screen
         Navigator.pushReplacementNamed(context, Routes.homeRoute);
@@ -62,9 +60,9 @@ class _SplashViewState extends State<SplashView> {
     return Scaffold(
       backgroundColor: ColorManager.primary,
       body: Center(
-          child: const Text(
+          child: Text(
         AppStrings.appTitle,
-        style: TextStyle(fontSize: FontSize.s50),
+        style: Theme.of(context).textTheme.titleLarge,
       ).tr()),
     );
   }
