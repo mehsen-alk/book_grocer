@@ -1,9 +1,8 @@
 import 'dart:async';
 
-import 'package:book_grocer/config/font_manager.dart';
-import 'package:book_grocer/config/strings_manager.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:book_grocer/config/assets_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../config/color_manager.dart';
 import '../../config/constants_manager.dart';
@@ -62,13 +61,8 @@ class _SplashViewState extends State<SplashView> {
     return Scaffold(
       backgroundColor: ColorManager.primary,
       body: Center(
-          child: Text(
-        AppStrings.appTitle,
-        style: Theme.of(context)
-            .textTheme
-            .titleLarge
-            ?.copyWith(fontSize: FontSize.s50, color: Colors.white),
-      ).tr()),
+        child: Lottie.asset(JsonAssets.splashLogo),
+      ),
     );
   }
 

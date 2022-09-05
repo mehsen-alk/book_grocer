@@ -3,4 +3,6 @@ const String jsonPath = "assets/json";
 
 class ImageAssets {}
 
-class JsonAssets {}
+class JsonAssets {
+  static const String splashLogo = '$jsonPath/splash_logo.json';
+}
