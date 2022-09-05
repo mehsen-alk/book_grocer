@@ -1,6 +1,6 @@
 class AppStrings {
   // routes manager
-  static const noRouteFound = "no_route_found";
+  static const noRouteFound = "No route found";
 
   // app title
   static const String appTitle = 'book_grocer';
