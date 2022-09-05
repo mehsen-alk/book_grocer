@@ -1,5 +1,8 @@
 {
   "no_route_found": "لا توجد شاشه",
+
+  "book_grocer": "كتاب البقال",
+
   "success": "تم النجاح",
   "bad_request_error": "طلب غير صالح. حاول مرة أخرى لاحقًا",
   "forbidden_error": "طلب محظور. حاول مرة أخرى لاحقًا",

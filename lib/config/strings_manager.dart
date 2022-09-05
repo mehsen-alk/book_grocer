@@ -2,6 +2,9 @@ class AppStrings {
   // routes manager
   static const noRouteFound = "no_route_found";
 
+  // app title
+  static const String appTitle = 'book_grocer';
+
   // error handler
   static const String success = "success";
   static const String badRequestError = "bad_request_error";

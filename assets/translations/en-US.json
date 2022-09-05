@@ -1,5 +1,8 @@
 {
   "no_route_found": "No Route Found",
+
+  "book_grocer": "Book Grocer",
+
   "success": "success",
   "bad_request_error": "bad request. try again later",
   "forbidden_error": "forbidden request. try again later",
