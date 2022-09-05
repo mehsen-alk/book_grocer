@@ -5,6 +5,12 @@ abstract class OnBoardingState extends Equatable {
 }
 
 class OnBoardingInitial extends OnBoardingState {
+  final List<PageViewModel>? list;
+  const OnBoardingInitial({this.list});
+
+  OnBoardingInitial copyWith({List<PageViewModel>? list}){
+    return OnBoardingInitial(list: list);
+  }
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [list];
 }
