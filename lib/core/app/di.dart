@@ -1,4 +1,5 @@
 import 'package:book_grocer/core/network/network_info.dart';
+import 'package:book_grocer/features/auth/presentation/pages/onboarding/on_boarding_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,4 +27,8 @@ Future<void> initAppModule() async {
 
   // dio factory
   instance.registerLazySingleton<DioFactory>(() => DioFactory(instance()));
+}
+
+Future<void> onBoardingModule() async {
+  instance.registerLazySingleton<OnBoardingBloc>(() => OnBoardingBloc());
 }

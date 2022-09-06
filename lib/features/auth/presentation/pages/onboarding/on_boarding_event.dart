@@ -4,7 +4,7 @@ abstract class OnBoardingEvent extends Equatable {
   const OnBoardingEvent();
 }
 
-class GoNext extends OnBoardingEvent {
+class OnDone extends OnBoardingEvent {
   @override
   List<Object?> get props => [];
 }

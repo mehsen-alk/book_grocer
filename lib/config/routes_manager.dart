@@ -3,7 +3,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../core/app/app_splash_screen.dart';
+import '../core/app/di.dart';
 import '../features/auth/presentation/pages/login/login_view.dart';
+import '../features/auth/presentation/pages/onboarding/onboarding_view.dart';
 import '../features/auth/presentation/pages/register/register_view.dart';
 
 class Routes {
@@ -17,8 +19,9 @@ class Routes {
 class RouteGenerator {
   static Route getRoute(RouteSettings settings) {
     switch (settings.name) {
-      // case Routes.onBoardingRoute:
-      // return MaterialPageRoute(builder: (_) => const OnBoardingView());
+      case Routes.onBoardingRoute:
+        onBoardingModule();
+        return MaterialPageRoute(builder: (_) => OnBoardingView());
       case Routes.splashRoute:
         return MaterialPageRoute(builder: (_) => const SplashView());
       case Routes.loginRoute:

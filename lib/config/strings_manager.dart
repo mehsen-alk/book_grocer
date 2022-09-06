@@ -43,4 +43,13 @@ class AppStrings {
       "password_should_at_least_5_Character";
   static const String mobileNumberFormatNotCorrect =
       "mobile_number_format_not_correct";
+  static const String title1 = "Discounted Secondhand Books";
+  static const String title2 = "20 Book Grocers Nationally";
+  static const String title3 = "Sell or Recycle Your Old Books With Us";
+  static const String subtitle1 = "Used and near new secondhand books at great prices.";
+  static const String subtitle2 = "We've successfully opened 20 stores across Australia.";
+  static const String subtitle3 = "If you're looking to downsize, sell or recycle old books, the Book Grocer can help.";
+  static const String done = "Done";
+  static const String skip = "Skip";
+  static const String next = "Next";
 }

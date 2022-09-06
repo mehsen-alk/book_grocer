@@ -33,5 +33,14 @@
   "please_enter_mobile_number": "Please Enter Mobile Number",
   "mobile_number_should_at_least_5_character" : "Mobile Number Should At Least 5 Character",
   "password_should_at_least_5_Character" : "Password Should At Least 5 Character",
-  "mobile_number_format_not_correct" : "Mobile Number Format Not Correct"
+  "mobile_number_format_not_correct" : "Mobile Number Format Not Correct",
+  "title1": "Discounted Secondhand Books",
+  "title2": "20 Book Grocers Nationally",
+  "title3": "Sell or Recycle Your Old Books With Us",
+  "subtitle1": "Used and near new secondhand books at great prices.",
+  "subtitle2": "We've successfully opened 20 stores across Australia.",
+  "done": "Done",
+  "skip": "Skip",
+  "next": "Next"
+
 }
