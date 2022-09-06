@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:book_grocer/config/assets_manager.dart';
 import 'package:equatable/equatable.dart';
@@ -9,7 +7,6 @@ import 'package:introduction_screen/introduction_screen.dart';
 import '../../../../../config/strings_manager.dart';
 
 part 'on_boarding_event.dart';
-
 part 'on_boarding_state.dart';
 
 final List<PageViewModel> list = [
