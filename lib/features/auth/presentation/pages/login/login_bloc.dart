@@ -7,6 +7,7 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
+  // to make sure that all field value was changed on time at list
   bool _emailEntered = false;
   bool _passwordEntered = false;
 

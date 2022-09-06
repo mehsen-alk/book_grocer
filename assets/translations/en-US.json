@@ -22,5 +22,16 @@
   "email": "Email",
   "password": "password",
   "please_enter_email": "Please Enter Email",
-  "please_enter_password": "Please Enter Email"
+  "please_enter_password": "Please Enter Email",
+
+  "name": "Name",
+  "mobile_number": "Mobile Number",
+  "please_enter_name": "Please Enter Name",
+  "already_have_account" : "Already Have Account?",
+  "name_should_atLeast_3_character": "Name Should At Least 3 Character",
+  "email_format_not_correct": "Email Format Not Correct",
+  "please_enter_mobile_number": "Please Enter Mobile Number",
+  "mobile_number_should_at_least_5_character" : "Mobile Number Should At Least 5 Character",
+  "password_should_at_least_5_Character" : "Password Should At Least 5 Character",
+  "mobile_number_format_not_correct" : "Mobile Number Format Not Correct"
 }

@@ -12,7 +12,7 @@ void main() async {
 
   runApp(
     EasyLocalization(
-      supportedLocales: const [ARABIC_LOCAL],
+      supportedLocales: const [ARABIC_LOCAL, ENGLISH_LOCAL],
       path: ASSET_PATH_LOCALISATIONS,
       child: MyApp(),
     ),

@@ -17,7 +17,7 @@ class AppStrings {
   static const String cacheError = "cache_error";
   static const String noInternetError = "no_internet_error";
 
-  // sign in view
+  // sign in stuff
   static const String signIn = "sign_in";
   static const String signUp = "sign_up";
   static const String signUpNow = "sign_up_now";
@@ -27,4 +27,20 @@ class AppStrings {
   static const String password = "password";
   static const String pleaseEnterEmail = "please_enter_email";
   static const String pleaseEnterPassword = "please_enter_password";
+
+  // sign up stuff
+  static const String name = "name";
+  static const String mobileNumber = "mobile_number";
+  static const String pleaseEnterName = "please_enter_name";
+  static const String alreadyHaveAccount = "already_have_account";
+  static const String nameShouldAtLeast3Character =
+      "name_should_atLeast_3_character";
+  static const String emailFormatNotCorrect = "email_format_not_correct";
+  static const String pleaseEnterMobileNumber = "please_enter_mobile_number";
+  static const String mobileNumberShouldAtLeast5Character =
+      "mobile_number_should_at_least_5_character";
+  static const String passwordShouldAtLeast5Character =
+      "password_should_at_least_5_Character";
+  static const String mobileNumberFormatNotCorrect =
+      "mobile_number_format_not_correct";
 }
