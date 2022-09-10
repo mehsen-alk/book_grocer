@@ -1,14 +1,23 @@
 part of 'on_boarding_bloc.dart';
 
 abstract class OnBoardingState extends Equatable {
-  final List<PageViewModel>? list;
-
-  const OnBoardingState({this.list});
+  const OnBoardingState();
 }
 
-class OnBoardingInitial extends OnBoardingState {
-  const OnBoardingInitial(List<PageViewModel>? list) : super(list: list);
+class OnBoardingDone extends OnBoardingState {
+  final bool done;
+
+  const OnBoardingDone({this.done = false});
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [done];
+}
+
+class OnBoardingSkip extends OnBoardingState {
+  final bool skip;
+
+  const OnBoardingSkip({this.skip = false});
+
+  @override
+  List<Object?> get props => [skip];
 }
