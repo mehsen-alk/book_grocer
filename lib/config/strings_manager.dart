@@ -43,6 +43,7 @@ class AppStrings {
       "password_should_at_least_5_Character";
   static const String mobileNumberFormatNotCorrect =
       "mobile_number_format_not_correct";
+  //on boarding
   static const String title1 = "Discounted Secondhand Books";
   static const String title2 = "20 Book Grocers Nationally";
   static const String title3 = "Sell or Recycle Your Old Books With Us";

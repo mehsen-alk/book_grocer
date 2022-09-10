@@ -22,7 +22,7 @@ class RouteGenerator {
   static Route getRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.onBoardingRoute:
-        return MaterialPageRoute(builder: (_) => OnBoardingView());
+        return MaterialPageRoute(builder: (_) => const OnBoardingView());
       case Routes.splashRoute:
         return MaterialPageRoute(builder: (_) => const SplashView());
       case Routes.loginRoute:

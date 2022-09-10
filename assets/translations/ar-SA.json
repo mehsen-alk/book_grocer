@@ -34,13 +34,13 @@
   "mobile_number_should_at_least_5_character": "رقم الجوال يجب ان يحوي 5 ارقام على الاقل",
   "password_should_at_least_5_Character": "كلمة المرور يجب ان تحوي 5 محارف على الاقل",
   "mobile_number_format_not_correct": "صيغة رقم الجوال غير صحيحة",
-  "title1": "كتب مستعملة مخفضة السعر",
-  "title2": "20 كتاب بقالة على الصعيد الوطني",
-  "title3": "بيع أو إعادة تدوير كتبك القديمة معنا",
-  "subtitle1": "كتب مستعملة وقريبة من الجديدة بأسعار رائعة.",
-  "subtitle2": "لقد افتتحنا بنجاح 20 متجرًا في جميع أنحاء أستراليا.",
-  "subtitle3": "إذا كنت تبحث عن تقليص حجم الكتب القديمة أو بيعها أو إعادة تدويرها ، فيمكن لـ Book Grocer مساعدتك.",
-  "done": "تم",
-  "skip": "تخطي",
-  "next": "التالي"
+  "Discounted Secondhand Books": "كتب مستعملة مخفضة السعر",
+  "20 Book Grocers Nationally": "20 كتاب بقالة على الصعيد الوطني",
+  "Sell or Recycle Your Old Books With Us": "بيع أو إعادة تدوير كتبك القديمة معنا",
+  "Used and near new secondhand books at great prices.": "كتب مستعملة وقريبة من الجديدة بأسعار رائعة.",
+  "We've successfully opened 20 stores across Australia.": "لقد افتتحنا بنجاح 20 متجرًا في جميع أنحاء أستراليا.",
+  "If you're looking to downsize, sell or recycle old books, the Book Grocer can help.": "إذا كنت تبحث عن تقليص حجم الكتب القديمة أو بيعها أو إعادة تدويرها ، فيمكن لـ Book Grocer مساعدتك.",
+  "Done": "تم",
+  "Skip": "تخطي",
+  "Next": "التالي"
 }
