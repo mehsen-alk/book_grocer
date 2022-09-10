@@ -33,22 +33,31 @@ dependencies:
   cupertino_icons: ^1.0.2
   internet_connection_checker: ^0.0.1+4
   dio: ^4.0.6
-  retrofit: ^3.0.1+1
   pretty_dio_logger: ^1.1.1
+  retrofit: ^3.0.1+1
+
   freezed: ^2.1.0+1
   json_serializable: ^6.3.1
+
   dartz: ^0.10.1
+
   shared_preferences: ^2.0.15
   get_it: ^7.2.0
   easy_localization: ^3.0.1
   lottie: ^1.4.2
+
   introduction_screen: ^3.0.2
+
   flutter_svg: ^1.1.4
-  firebase_auth: ^3.7.0
+
   firebase_core: ^1.21.1
+  firebase_auth: ^3.7.0
+  cloud_firestore: ^3.4.6
+
   equatable: ^2.0.5
   bloc: ^8.1.0
   flutter_bloc: ^8.1.1
+
   flutter_screenutil: ^5.5.4
 
 dev_dependencies:

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,6 +16,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   await initAppModule();
   Bloc.observer = MyBlocObserver();
   runApp(

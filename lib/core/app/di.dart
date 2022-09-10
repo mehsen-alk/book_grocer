@@ -1,13 +1,15 @@
-import 'package:book_grocer/core/network/network_info.dart';
-import 'package:book_grocer/features/auth/presentation/pages/onboarding/on_boarding_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../network/dio_factory.dart';
-import 'app_prefs.dart';
+import '../../features/auth/data/local/data_sources/auth_prefs.dart';
+import '../../features/auth/data/remote/data_sources/firebase.dart';
+import '../../features/auth/data/repository/repository_impl.dart';
+import '../../features/auth/domain/repository/repository.dart';
+import '../../features/auth/presentation/bloc/authentication_bloc.dart';
+import '../network/network_info.dart';
 
-final instance = GetIt.instance;
+final GetIt instance = GetIt.instance;
 
 Future<void> initAppModule() async {
   // app module, its a module where we put all generic dependencies
@@ -18,17 +20,23 @@ Future<void> initAppModule() async {
   instance.registerLazySingleton<SharedPreferences>(() => sharedPrefs);
 
   // app prefs instance
-  instance
-      .registerLazySingleton<AppPreferences>(() => AppPreferences(instance()));
+  instance.registerLazySingleton<AuthPreferences>(
+      () => AuthPreferences(instance()));
 
   // network info
   instance.registerLazySingleton<NetworkInfo>(
       () => NetworkInfoImpl(InternetConnectionChecker()));
 
   // dio factory
-  instance.registerLazySingleton<DioFactory>(() => DioFactory(instance()));
+  //instance.registerLazySingleton<DioFactory>(() => DioFactory(instance()));
 }
 
-Future<void> onBoardingModule() async {
-  instance.registerLazySingleton<OnBoardingBloc>(() => OnBoardingBloc());
+Future<void> initAuthenticationModule() async {
+  if (!GetIt.I.isRegistered<AuthenticationBloc>()) {
+    instance.registerLazySingleton<AuthenticationBloc>(
+        () => AuthenticationBloc(instance(), instance()));
+    instance.registerLazySingleton<Repository>(
+        () => RepositoryImp(instance(), instance()));
+    instance.registerLazySingleton<FirebaseHelper>(() => FirebaseHelper());
+  }
 }

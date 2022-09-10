@@ -5,17 +5,17 @@ import '../../../../config/values_manager.dart';
 class TextInput extends StatelessWidget {
   const TextInput(
       {Key? key,
-      TextEditingController? emailEditingController,
+      TextEditingController? controller,
       required String label,
       String? errorText,
       Function(String)? onChanged})
-      : _emailEditingController = emailEditingController,
+      : _textEditingController = controller,
         _label = label,
         _errorText = errorText,
         _onChanged = onChanged,
         super(key: key);
 
-  final TextEditingController? _emailEditingController;
+  final TextEditingController? _textEditingController;
   final String _label;
   final String? _errorText;
   final Function(String)? _onChanged;
@@ -30,7 +30,7 @@ class TextInput extends StatelessWidget {
         maxLines: null,
         expands: true,
         onChanged: _onChanged,
-        controller: _emailEditingController,
+        controller: _textEditingController,
         decoration: InputDecoration(
           errorText: _errorText,
           label: Text(_label),

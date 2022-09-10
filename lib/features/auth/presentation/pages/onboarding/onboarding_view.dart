@@ -1,5 +1,3 @@
-import 'package:book_grocer/core/app/di.dart';
-import 'package:book_grocer/features/auth/presentation/pages/onboarding/on_boarding_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,10 +6,11 @@ import 'package:introduction_screen/introduction_screen.dart';
 
 import '../../../../../config/assets_manager.dart';
 import '../../../../../config/strings_manager.dart';
+import 'on_boarding_bloc.dart';
 
 class OnBoardingView extends StatelessWidget {
   OnBoardingView({Key? key}) : super(key: key);
-  final OnBoardingBloc _onBoardingBloc = instance<OnBoardingBloc>();
+  final OnBoardingBloc _onBoardingBloc = OnBoardingBloc();
   final List<PageViewModel> _list = [
     PageViewModel(
         title: AppStrings.title1,
