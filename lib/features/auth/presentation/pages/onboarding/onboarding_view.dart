@@ -18,12 +18,12 @@ class OnBoardingView extends StatelessWidget {
       PageViewModel(
         titleWidget: Text(
           AppStrings.title1,
-          style: Theme.of(context).textTheme.titleMedium,
+          style: Theme.of(context).textTheme.titleSmall,
           textAlign: TextAlign.center,
         ).tr(),
         bodyWidget: Text(
           AppStrings.subtitle1,
-          style: Theme.of(context).textTheme.bodyMedium,
+          style: Theme.of(context).textTheme.bodySmall,
           textAlign: TextAlign.center,
         ).tr(),
         image: SvgPicture.asset(ImageAssets.onboardingLogo1),
@@ -31,12 +31,12 @@ class OnBoardingView extends StatelessWidget {
       PageViewModel(
         titleWidget: Text(
           AppStrings.title2,
-          style: Theme.of(context).textTheme.titleMedium,
+          style: Theme.of(context).textTheme.titleSmall,
           textAlign: TextAlign.center,
         ).tr(),
         bodyWidget: Text(
           AppStrings.subtitle2,
-          style: Theme.of(context).textTheme.bodyMedium,
+          style: Theme.of(context).textTheme.bodySmall,
           textAlign: TextAlign.center,
         ).tr(),
         image: SvgPicture.asset(ImageAssets.onboardingLogo2),
@@ -44,29 +44,16 @@ class OnBoardingView extends StatelessWidget {
       PageViewModel(
         titleWidget: Text(
           AppStrings.title3,
-          style: Theme.of(context).textTheme.titleMedium,
+          style: Theme.of(context).textTheme.titleSmall,
           textAlign: TextAlign.center,
         ).tr(),
         bodyWidget: Text(
           AppStrings.subtitle3,
-          style: Theme.of(context).textTheme.bodyMedium,
+          style: Theme.of(context).textTheme.bodySmall,
           textAlign: TextAlign.center,
         ).tr(),
         image: SvgPicture.asset(ImageAssets.onboardingLogo3),
       ),
-      PageViewModel(
-          titleWidget: ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, Routes.homeRoute);
-            },
-            child: const Text("home"),
-          ),
-          bodyWidget: ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, Routes.loginRoute);
-            },
-            child: const Text("login"),
-          ))
     ];
   }
 

@@ -43,31 +43,42 @@ ThemeData getApplicationTheme() {
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
             textStyle: getRegularStyle(
-                color: ColorManager.white, fontSize: FontSize.s17),
+                color: ColorManager.white, fontSize: FontSize.s15),
             primary: ColorManager.primary,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(AppSize.s12)))),
 
     // text theme
     textTheme: TextTheme(
-        displayLarge: getSemiBoldStyle(
-            color: ColorManager.black, fontSize: FontSize.s15),
+        displayLarge:
+            getSemiBoldStyle(color: ColorManager.black, fontSize: FontSize.s15),
         headlineLarge: getSemiBoldStyle(
             color: ColorManager.darkGrey, fontSize: FontSize.s16),
         headlineMedium: getRegularStyle(
             color: ColorManager.darkGrey, fontSize: FontSize.s14),
+
+        /// Text title
         titleLarge:
             getBoldStyle(color: ColorManager.black, fontSize: FontSize.s24),
-        titleMedium:
-            getMediumStyle(color: ColorManager.primary, fontSize: FontSize.s30),
+
+        /// Text Form field
+        titleMedium: getRegularStyle(
+            color: ColorManager.primary, fontSize: FontSize.s18),
+
+        /// On boarding title
         titleSmall:
-            getRegularStyle(color: ColorManager.white, fontSize: FontSize.s16),
+            getMediumStyle(color: ColorManager.primary, fontSize: FontSize.s30),
         bodyLarge: getRegularStyle(color: ColorManager.grey1),
-        bodySmall: getBoldStyle(color: ColorManager.white,fontSize: FontSize.s24),
-        bodyMedium:
+
+        /// On boarding subtitle
+        bodySmall:
             getLightStyle(color: ColorManager.primary, fontSize: FontSize.s14),
-        labelSmall:
-            getRegularStyle(color: ColorManager.labelSmallColor, fontSize: FontSize.s11)),
+
+        /// default text
+        bodyMedium:
+            getLightStyle(color: ColorManager.primary, fontSize: FontSize.s12),
+        labelSmall: getRegularStyle(
+            color: ColorManager.labelSmallColor, fontSize: FontSize.s11)),
 
     // input decoration theme (text form field)
     inputDecorationTheme: InputDecorationTheme(
@@ -76,9 +87,9 @@ ThemeData getApplicationTheme() {
 
       // hint style
       hintStyle:
-          getRegularStyle(color: ColorManager.grey, fontSize: FontSize.s14),
-      labelStyle:
-          getMediumStyle(color: ColorManager.lightGrey, fontSize: FontSize.s14),
+          getRegularStyle(color: ColorManager.grey, fontSize: FontSize.s15),
+      labelStyle: getRegularStyle(
+          color: ColorManager.labelSmallColor, fontSize: FontSize.s15),
       errorStyle: getRegularStyle(color: ColorManager.error),
 
       // enabled border style
@@ -108,15 +119,26 @@ ThemeData getApplicationTheme() {
 
     // text button
     textButtonTheme: TextButtonThemeData(
-      style: ButtonStyle(foregroundColor: MaterialStateProperty.resolveWith(
-        (states) {
+      style: ButtonStyle(
+        foregroundColor: MaterialStateProperty.resolveWith(
+          (states) {
+            if (states.contains(MaterialState.disabled)) {
+              return ColorManager.grey;
+            } else {
+              return ColorManager.primary;
+            }
+          },
+        ),
+        textStyle: MaterialStateProperty.resolveWith((states) {
           if (states.contains(MaterialState.disabled)) {
-            return ColorManager.grey;
+            return getLightStyle(
+                color: ColorManager.grey, fontSize: FontSize.s12);
           } else {
-            return ColorManager.primary;
+            return getLightStyle(
+                color: ColorManager.primary, fontSize: FontSize.s12);
           }
-        },
-      )),
+        }),
+      ),
     ),
 
     // outline button

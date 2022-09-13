@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/assets_manager.dart';
 import '../../../../../config/color_manager.dart';
@@ -67,22 +68,25 @@ class HomeView extends StatelessWidget {
             Stack(
               children: [
                 Container(
-                  height: AppSize.s260,
+                  height: AppSize.s260.sp,
                   decoration: BoxDecoration(
                       color: ColorManager.primary,
-                      borderRadius: const BorderRadius.vertical(
-                          bottom: Radius.circular(AppSize.s240))),
+                      borderRadius: BorderRadius.vertical(
+                          bottom: Radius.circular(AppSize.s240.sp))),
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                        bottom: AppPadding.p160,
-                        right: AppPadding.p20,
-                        left: AppPadding.p20),
+                    padding: EdgeInsets.only(
+                        bottom: AppPadding.p160.sp,
+                        right: AppPadding.p20.sp,
+                        left: AppPadding.p20.sp),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           AppStrings.homeTitle,
-                          style: Theme.of(context).textTheme.bodySmall,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge
+                              ?.copyWith(color: ColorManager.white),
                         ).tr(),
                         IconButton(
                           onPressed: () {},
@@ -96,12 +100,20 @@ class HomeView extends StatelessWidget {
                     ),
                   ),
                 ),
-                BookList(list:_list,padding: AppPadding.p120,)
+                BookList(
+                  list: _list,
+                  padding: AppPadding.p120,
+                )
               ],
             ),
-            const Titl1e(title:AppStrings.bestsellers),
-            BookList(list:_list,padding: AppPadding.p20,),
-            const Titl1e(title: AppStrings.genres,)
+            const Titl1e(title: AppStrings.bestsellers),
+            BookList(
+              list: _list,
+              padding: AppPadding.p20,
+            ),
+            const Titl1e(
+              title: AppStrings.genres,
+            )
           ],
         ),
       ),

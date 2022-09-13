@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../config/values_manager.dart';
 import 'book_info.dart';
@@ -13,7 +14,7 @@ class BookList extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(top: padding),
       child: SizedBox(
-        height: AppSize.s240,
+        height: AppSize.s240.sp,
         child: ListView(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,

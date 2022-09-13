@@ -2,7 +2,6 @@ import 'package:book_grocer/config/values_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../config/color_manager.dart';
 
 class HomeInfo extends StatelessWidget {
   final String bookName;
@@ -75,8 +74,7 @@ class Titl1e extends StatelessWidget {
         title,
         style: Theme.of(context)
             .textTheme
-            .bodySmall
-            ?.copyWith(color: ColorManager.black),
+            .titleLarge,
       ).tr(),
     );
   }
