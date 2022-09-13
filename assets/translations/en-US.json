@@ -34,14 +34,16 @@
   "mobile_number_should_at_least_5_character" : "Mobile Number Should At Least 5 Character",
   "password_should_at_least_5_Character" : "Password Should At Least 5 Character",
   "mobile_number_format_not_correct" : "Mobile Number Format Not Correct",
-  "title1": "Discounted Secondhand Books",
-  "title2": "20 Book Grocers Nationally",
-  "title3": "Sell or Recycle Your Old Books With Us",
-  "subtitle1": "Used and near new secondhand books at great prices.",
-  "subtitle2": "We've successfully opened 20 stores across Australia.",
-  "subtitle3": "If you're looking to downsize, sell or recycle old books, the Book Grocer can help.",
-  "done": "Done",
-  "skip": "Skip",
-  "next": "Next"
-
+  "Discounted Secondhand Books": "Discounted Secondhand Books",
+  "20 Book Grocers Nationally": "20 Book Grocers Nationally",
+  "Sell or Recycle Your Old Books With Us": "Sell or Recycle Your Old Books With Us",
+  "Used and near new secondhand books at great prices.": "Used and near new secondhand books at great prices.",
+  "We've successfully opened 20 stores across Australia.": "We've successfully opened 20 stores across Australia.",
+  "If you're looking to downsize, sell or recycle old books, the Book Grocer can help.": "If you're looking to downsize, sell or recycle old books, the Book Grocer can help.",
+  "Done": "Done",
+  "Skip": "Skip",
+  "Next": "Next",
+  "Our Top Picks": "Our Top Picks",
+  "Bestsellers": "Bestsellers",
+  "Genres": "Genres"
 }

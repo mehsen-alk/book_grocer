@@ -4,6 +4,7 @@ class ColorManager {
   static Color primary = const Color(0xff5ABD8C);
   static Color darkPrimary = const Color(0xff58e8a0);
   static Color lightPrimary = const Color(0xCC58e8a0); // color with 80% opacity
+  static Color labelSmallColor = const Color(0xff212121);
 
   static Color grey = const Color(0xff737477);
   static Color grey1 = const Color(0xff707070);
@@ -12,7 +13,7 @@ class ColorManager {
   static Color lightGrey = const Color(0xff9E9E9E);
 
   static Color black = const Color(0xff000000);
-  static Color black26 =  Colors.black26;
+  static Color black26 = Colors.black26;
   static Color white = const Color(0xffFFFFFF);
 
   static Color error = const Color(0xffe61f34); // red color

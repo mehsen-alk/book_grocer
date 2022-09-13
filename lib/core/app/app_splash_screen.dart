@@ -38,7 +38,7 @@ class _SplashViewState extends State<SplashView> {
             Navigator.pushReplacementNamed(context, Routes.loginRoute);
           } else {
             // navigate to on boarding screen
-            Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
+            Navigator.pushReplacementNamed(context, Routes.homeRoute);
           }
         }
       }

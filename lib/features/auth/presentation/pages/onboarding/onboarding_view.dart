@@ -16,35 +16,57 @@ class OnBoardingView extends StatelessWidget {
   List<PageViewModel> _list(BuildContext context) {
     return [
       PageViewModel(
-          titleWidget: Text(
-            AppStrings.title1,
-            style: Theme.of(context).textTheme.titleMedium,
-          ).tr(),
-          bodyWidget: Text(
-            AppStrings.subtitle1,
-            style: Theme.of(context).textTheme.bodyMedium,
-          ).tr(),
-          image: SvgPicture.asset(ImageAssets.onboardingLogo1)),
+        titleWidget: Text(
+          AppStrings.title1,
+          style: Theme.of(context).textTheme.titleMedium,
+          textAlign: TextAlign.center,
+        ).tr(),
+        bodyWidget: Text(
+          AppStrings.subtitle1,
+          style: Theme.of(context).textTheme.bodyMedium,
+          textAlign: TextAlign.center,
+        ).tr(),
+        image: SvgPicture.asset(ImageAssets.onboardingLogo1),
+      ),
       PageViewModel(
-          titleWidget: Text(
-            AppStrings.title2,
-            style: Theme.of(context).textTheme.titleMedium,
-          ).tr(),
-          bodyWidget: Text(
-            AppStrings.subtitle2,
-            style: Theme.of(context).textTheme.bodyMedium,
-          ).tr(),
-          image: SvgPicture.asset(ImageAssets.onboardingLogo2)),
+        titleWidget: Text(
+          AppStrings.title2,
+          style: Theme.of(context).textTheme.titleMedium,
+          textAlign: TextAlign.center,
+        ).tr(),
+        bodyWidget: Text(
+          AppStrings.subtitle2,
+          style: Theme.of(context).textTheme.bodyMedium,
+          textAlign: TextAlign.center,
+        ).tr(),
+        image: SvgPicture.asset(ImageAssets.onboardingLogo2),
+      ),
       PageViewModel(
-          titleWidget: Text(
-            AppStrings.title3,
-            style: Theme.of(context).textTheme.titleMedium,
-          ).tr(),
-          bodyWidget: Text(
-            AppStrings.subtitle3,
-            style: Theme.of(context).textTheme.bodyMedium,
-          ).tr(),
-          image: SvgPicture.asset(ImageAssets.onboardingLogo3)),
+        titleWidget: Text(
+          AppStrings.title3,
+          style: Theme.of(context).textTheme.titleMedium,
+          textAlign: TextAlign.center,
+        ).tr(),
+        bodyWidget: Text(
+          AppStrings.subtitle3,
+          style: Theme.of(context).textTheme.bodyMedium,
+          textAlign: TextAlign.center,
+        ).tr(),
+        image: SvgPicture.asset(ImageAssets.onboardingLogo3),
+      ),
+      PageViewModel(
+          titleWidget: ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.homeRoute);
+            },
+            child: const Text("home"),
+          ),
+          bodyWidget: ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.loginRoute);
+            },
+            child: const Text("login"),
+          ))
     ];
   }
 

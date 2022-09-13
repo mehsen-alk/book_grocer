@@ -51,7 +51,7 @@ ThemeData getApplicationTheme() {
     // text theme
     textTheme: TextTheme(
         displayLarge: getSemiBoldStyle(
-            color: ColorManager.darkGrey, fontSize: FontSize.s16),
+            color: ColorManager.black, fontSize: FontSize.s15),
         headlineLarge: getSemiBoldStyle(
             color: ColorManager.darkGrey, fontSize: FontSize.s16),
         headlineMedium: getRegularStyle(
@@ -59,15 +59,15 @@ ThemeData getApplicationTheme() {
         titleLarge:
             getBoldStyle(color: ColorManager.black, fontSize: FontSize.s24),
         titleMedium:
-            getRegularStyle(color: ColorManager.primary, fontSize: FontSize.s30),
+            getMediumStyle(color: ColorManager.primary, fontSize: FontSize.s30),
         titleSmall:
             getRegularStyle(color: ColorManager.white, fontSize: FontSize.s16),
         bodyLarge: getRegularStyle(color: ColorManager.grey1),
-        bodySmall: getRegularStyle(color: ColorManager.grey),
+        bodySmall: getBoldStyle(color: ColorManager.white,fontSize: FontSize.s24),
         bodyMedium:
-            getRegularStyle(color: ColorManager.primary, fontSize: FontSize.s14),
+            getLightStyle(color: ColorManager.primary, fontSize: FontSize.s14),
         labelSmall:
-            getBoldStyle(color: ColorManager.primary, fontSize: FontSize.s12)),
+            getRegularStyle(color: ColorManager.labelSmallColor, fontSize: FontSize.s11)),
 
     // input decoration theme (text form field)
     inputDecorationTheme: InputDecorationTheme(

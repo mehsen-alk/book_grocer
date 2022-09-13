@@ -1,3 +1,4 @@
+import 'package:book_grocer/features/home/presentation/pages/home/home_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -30,6 +31,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => LoginView());
       case Routes.registerRoute:
         return MaterialPageRoute(builder: (_) => RegisterView());
+      case Routes.homeRoute:
+        return MaterialPageRoute(builder: (_) => HomeView());
       default:
         return unDefinedRoute();
     }
