@@ -21,6 +21,7 @@ class AuthenticationBloc
       }, (authentication) {
         emit(LoginSuccess());
         // TODO: after finish auths all stuff _authPreferences.setUserLoggedIn();
+        _authPreferences.setUserLoggedIn();
       });
     });
   }

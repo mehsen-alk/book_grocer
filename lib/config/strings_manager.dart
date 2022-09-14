@@ -62,4 +62,5 @@ class AppStrings {
   static const String homeTitle = "Our Top Picks";
   static const String bestsellers = "Bestsellers";
   static const String genres = "Genres";
+  static const String recentlyViewed = "Recently Viewed";
 }
