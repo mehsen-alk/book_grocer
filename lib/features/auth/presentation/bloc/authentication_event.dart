@@ -12,3 +12,12 @@ class LoginButtonPressed extends AuthenticationEvent {
   @override
   List<Object?> get props => [loginRequest];
 }
+
+class RegisterButtonPressed extends AuthenticationEvent {
+  final RegisterRequest registerRequest;
+
+  const RegisterButtonPressed(this.registerRequest);
+
+  @override
+  List<Object?> get props => [registerRequest];
+}

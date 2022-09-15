@@ -7,7 +7,7 @@ import '../../config/assets_manager.dart';
 import '../../config/color_manager.dart';
 import '../../config/constants_manager.dart';
 import '../../config/routes_manager.dart';
-import '../../features/auth/data/local/data_sources/auth_prefs.dart';
+import '../../features/auth/data/data_sources/auth_prefs.dart';
 import 'di.dart';
 
 class SplashView extends StatefulWidget {

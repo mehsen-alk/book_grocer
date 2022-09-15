@@ -14,6 +14,15 @@
   "cache_error": "خطأ في ذاكرة التخزين المؤقت , حاول مرة أخرى لاحقًا",
   "no_internet_error": "يُرجى التحقق من اتصالك بالإنترنت",
 
+  "email_already_exists" : "البريد الالكتروني موجود مسبقا",
+  "wrong_password" : "كلمة سر خاطئة",
+  "invalid_email" : "البريد الاكتروني غير صالح",
+  "user_not_found" : "المستخدم غير موجود",
+  "user_disabled" : "المستخدم مفصول",
+  "operation_not_allowed" : "عملية غير مسموحة",
+  "undefined" : "غير محدد",
+  "weak_password" : "كلمة سر ضعيفة",
+
   "sign_in" : "تسجيل الدخول",
   "sign_up" : "سجل حساب",
   "sign_up_now": "سجل الان",

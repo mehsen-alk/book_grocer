@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../data/local/data_sources/auth_prefs.dart';
-import '../../data/remote/models/requests.dart';
+import '../../data/data_sources/auth_prefs.dart';
+import '../../data/models/requests.dart';
 import '../../domain/repository/repository.dart';
 
 part 'authentication_event.dart';
@@ -14,21 +14,29 @@ class AuthenticationBloc
   final AuthPreferences _authPreferences;
   AuthenticationBloc(this._repository, this._authPreferences)
       : super(AuthenticationInitial()) {
+    // login
     on<LoginButtonPressed>((event, emit) async {
       emit(LoginInProgress());
       (await _repository.login(event.loginRequest)).fold((failure) {
         emit(LoginFailed(failure.message));
-      }, (authentication) {
+      }, (_) {
         emit(LoginSuccess());
-        // TODO: after finish auths all stuff _authPreferences.setUserLoggedIn();
-        _authPreferences.setUserLoggedIn();
+
+        // TODO: _authPreferences.setUserLoggedIn();
       });
     });
-  }
 
-  @override
-  void onChange(Change<AuthenticationState> change) {
-    super.onChange(change);
-    print(change);
+    // register
+    on<RegisterButtonPressed>((event, emit) async {
+      print('hi');
+      emit(RegisterInProgress());
+      (await _repository.register(event.registerRequest)).fold((failure) {
+        emit(RegisterFailed(failure.message));
+      }, (_) {
+        emit(RegisterSuccess());
+
+        // TODO: _authPreferences.setUserLoggedIn();
+      });
+    });
   }
 }

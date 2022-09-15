@@ -2,8 +2,8 @@ import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../features/auth/data/local/data_sources/auth_prefs.dart';
-import '../../features/auth/data/remote/data_sources/firebase.dart';
+import '../../features/auth/data/data_sources/auth_prefs.dart';
+import '../../features/auth/data/data_sources/firebase.dart';
 import '../../features/auth/data/repository/repository_impl.dart';
 import '../../features/auth/domain/repository/repository.dart';
 import '../../features/auth/presentation/bloc/authentication_bloc.dart';

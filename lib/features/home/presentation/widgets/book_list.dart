@@ -7,7 +7,8 @@ import 'book_info.dart';
 class BookList extends StatelessWidget {
   final List<BookInfo> list;
   final double padding;
-  const BookList({Key? key,required this.list,required this.padding}) : super(key: key);
+  const BookList({Key? key, required this.list, required this.padding})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

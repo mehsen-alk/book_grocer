@@ -1,7 +1,9 @@
-import '../remote/models/responses.dart';
+import '../../domain/entities/entities.dart';
+import '../models/responses.dart';
 
-extension LoginResponseMapper on LoginResponse {
-  Authentication toDomain() {
-    return Authentication(name);
+extension UserResponseExtension on UserResponse {
+  User toDomain() {
+    return User(
+        name: name ?? '', email: email ?? '', mobileNumber: phoneNumber ?? '');
   }
 }

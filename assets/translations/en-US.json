@@ -14,6 +14,15 @@
   "cache_error": "cache error, try again later",
   "no_internet_error": "Please check your internet connection",
 
+  "email_already_exists" : "Email Already Exists",
+  "wrong_password" : "Wrong Password",
+  "invalid_email" : "Invalid Email",
+  "user_not_found" : "User Not Found",
+  "user_disabled" : "User Disabled",
+  "operation_not_allowed" : "Operation Not Allowed",
+  "undefined" : "Undefined",
+  "weak_password" : "Weak Password",
+
   "sign_in": "Sign In",
   "sign_up": "Sign Up",
   "sign_up_now": "Sign Up Now",

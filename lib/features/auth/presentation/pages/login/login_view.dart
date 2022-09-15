@@ -9,7 +9,8 @@ import '../../../../../config/routes_manager.dart';
 import '../../../../../config/strings_manager.dart';
 import '../../../../../config/values_manager.dart';
 import '../../../../../core/app/di.dart';
-import '../../../data/remote/models/requests.dart';
+import '../../../../../core/app/functions.dart';
+import '../../../data/models/requests.dart';
 import '../../bloc/authentication_bloc.dart';
 import '../../widgets/widgets.dart';
 import 'login_bloc.dart';
@@ -28,13 +29,18 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.arrow_back_ios_new),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new),
+          onPressed: () =>
+              Navigator.pushReplacementNamed(context, Routes.onBoardingRoute),
+        ),
       ),
       body: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         bloc: _authenticationBloc,
         builder: (context, state) {
           if (state is LoginInProgress) {
             SchedulerBinding.instance.addPostFrameCallback((_) {
+              dismissDialog(context);
               showDialog(
                   context: context,
                   builder: (_) => Center(
@@ -44,17 +50,19 @@ class LoginView extends StatelessWidget {
             });
           } else if (state is LoginFailed) {
             SchedulerBinding.instance.addPostFrameCallback((_) {
-              Navigator.pop(context);
+              dismissDialog(context);
+
               showDialog(
                   context: context,
                   builder: (_) => Center(
                       child: Container(
                           color: ColorManager.white,
-                          child: Text(state.message))));
+                          child: Text(state.message.tr()))));
             });
           } else if (state is LoginSuccess) {
             SchedulerBinding.instance.addPostFrameCallback((_) {
-              Navigator.pop(context);
+              dismissDialog(context);
+
               Navigator.pushReplacementNamed(context, Routes.homeRoute);
             });
           }
@@ -102,8 +110,7 @@ class LoginView extends StatelessWidget {
                           }),
                       TextButton(
                         onPressed: () {
-                          Navigator.pushReplacementNamed(
-                              context, Routes.forgetPassword);
+                          Navigator.pushNamed(context, Routes.forgetPassword);
                         },
                         child: const Text(AppStrings.forgetYourPassword).tr(),
                       )

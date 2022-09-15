@@ -5,7 +5,7 @@ class AppStrings {
   // app title
   static const String appTitle = 'book_grocer';
 
-  // error handler
+  // exception handler
   static const String success = "success";
   static const String badRequestError = "bad_request_error";
   static const String forbiddenError = "forbidden_error";
@@ -16,6 +16,16 @@ class AppStrings {
   static const String defaultError = "default_error";
   static const String cacheError = "cache_error";
   static const String noInternetError = "no_internet_error";
+
+  // firebase auth exception
+  static const String emailAlreadyExists = "email_already_exists";
+  static const String wrongPassword = "wrong_password";
+  static const String invalidEmail = "invalid_email";
+  static const String userNotFound = "user_not_found";
+  static const String userDisabled = "user_disabled";
+  static const String weakPassword = "weak_password";
+  static const String operationNotAllowed = "operation_not_allowed";
+  static const String undefined = "undefined";
 
   // sign in stuff
   static const String signIn = "sign_in";
@@ -43,8 +53,6 @@ class AppStrings {
       "password_should_at_least_5_Character";
   static const String mobileNumberFormatNotCorrect =
       "mobile_number_format_not_correct";
-
-  //on boarding
   static const String title1 = "Discounted Secondhand Books";
   static const String title2 = "20 Book Grocers Nationally";
   static const String title3 = "Sell or Recycle Your Old Books With Us";
@@ -57,8 +65,6 @@ class AppStrings {
   static const String done = "Done";
   static const String skip = "Skip";
   static const String next = "Next";
-
-  // home
   static const String homeTitle = "Our Top Picks";
   static const String bestsellers = "Bestsellers";
   static const String genres = "Genres";

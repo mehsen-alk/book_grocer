@@ -1,8 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:book_grocer/config/strings_manager.dart';
-import 'package:book_grocer/core/app/extensions.dart';
-import 'package:book_grocer/core/app/functions.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../../../../config/strings_manager.dart';
+import '../../../../../core/app/functions.dart';
+import '../../../../../core/app/extensions.dart';
 
 part 'register_event.dart';
 part 'register_state.dart';
@@ -13,12 +14,6 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   bool _emailEntered = false;
   bool _mobileNumberEntered = false;
   bool _passwordEntered = false;
-
-  @override
-  onChange(change) {
-    super.onChange(change);
-    print(change);
-  }
 
   RegisterBloc() : super(const RegisterState()) {
     on<NameChanged>((event, emit) {

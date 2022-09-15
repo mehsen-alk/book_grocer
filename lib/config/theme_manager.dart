@@ -29,8 +29,8 @@ ThemeData getApplicationTheme() {
         foregroundColor: ColorManager.primary,
         elevation: AppSize.s0,
         shadowColor: ColorManager.lightPrimary,
-        titleTextStyle:
-            getRegularStyle(fontSize: FontSize.s16.sp, color: ColorManager.white)),
+        titleTextStyle: getRegularStyle(
+            fontSize: FontSize.s16.sp, color: ColorManager.white)),
 
     // button theme
     buttonTheme: ButtonThemeData(
@@ -50,8 +50,8 @@ ThemeData getApplicationTheme() {
 
     // text theme
     textTheme: TextTheme(
-        displayLarge:
-            getSemiBoldStyle(color: ColorManager.black, fontSize: FontSize.s15.sp),
+        displayLarge: getSemiBoldStyle(
+            color: ColorManager.black, fontSize: FontSize.s15.sp),
         headlineLarge: getSemiBoldStyle(
             color: ColorManager.darkGrey, fontSize: FontSize.s16.sp),
         headlineMedium: getRegularStyle(
@@ -66,20 +66,20 @@ ThemeData getApplicationTheme() {
             color: ColorManager.primary, fontSize: FontSize.s18.sp),
 
         /// On boarding title
-        titleSmall:
-            getMediumStyle(color: ColorManager.primary, fontSize: FontSize.s30.sp),
+        titleSmall: getMediumStyle(
+            color: ColorManager.primary, fontSize: FontSize.s30.sp),
         bodyLarge: getRegularStyle(color: ColorManager.grey1),
 
         /// On boarding subtitle
-        bodySmall:
-            getLightStyle(color: ColorManager.primary, fontSize: FontSize.s14.sp),
+        bodySmall: getLightStyle(
+            color: ColorManager.primary, fontSize: FontSize.s14.sp),
 
         /// default text
-        bodyMedium:
-            getLightStyle(color: ColorManager.primary, fontSize: FontSize.s12.sp),
+        bodyMedium: getLightStyle(
+            color: ColorManager.primary, fontSize: FontSize.s12.sp),
         labelSmall: getRegularStyle(
             color: ColorManager.labelSmallColor, fontSize: FontSize.s11.sp)),
-iconTheme: IconThemeData(color: ColorManager.white,size: AppSize.s30.sp),
+    iconTheme: IconThemeData(color: ColorManager.white, size: AppSize.s30.sp),
     // input decoration theme (text form field)
     inputDecorationTheme: InputDecorationTheme(
       // content padding
@@ -88,33 +88,33 @@ iconTheme: IconThemeData(color: ColorManager.white,size: AppSize.s30.sp),
       // hint style
       hintStyle:
           getRegularStyle(color: ColorManager.grey, fontSize: FontSize.s15.sp),
-      labelStyle: getRegularStyle(
-          color: ColorManager.labelSmallColor, fontSize: FontSize.s15.sp),
+      labelStyle:
+          getRegularStyle(color: ColorManager.grey, fontSize: FontSize.s15.sp),
       errorStyle: getRegularStyle(color: ColorManager.error),
 
       // enabled border style
       enabledBorder: OutlineInputBorder(
           borderSide:
               BorderSide(color: ColorManager.lightGrey, width: AppSize.s1_5),
-          borderRadius:  BorderRadius.all(Radius.circular(AppSize.s18.r))),
+          borderRadius: BorderRadius.all(Radius.circular(AppSize.s18.r))),
 
       // focused border style
       focusedBorder: OutlineInputBorder(
           borderSide:
               BorderSide(color: ColorManager.primary, width: AppSize.s1_5),
-          borderRadius:  BorderRadius.all(Radius.circular(AppSize.s18.r))),
+          borderRadius: BorderRadius.all(Radius.circular(AppSize.s18.r))),
 
       // error border style
       errorBorder: OutlineInputBorder(
           borderSide:
               BorderSide(color: ColorManager.error, width: AppSize.s1_5),
-          borderRadius:  BorderRadius.all(Radius.circular(AppSize.s18.r))),
+          borderRadius: BorderRadius.all(Radius.circular(AppSize.s18.r))),
 
       // focused border style
       focusedErrorBorder: OutlineInputBorder(
           borderSide:
               BorderSide(color: ColorManager.error, width: AppSize.s1_5),
-          borderRadius:  BorderRadius.all(Radius.circular(AppSize.s18.r))),
+          borderRadius: BorderRadius.all(Radius.circular(AppSize.s18.r))),
     ),
 
     // text button

@@ -25,5 +25,24 @@ class LoginFailed extends AuthenticationState {
   const LoginFailed(this.message);
 
   @override
+  List<Object?> get props => [message];
+}
+
+class RegisterSuccess extends AuthenticationState {
+  @override
   List<Object?> get props => [];
+}
+
+class RegisterInProgress extends AuthenticationState {
+  @override
+  List<Object?> get props => [];
+}
+
+class RegisterFailed extends AuthenticationState {
+  final String message;
+
+  const RegisterFailed(this.message);
+
+  @override
+  List<Object?> get props => [message];
 }
