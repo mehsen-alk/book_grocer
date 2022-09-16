@@ -1,18 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../config/color_manager.dart';
 import '../../../../../config/routes_manager.dart';
 import '../../../../../config/strings_manager.dart';
 import '../../../../../config/values_manager.dart';
 import '../../../../../core/app/di.dart';
-import '../../../../../core/app/functions.dart';
 import '../../../data/models/requests.dart';
 import '../../bloc/authentication_bloc.dart';
-import '../../widgets/widgets.dart';
+import '../../common/functions.dart';
+import '../../common/widgets.dart';
 import 'login_bloc.dart';
 
 class LoginView extends StatelessWidget {
@@ -38,35 +36,7 @@ class LoginView extends StatelessWidget {
       body: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         bloc: _authenticationBloc,
         builder: (context, state) {
-          if (state is LoginInProgress) {
-            SchedulerBinding.instance.addPostFrameCallback((_) {
-              dismissDialog(context);
-              showDialog(
-                  context: context,
-                  builder: (_) => Center(
-                      child: Container(
-                          color: ColorManager.white,
-                          child: const Text('loading'))));
-            });
-          } else if (state is LoginFailed) {
-            SchedulerBinding.instance.addPostFrameCallback((_) {
-              dismissDialog(context);
-
-              showDialog(
-                  context: context,
-                  builder: (_) => Center(
-                      child: Container(
-                          color: ColorManager.white,
-                          child: Text(state.message.tr()))));
-            });
-          } else if (state is LoginSuccess) {
-            SchedulerBinding.instance.addPostFrameCallback((_) {
-              dismissDialog(context);
-
-              Navigator.pushReplacementNamed(context, Routes.homeRoute);
-            });
-          }
-
+          manageDialog(context, state);
           return SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.all(AppPadding.p20.w),

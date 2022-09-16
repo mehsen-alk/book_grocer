@@ -1,4 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
+
+import '../../config/color_manager.dart';
+import '../../config/values_manager.dart';
 
 bool isEmailFormatCorrect(String email) {
   return RegExp(
@@ -17,4 +23,40 @@ dismissDialog(BuildContext context) {
   if (_isCurrentDialogShowing(context)) {
     Navigator.of(context, rootNavigator: true).pop(true);
   }
+}
+
+void showCustomDialog(BuildContext context,
+    {String? message, String? jsonPath}) {
+  SchedulerBinding.instance.addPostFrameCallback((_) {
+    dismissDialog(context);
+    showDialog(
+      context: context,
+      builder: (_) => Center(
+        child: Padding(
+          padding: EdgeInsets.all(AppPadding.p20.h),
+          child: Card(
+            color: ColorManager.white,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (jsonPath != null)
+                  Padding(
+                    padding: EdgeInsets.all(AppPadding.p10.h),
+                    child: Lottie.asset(jsonPath),
+                  ),
+                if (message != null)
+                  Padding(
+                    padding: EdgeInsets.all(AppPadding.p10.h),
+                    child: Text(
+                      message,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  });
 }

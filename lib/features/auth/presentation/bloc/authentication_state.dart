@@ -9,39 +9,20 @@ class AuthenticationInitial extends AuthenticationState {
   List<Object> get props => [];
 }
 
-class LoginSuccess extends AuthenticationState {
+class AuthenticationSuccess extends AuthenticationState {
   @override
   List<Object?> get props => [];
 }
 
-class LoginInProgress extends AuthenticationState {
+class AuthenticationInProgress extends AuthenticationState {
   @override
   List<Object?> get props => [];
 }
 
-class LoginFailed extends AuthenticationState {
+class AuthenticationFailed extends AuthenticationState {
   final String message;
 
-  const LoginFailed(this.message);
-
-  @override
-  List<Object?> get props => [message];
-}
-
-class RegisterSuccess extends AuthenticationState {
-  @override
-  List<Object?> get props => [];
-}
-
-class RegisterInProgress extends AuthenticationState {
-  @override
-  List<Object?> get props => [];
-}
-
-class RegisterFailed extends AuthenticationState {
-  final String message;
-
-  const RegisterFailed(this.message);
+  const AuthenticationFailed(this.message);
 
   @override
   List<Object?> get props => [message];

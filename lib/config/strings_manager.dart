@@ -49,8 +49,8 @@ class AppStrings {
   static const String pleaseEnterMobileNumber = "please_enter_mobile_number";
   static const String mobileNumberShouldAtLeast5Character =
       "mobile_number_should_at_least_5_character";
-  static const String passwordShouldAtLeast5Character =
-      "password_should_at_least_5_Character";
+  static const String passwordShouldAtLeast6Character =
+      "password_should_at_least_6_Character";
   static const String mobileNumberFormatNotCorrect =
       "mobile_number_format_not_correct";
   static const String title1 = "Discounted Secondhand Books";

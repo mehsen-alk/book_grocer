@@ -83,9 +83,9 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     if (event.password.nullOrEmpty()) {
       emit(
           state.copyWith(passwordErrorMessage: AppStrings.pleaseEnterPassword));
-    } else if ((event.password?.length ?? 0) < 5) {
+    } else if ((event.password?.length ?? 0) < 6) {
       emit(state.copyWith(
-          passwordErrorMessage: AppStrings.passwordShouldAtLeast5Character));
+          passwordErrorMessage: AppStrings.passwordShouldAtLeast6Character));
     } else {
       emit(state.copyWith(passwordErrorMessage: ''));
     }

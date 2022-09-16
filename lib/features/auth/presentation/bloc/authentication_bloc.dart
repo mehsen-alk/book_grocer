@@ -16,11 +16,11 @@ class AuthenticationBloc
       : super(AuthenticationInitial()) {
     // login
     on<LoginButtonPressed>((event, emit) async {
-      emit(LoginInProgress());
+      emit(AuthenticationInProgress());
       (await _repository.login(event.loginRequest)).fold((failure) {
-        emit(LoginFailed(failure.message));
+        emit(AuthenticationFailed(failure.message));
       }, (_) {
-        emit(LoginSuccess());
+        emit(AuthenticationSuccess());
 
         // TODO: _authPreferences.setUserLoggedIn();
       });
@@ -29,11 +29,11 @@ class AuthenticationBloc
     // register
     on<RegisterButtonPressed>((event, emit) async {
       print('hi');
-      emit(RegisterInProgress());
+      emit(AuthenticationInProgress());
       (await _repository.register(event.registerRequest)).fold((failure) {
-        emit(RegisterFailed(failure.message));
+        emit(AuthenticationFailed(failure.message));
       }, (_) {
-        emit(RegisterSuccess());
+        emit(AuthenticationSuccess());
 
         // TODO: _authPreferences.setUserLoggedIn();
       });

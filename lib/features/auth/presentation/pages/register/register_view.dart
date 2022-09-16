@@ -1,18 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../config/color_manager.dart';
 import '../../../../../config/routes_manager.dart';
 import '../../../../../config/strings_manager.dart';
 import '../../../../../config/values_manager.dart';
 import '../../../../../core/app/di.dart';
-import '../../../../../core/app/functions.dart';
 import '../../../data/models/requests.dart';
 import '../../bloc/authentication_bloc.dart';
-import '../../widgets/widgets.dart';
+import '../../common/functions.dart';
+import '../../common/widgets.dart';
 import 'register_bloc.dart';
 
 class RegisterView extends StatelessWidget {
@@ -41,35 +39,7 @@ class RegisterView extends StatelessWidget {
       body: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         bloc: _authenticationBloc,
         builder: (context, state) {
-          if (state is RegisterInProgress) {
-            SchedulerBinding.instance.addPostFrameCallback((_) {
-              dismissDialog(context);
-              showDialog(
-                  context: context,
-                  builder: (_) => Center(
-                      child: Container(
-                          color: ColorManager.white,
-                          child: const Text('loading'))));
-            });
-          } else if (state is RegisterFailed) {
-            SchedulerBinding.instance.addPostFrameCallback((_) {
-              dismissDialog(context);
-
-              showDialog(
-                  context: context,
-                  builder: (_) => Center(
-                      child: Container(
-                          color: ColorManager.white,
-                          child: Text(state.message.tr()))));
-            });
-          } else if (state is RegisterSuccess) {
-            SchedulerBinding.instance.addPostFrameCallback((_) {
-              dismissDialog(context);
-
-              Navigator.pushReplacementNamed(context, Routes.homeRoute);
-            });
-          }
-
+          manageDialog(context, state);
           return SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.all(AppPadding.p20.w),
@@ -105,6 +75,7 @@ class RegisterView extends StatelessWidget {
                         selector: (state) => state.emailErrorMessage,
                         builder: (context, emailErrorMessage) {
                           return TextInput(
+                            keyboardType: TextInputType.emailAddress,
                             controller: _emailTextEditingController,
                             label: AppStrings.email.tr(),
                             errorText: emailErrorMessage?.tr(),
@@ -120,6 +91,7 @@ class RegisterView extends StatelessWidget {
                         selector: (state) => state.mobileNumberErrorMessage,
                         builder: (context, mobileNumberErrorMessage) {
                           return TextInput(
+                            keyboardType: TextInputType.phone,
                             controller: _mobileNumberTextEditingController,
                             label: AppStrings.mobileNumber.tr(),
                             errorText: mobileNumberErrorMessage?.tr(),
@@ -158,7 +130,7 @@ class RegisterView extends StatelessWidget {
                           return FullOutlinedButton(
                               onPressed: (status == Status.accepted
                                   ? () {
-                                      instance<AuthenticationBloc>().add(
+                                      _authenticationBloc.add(
                                           RegisterButtonPressed(RegisterRequest(
                                               _nameTextEditingController.text,
                                               _emailTextEditingController.text,
