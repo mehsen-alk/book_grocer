@@ -9,12 +9,14 @@ class TextInput extends StatelessWidget {
       required String label,
       String? errorText,
       Function(String)? onChanged,
-      TextInputType? keyboardType})
+      TextInputType? keyboardType,
+      bool? enabled = true})
       : _textEditingController = controller,
         _label = label,
         _errorText = errorText,
         _onChanged = onChanged,
         _keyboardType = keyboardType,
+        _enabled = enabled,
         super(key: key);
 
   final TextEditingController? _textEditingController;
@@ -22,6 +24,7 @@ class TextInput extends StatelessWidget {
   final String? _errorText;
   final Function(String)? _onChanged;
   final TextInputType? _keyboardType;
+  final bool? _enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +32,7 @@ class TextInput extends StatelessWidget {
       width: double.infinity,
       height: _errorText == null ? AppSize.s56 : AppSize.s56 + 20,
       child: TextField(
+        enabled: _enabled,
         keyboardType: _keyboardType,
         minLines: null,
         maxLines: null,

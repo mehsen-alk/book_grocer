@@ -73,4 +73,14 @@ class RepositoryImp implements Repository {
 
     return Right(user);
   }
+
+  @override
+  Future<Either<Failure, void>> resetPassword(String email) async {
+    try {
+      await _firebaseHelper.resetPassword(email);
+    } catch (e) {
+      return Left(ExceptionHandler.handle(e).failure);
+    }
+    return const Right(null);
+  }
 }

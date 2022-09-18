@@ -41,4 +41,8 @@ class FirebaseHelper {
       userPhoneNumberDocPath: user.mobileNumber
     });
   }
+
+  Future<void> resetPassword(String email) async {
+    await _firebaseAuth.sendPasswordResetEmail(email: email);
+  }
 }

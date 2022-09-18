@@ -39,7 +39,7 @@ class LoginView extends StatelessWidget {
           manageDialog(context, state);
           return SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.all(AppPadding.p20.w),
+              padding: EdgeInsets.all(AppPadding.p20.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,7 +80,7 @@ class LoginView extends StatelessWidget {
                           }),
                       TextButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, Routes.forgetPassword);
+                          Navigator.pushNamed(context, Routes.resetPassword);
                         },
                         child: const Text(AppStrings.forgetYourPassword).tr(),
                       )

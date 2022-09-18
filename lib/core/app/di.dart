@@ -33,7 +33,7 @@ Future<void> initAppModule() async {
 
 Future<void> initAuthenticationModule() async {
   if (!GetIt.I.isRegistered<AuthenticationBloc>()) {
-    instance.registerLazySingleton<AuthenticationBloc>(
+    instance.registerFactory<AuthenticationBloc>(
         () => AuthenticationBloc(instance(), instance()));
     instance.registerLazySingleton<Repository>(
         () => RepositoryImp(instance(), instance()));

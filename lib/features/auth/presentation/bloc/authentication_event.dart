@@ -21,3 +21,12 @@ class RegisterButtonPressed extends AuthenticationEvent {
   @override
   List<Object?> get props => [registerRequest];
 }
+
+class SendVerificationCodeButtonPressed extends AuthenticationEvent {
+  final String email;
+
+  const SendVerificationCodeButtonPressed(this.email);
+
+  @override
+  List<Object?> get props => [];
+}

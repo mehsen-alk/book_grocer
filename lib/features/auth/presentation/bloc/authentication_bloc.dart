@@ -28,7 +28,6 @@ class AuthenticationBloc
 
     // register
     on<RegisterButtonPressed>((event, emit) async {
-      print('hi');
       emit(AuthenticationInProgress());
       (await _repository.register(event.registerRequest)).fold((failure) {
         emit(AuthenticationFailed(failure.message));
@@ -36,6 +35,15 @@ class AuthenticationBloc
         emit(AuthenticationSuccess());
 
         // TODO: _authPreferences.setUserLoggedIn();
+      });
+    });
+
+    on<SendVerificationCodeButtonPressed>((event, emit) async {
+      emit(AuthenticationInProgress());
+      (await _repository.resetPassword(event.email)).fold((failure) {
+        emit(AuthenticationFailed(failure.message));
+      }, (_) {
+        emit(ResetPasswordRequestSuccess());
       });
     });
   }

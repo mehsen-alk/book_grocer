@@ -26,6 +26,8 @@ class AppStrings {
   static const String weakPassword = "weak_password";
   static const String operationNotAllowed = "operation_not_allowed";
   static const String undefined = "undefined";
+  static const String expiredActionCode = "expired_action_code";
+  static const String invalidActionCode = "invalid_action_code";
 
   // sign in stuff
   static const String signIn = "sign_in";
@@ -53,6 +55,8 @@ class AppStrings {
       "password_should_at_least_6_Character";
   static const String mobileNumberFormatNotCorrect =
       "mobile_number_format_not_correct";
+
+  // onBoarding
   static const String title1 = "Discounted Secondhand Books";
   static const String title2 = "20 Book Grocers Nationally";
   static const String title3 = "Sell or Recycle Your Old Books With Us";
@@ -65,6 +69,16 @@ class AppStrings {
   static const String done = "Done";
   static const String skip = "Skip";
   static const String next = "Next";
+
+  // resetPassword
+  static const String resetPassword = "reset_password";
+  static const String verificationCode = "verification_code";
+  static const String sendVerificationCode = "send_verification_code";
+  static const String newPassword = "new_password";
+  static const String resetEmailSendMessage =
+      "we_send_you_an_email_please_check_your_email_address";
+
+  // home
   static const String homeTitle = "Our Top Picks";
   static const String bestsellers = "Bestsellers";
   static const String genres = "Genres";

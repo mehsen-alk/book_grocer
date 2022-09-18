@@ -21,7 +21,7 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   runApp(
     EasyLocalization(
-      supportedLocales: const [ENGLISH_LOCAL,ARABIC_LOCAL],
+      supportedLocales: const [ENGLISH_LOCAL, ARABIC_LOCAL],
       path: ASSET_PATH_LOCALISATIONS,
       child: MyApp(),
     ),

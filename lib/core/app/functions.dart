@@ -33,7 +33,7 @@ void showCustomDialog(BuildContext context,
       context: context,
       builder: (_) => Center(
         child: Padding(
-          padding: EdgeInsets.all(AppPadding.p20.h),
+          padding: EdgeInsets.all(AppPadding.p8.h),
           child: Card(
             color: ColorManager.white,
             child: Column(
@@ -47,9 +47,18 @@ void showCustomDialog(BuildContext context,
                 if (message != null)
                   Padding(
                     padding: EdgeInsets.all(AppPadding.p10.h),
-                    child: Text(
-                      message,
-                      style: Theme.of(context).textTheme.titleMedium,
+                    child: Center(
+                      child: Text(
+                        message,
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ),
+                  ),
+                if (jsonPath == null && message == null)
+                  Padding(
+                    padding: EdgeInsets.all(AppPadding.p8.h),
+                    child: CircularProgressIndicator(
+                      color: ColorManager.primary,
                     ),
                   ),
               ],

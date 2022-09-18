@@ -19,6 +19,11 @@ class AuthenticationInProgress extends AuthenticationState {
   List<Object?> get props => [];
 }
 
+class ResetPasswordRequestSuccess extends AuthenticationState {
+  @override
+  List<Object?> get props => [];
+}
+
 class AuthenticationFailed extends AuthenticationState {
   final String message;
 

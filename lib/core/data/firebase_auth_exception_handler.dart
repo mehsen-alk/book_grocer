@@ -12,6 +12,8 @@ enum FirebaseAuthExceptions {
   operationNotAllowed,
   weakPassword,
   forbidden,
+  expiredActionCode,
+  invalidActionCode,
   undefined
 }
 
@@ -48,6 +50,10 @@ extension AuthResultStatusExtension on FirebaseAuthExceptions {
         return Failure(ResponseCode.unauthorized, AppStrings.undefined);
       case FirebaseAuthExceptions.weakPassword:
         return Failure(ResponseCode.unauthorized, AppStrings.weakPassword);
+      case FirebaseAuthExceptions.expiredActionCode:
+        return Failure(ResponseCode.unauthorized, AppStrings.expiredActionCode);
+      case FirebaseAuthExceptions.invalidActionCode:
+        return Failure(ResponseCode.unauthorized, AppStrings.invalidActionCode);
     }
   }
 }
@@ -58,12 +64,14 @@ class FirebaseAuthExceptionHandler {
     FirebaseAuthExceptions status;
     switch (e.code) {
       case "invalid-email":
+      case "auth/invalid-email":
         status = FirebaseAuthExceptions.invalidEmail;
         break;
       case "wrong-password":
         status = FirebaseAuthExceptions.wrongPassword;
         break;
       case "user-not-found":
+      case "auth/user-not-found":
         status = FirebaseAuthExceptions.userNotFound;
         break;
       case "user-disabled":
@@ -77,6 +85,12 @@ class FirebaseAuthExceptionHandler {
         break;
       case 'weak-password':
         status = FirebaseAuthExceptions.weakPassword;
+        break;
+      case 'expired-action-code':
+        status = FirebaseAuthExceptions.expiredActionCode;
+        break;
+      case 'invalid-action-code':
+        status = FirebaseAuthExceptions.invalidActionCode;
         break;
       default:
         status = FirebaseAuthExceptions.undefined;
