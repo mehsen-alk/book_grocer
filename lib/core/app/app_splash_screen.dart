@@ -30,7 +30,7 @@ class _SplashViewState extends State<SplashView> {
     {
       if (_authPreferences.isUserLoggedIn()) {
         // navigate to main screen
-        Navigator.pushReplacementNamed(context, Routes.homeRoute);
+        Navigator.pushReplacementNamed(context, Routes.mainRoute);
       } else {
         {
           if (_authPreferences.isOnBoardingScreenViewed()) {

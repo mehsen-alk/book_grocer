@@ -7,7 +7,7 @@ import '../features/auth/presentation/pages/login/login_view.dart';
 import '../features/auth/presentation/pages/onboarding/onboarding_view.dart';
 import '../features/auth/presentation/pages/register/register_view.dart';
 import '../features/auth/presentation/pages/reset_password/reset_password_view.dart';
-import '../features/home/presentation/pages/home/home_view.dart';
+import '../features/home/presentation/main_view.dart';
 import 'strings_manager.dart';
 
 class Routes {
@@ -17,7 +17,7 @@ class Routes {
   static const String registerRoute = '/register';
   static const String resetPassword = '/resetPassword';
 
-  static const String homeRoute = '/home';
+  static const String mainRoute = '/home';
 }
 
 class RouteGenerator {
@@ -34,8 +34,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => ResetPasswordView());
       case Routes.registerRoute:
         return MaterialPageRoute(builder: (_) => RegisterView());
-      case Routes.homeRoute:
-        return MaterialPageRoute(builder: (_) => HomeView());
+      case Routes.mainRoute:
+        return MaterialPageRoute(builder: (_) => const MainView());
       default:
         return unDefinedRoute();
     }

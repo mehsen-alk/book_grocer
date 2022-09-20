@@ -63,6 +63,11 @@
   "new_password" : "New Password",
   "we_send_you_an_email_please_check_your_email_address" : "we send you an email please check your email address",
 
+
+  "home": "Home",
+  "search": "Search",
+  "wish_list": "Wish List",
+  "shoping_cart": "Shoping Cart",
   "Our Top Picks": "Our Top Picks",
   "Bestsellers": "Bestsellers",
   "Genres": "Genres"

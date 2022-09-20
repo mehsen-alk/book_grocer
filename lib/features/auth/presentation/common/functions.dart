@@ -17,7 +17,7 @@ manageDialog(BuildContext context, AuthenticationState state) {
   } else if (state is AuthenticationSuccess) {
     SchedulerBinding.instance.addPostFrameCallback((_) {
       dismissDialog(context);
-      Navigator.pushReplacementNamed(context, Routes.homeRoute);
+      Navigator.pushReplacementNamed(context, Routes.mainRoute);
     });
   } else if (state is ResetPasswordRequestSuccess) {
     showCustomDialog(context, message: AppStrings.resetEmailSendMessage.tr());

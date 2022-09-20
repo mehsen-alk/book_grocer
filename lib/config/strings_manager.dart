@@ -79,6 +79,10 @@ class AppStrings {
       "we_send_you_an_email_please_check_your_email_address";
 
   // home
+  static const String home = "home"; 
+  static const String search = "search"; 
+  static const String wishList = "wish_list"; 
+  static const String shopingCart = "shoping_cart"; 
   static const String homeTitle = "Our Top Picks";
   static const String bestsellers = "Bestsellers";
   static const String genres = "Genres";

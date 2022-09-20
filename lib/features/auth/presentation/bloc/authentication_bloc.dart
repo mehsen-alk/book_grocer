@@ -22,7 +22,7 @@ class AuthenticationBloc
       }, (_) {
         emit(AuthenticationSuccess());
 
-        // TODO: _authPreferences.setUserLoggedIn();
+        _authPreferences.setUserLoggedIn();
       });
     });
 
@@ -34,7 +34,7 @@ class AuthenticationBloc
       }, (_) {
         emit(AuthenticationSuccess());
 
-        // TODO: _authPreferences.setUserLoggedIn();
+        _authPreferences.setUserLoggedIn();
       });
     });
 
