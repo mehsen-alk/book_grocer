@@ -9,9 +9,9 @@ class MyBlocObserver extends BlocObserver {
   }
 
   @override
-  void onEvent(Bloc bloc, Object? event) {
-    super.onEvent(bloc, event);
-    debugPrint('onEvent -- ${bloc.runtimeType}, $event');
+  void onTransition(Bloc bloc, Transition transition) {
+    super.onTransition(bloc, transition);
+    debugPrint('onTransition -- ${bloc.runtimeType}, $transition');
   }
 
   @override

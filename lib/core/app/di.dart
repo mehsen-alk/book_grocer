@@ -6,7 +6,6 @@ import '../../features/auth/data/data_sources/auth_prefs.dart';
 import '../../features/auth/data/data_sources/firebase.dart';
 import '../../features/auth/data/repository/repository_impl.dart';
 import '../../features/auth/domain/repository/repository.dart';
-import '../../features/auth/presentation/bloc/authentication_bloc.dart';
 import '../network/network_info.dart';
 
 final GetIt instance = GetIt.instance;
@@ -32,9 +31,7 @@ Future<void> initAppModule() async {
 }
 
 Future<void> initAuthenticationModule() async {
-  if (!GetIt.I.isRegistered<AuthenticationBloc>()) {
-    instance.registerFactory<AuthenticationBloc>(
-        () => AuthenticationBloc(instance(), instance()));
+  if (!GetIt.I.isRegistered<Repository>()) {
     instance.registerLazySingleton<Repository>(
         () => RepositoryImp(instance(), instance()));
     instance.registerLazySingleton<FirebaseHelper>(() => FirebaseHelper());

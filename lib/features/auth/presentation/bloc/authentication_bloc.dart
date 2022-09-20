@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:book_grocer/core/app/di.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../data/data_sources/auth_prefs.dart';
@@ -10,10 +11,9 @@ part 'authentication_state.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
-  final Repository _repository;
-  final AuthPreferences _authPreferences;
-  AuthenticationBloc(this._repository, this._authPreferences)
-      : super(AuthenticationInitial()) {
+  final Repository _repository = instance<Repository>();
+  final AuthPreferences _authPreferences = instance<AuthPreferences>();
+  AuthenticationBloc() : super(AuthenticationInitial()) {
     // login
     on<LoginButtonPressed>((event, emit) async {
       emit(AuthenticationInProgress());
