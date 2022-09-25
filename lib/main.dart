@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,12 +18,14 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  
+
   await initAppModule();
   Bloc.observer = MyBlocObserver();
   runApp(
     EasyLocalization(
-      supportedLocales: const [ENGLISH_LOCAL, ARABIC_LOCAL],
-      path: ASSET_PATH_LOCALISATIONS,
+      supportedLocales: const [englishLocal, arabicLocal],
+      path: assetPathLocalization,
       child: MyApp(),
     ),
   );

@@ -6,13 +6,15 @@ class TextInput extends StatelessWidget {
   const TextInput(
       {Key? key,
       TextEditingController? controller,
-      required String label,
+      String? label,
+      String? hintText,
       String? errorText,
       Function(String)? onChanged,
       TextInputType? keyboardType,
       bool? enabled = true})
       : _textEditingController = controller,
         _label = label,
+        _hintText = hintText,
         _errorText = errorText,
         _onChanged = onChanged,
         _keyboardType = keyboardType,
@@ -20,7 +22,8 @@ class TextInput extends StatelessWidget {
         super(key: key);
 
   final TextEditingController? _textEditingController;
-  final String _label;
+  final String? _label;
+  final String? _hintText;
   final String? _errorText;
   final Function(String)? _onChanged;
   final TextInputType? _keyboardType;
@@ -40,8 +43,9 @@ class TextInput extends StatelessWidget {
         onChanged: _onChanged,
         controller: _textEditingController,
         decoration: InputDecoration(
+          hintText: _hintText,
           errorText: _errorText,
-          label: Text(_label),
+          label: _label == null ? null : Text(_label!) ,
         ),
       ),
     );

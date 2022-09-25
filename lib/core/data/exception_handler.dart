@@ -1,6 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../config/strings_manager.dart';
+import 'dio_exception_handler.dart';
 import 'firebase_auth_exception_handler.dart';
 import 'failure.dart';
 import 'firebase_exception_handler.dart';
@@ -9,16 +11,18 @@ class ExceptionHandler implements Exception {
   late final Failure failure;
 
   ExceptionHandler.handle(exception) {
-    print(
-        "exception catched: ${exception.runtimeType} ${exception.toString()}");
+    print("exception cached: ${exception.runtimeType} ${exception.toString()}");
 
     if (exception is FirebaseAuthException) {
       failure = FirebaseAuthExceptionHandler.handle(exception).getFailure();
     } else if (exception is FirebaseException) {
       failure = FirebaseExceptionHandler.handle(exception).getFailure();
+    } else if (exception is DioError) {
+      failure = getDioFailure(exception);
     } else {
       print(
           "unhandled exception: ${exception.runtimeType} ${exception.toString()}");
+
       failure = Failure(0, AppStrings.undefined);
     }
   }
@@ -42,7 +46,7 @@ class ResponseCode {
   static const int success = 200; // success with data
   static const int noContent = 201; // success with no data (no content)
   static const int badRequestError = 400; // failure, API rejected request
-  static const int unauthorized = 401; // failure, user is not authorised
+  static const int unauthorized = 401; // failure, user is not authorized
   static const int forbidden = 403; //  failure, API rejected request
   static const int internalServerError = 500; // failure, crash in server side
   static const int notFound = 404; // failure, not found
@@ -64,7 +68,7 @@ class ResponseMessage {
   static const String badRequestError =
       AppStrings.badRequestError; // failure, API rejected request
   static const String unauthorized =
-      AppStrings.unauthorizedError; // failure, user is not authorised
+      AppStrings.unauthorizedError; // failure, user is not authorized
   static const String forbidden =
       AppStrings.forbiddenError; //  failure, API rejected request
   static const String internalServerError =

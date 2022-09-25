@@ -3,33 +3,33 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-const String APPLICATION_JSON = "application/json";
-const String CONTENT_TYPE = "content-type";
-const String ACCEPT = "accept";
-const String AUTHORIZATION = "authorization";
-const String DEFAULT_LANGUAGE = "language";
+import '../../config/language_manager.dart';
+
+const String applicationJson = "application/json";
+const String contentType = "content-type";
+const String accept = "accept";
+const String authorization = "authorization";
+const String language = "language";
+
+const int apiTimeOut = 1000;
 
 class DioFactory {
-  //final AppPreferences _appPreferences;
+  final LanguagePref _languagePref;
 
-  //DioFactory(this._appPreferences);
+  DioFactory(this._languagePref);
 
   Future<Dio> getDio() async {
     Dio dio = Dio();
 
-    // String language = await _appPreferences.getAppLanguage();
-    // Map<String, String> headers = {
-    //   CONTENT_TYPE: APPLICATION_JSON,
-    //   ACCEPT: APPLICATION_JSON,
-    //   AUTHORIZATION: Constants.token,
-    //   DEFAULT_LANGUAGE: language
-    // };
-    //
-    // dio.options = BaseOptions(
-    //     baseUrl: Constants.baseUrl,
-    //     headers: headers,
-    //     receiveTimeout: Constants.apiTimeOut,
-    //     sendTimeout: Constants.apiTimeOut);
+    String language = await _languagePref.getAppLanguage();
+    Map<String, String> headers = {
+      contentType: applicationJson,
+      accept: applicationJson,
+      language: language
+    };
+
+    dio.options = BaseOptions(
+        headers: headers, receiveTimeout: apiTimeOut, sendTimeout: apiTimeOut);
 
     if (!kReleaseMode) {
       // its debug mode so print app logs

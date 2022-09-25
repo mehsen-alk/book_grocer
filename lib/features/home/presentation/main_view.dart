@@ -1,10 +1,11 @@
-import 'package:book_grocer/features/home/presentation/pages/home/home_view.dart';
-import 'package:book_grocer/features/home/presentation/pages/home/search_view.dart';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../config/color_manager.dart';
 import '../../../config/strings_manager.dart';
+import 'pages/home/home_view.dart';
+import 'pages/search/search_view.dart';
 
 class MainView extends StatefulWidget {
   const MainView({Key? key}) : super(key: key);
@@ -40,7 +41,7 @@ class _MainViewState extends State<MainView> {
                 icon: const Icon(Icons.list),
                 label: AppStrings.wishList.tr()),
             BottomNavigationBarItem(
-                icon: const Icon(Icons.shopping_cart), label: AppStrings.shopingCart.tr()),
+                icon: const Icon(Icons.shopping_cart), label: AppStrings.shoppingCart.tr()),
           ],
         ),
     );

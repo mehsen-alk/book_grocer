@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../config/language_manager.dart';
 import '../../config/routes_manager.dart';
 import '../../config/theme_manager.dart';
+import 'di.dart';
 
 class MyApp extends StatefulWidget {
+
+  
   // named constructor
   const MyApp._internal();
 
@@ -20,6 +24,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final LanguagePref _languagePref = instance<LanguagePref>();
+
   @override
   void initState() {
     super.initState();
@@ -38,14 +44,13 @@ class _MyAppState extends State<MyApp> {
     ]);
     super.dispose();
   }
-  // final AppPreferences _appPreferences = instance<AppPreferences>();
-  //
-  // @override
-  // void didChangeDependencies() {
-  //   _appPreferences.getLocal().then((local) => {context.setLocale(local)});
-  //   super.didChangeDependencies();
-  // }
-  //
+  
+  @override
+  void didChangeDependencies() {
+    _languagePref.getLocal().then((local) => {context.setLocale(local)});
+    super.didChangeDependencies();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

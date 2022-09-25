@@ -21,7 +21,7 @@ class Routes {
 }
 
 class RouteGenerator {
-  static Route getRoute(RouteSettings settings) {
+  static Route getRoute(RouteSettings settings)  {
     switch (settings.name) {
       case Routes.onBoardingRoute:
         return MaterialPageRoute(builder: (_) => const OnBoardingView());
@@ -35,6 +35,7 @@ class RouteGenerator {
       case Routes.registerRoute:
         return MaterialPageRoute(builder: (_) => RegisterView());
       case Routes.mainRoute:
+        initHomeModule();
         return MaterialPageRoute(builder: (_) => const MainView());
       default:
         return unDefinedRoute();

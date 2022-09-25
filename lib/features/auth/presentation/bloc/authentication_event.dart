@@ -28,5 +28,5 @@ class SendVerificationCodeButtonPressed extends AuthenticationEvent {
   const SendVerificationCodeButtonPressed(this.email);
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [email];
 }
