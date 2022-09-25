@@ -9,10 +9,12 @@ import 'package:introduction_screen/introduction_screen.dart';
 import '../../../../../config/assets_manager.dart';
 import '../../../../../config/strings_manager.dart';
 import '../../../../../config/values_manager.dart';
+import '../../../../../core/app/di.dart';
+import '../../../data/data_sources/auth_prefs.dart';
 
 class OnBoardingView extends StatelessWidget {
-  const OnBoardingView({Key? key}) : super(key: key);
-
+  OnBoardingView({Key? key}) : super(key: key);
+  final AuthPreferences _authPreferences = instance<AuthPreferences>();
   List<PageViewModel> _list(BuildContext context) {
     return [
       PageViewModel(
@@ -74,6 +76,7 @@ class OnBoardingView extends StatelessWidget {
         done: const Text(AppStrings.done).tr(),
         onDone: () {
           Navigator.pushReplacementNamed(context, Routes.loginRoute);
+          _authPreferences.setOnBoardingScreenViewed();
         },
         showNextButton: true,
         next: const Text(AppStrings.next).tr(),
@@ -81,6 +84,7 @@ class OnBoardingView extends StatelessWidget {
         skip: const Text(AppStrings.skip).tr(),
         onSkip: () {
           Navigator.pushReplacementNamed(context, Routes.loginRoute);
+          _authPreferences.setOnBoardingScreenViewed();
         },
         dotsDecorator: DotsDecorator(
             size: const Size.square(10.0),

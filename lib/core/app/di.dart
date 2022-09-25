@@ -7,6 +7,7 @@ import '../../features/auth/data/data_sources/firebase.dart';
 import '../../features/auth/data/repository/repository_impl.dart';
 import '../../features/auth/domain/repository/repository.dart';
 import '../network/network_info.dart';
+import 'app_prefs.dart';
 
 final GetIt instance = GetIt.instance;
 
@@ -18,10 +19,12 @@ Future<void> initAppModule() async {
 
   instance.registerLazySingleton<SharedPreferences>(() => sharedPrefs);
 
-  // app prefs instance
+  // auth prefs instance
   instance.registerLazySingleton<AuthPreferences>(
-      () => AuthPreferences(instance()));
-
+      () => AuthPreferences(instance<SharedPreferences>()));
+  // app prefs instance
+  instance.registerLazySingleton<AppPreferences>(
+      () => AppPreferences(instance<SharedPreferences>()));
   // network info
   instance.registerLazySingleton<NetworkInfo>(
       () => NetworkInfoImpl(InternetConnectionChecker()));
