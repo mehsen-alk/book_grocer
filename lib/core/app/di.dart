@@ -14,7 +14,6 @@ import '../../features/home/data/repository/search_repository_imp.dart';
 import '../../features/home/domain/repository/search_repository.dart';
 import '../network/dio_factory.dart';
 import '../network/network_info.dart';
-import 'app_prefs.dart';
 
 final GetIt instance = GetIt.instance;
 
