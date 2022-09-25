@@ -50,12 +50,18 @@ ThemeData getApplicationTheme() {
 
     // text theme
     textTheme: TextTheme(
+
+        /// BookInfo text
         displayLarge: getSemiBoldStyle(
             color: ColorManager.black, fontSize: FontSize.s15.sp),
+
+        /// BookGenresInfo text
+        displayMedium:
+            getBoldStyle(color: ColorManager.white, fontSize: FontSize.s15.sp),
         headlineLarge: getSemiBoldStyle(
             color: ColorManager.darkGrey, fontSize: FontSize.s16.sp),
-        headlineMedium: getRegularStyle(
-            color: ColorManager.darkGrey, fontSize: FontSize.s14.sp),
+        headlineMedium:
+            getBoldStyle(color: ColorManager.white, fontSize: FontSize.s15.sp),
 
         /// Text title
         titleLarge:

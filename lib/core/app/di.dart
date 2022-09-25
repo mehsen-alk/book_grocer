@@ -14,6 +14,7 @@ import '../../features/home/data/repository/search_repository_imp.dart';
 import '../../features/home/domain/repository/search_repository.dart';
 import '../network/dio_factory.dart';
 import '../network/network_info.dart';
+import 'app_prefs.dart';
 
 final GetIt instance = GetIt.instance;
 
@@ -25,10 +26,19 @@ Future<void> initAppModule() async {
 
   instance.registerLazySingleton<SharedPreferences>(() => sharedPref);
 
+<<<<<<< HEAD
   // auth pref instance
   instance.registerLazySingleton<AuthPreferences>(
       () => AuthPreferences(instance<SharedPreferences>()));
 
+=======
+  // auth prefs instance
+  instance.registerLazySingleton<AuthPreferences>(
+      () => AuthPreferences(instance<SharedPreferences>()));
+  // app prefs instance
+  instance.registerLazySingleton<AppPreferences>(
+      () => AppPreferences(instance<SharedPreferences>()));
+>>>>>>> 5f20c89dfa42ac7d05e17a43a1a47a25fe2cea82
   // network info
   instance.registerLazySingleton<NetworkInfo>(
       () => NetworkInfoImpl(InternetConnectionChecker()));

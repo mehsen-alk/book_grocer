@@ -68,7 +68,13 @@
   "wish_list": "المفضلة",
   "shoping_cart": "سلة المشتريات",
   "Our Top Picks": "أفضل اختياراتنا",
+<<<<<<< HEAD
   "Bestsellers": "الأكثر مبيعًا",
   "Genres": "الأنواع",
   "search_for_book": "ابحث عن كتاب"
+=======
+  "Bestsellers": "الأكثر مبيعا",
+  "Genres": "الأنواع",
+  "Recently Viewed": "المشاهدة مؤخرا"
+>>>>>>> 5f20c89dfa42ac7d05e17a43a1a47a25fe2cea82
 }
