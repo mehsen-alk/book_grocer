@@ -26,19 +26,10 @@ Future<void> initAppModule() async {
 
   instance.registerLazySingleton<SharedPreferences>(() => sharedPref);
 
-<<<<<<< HEAD
   // auth pref instance
   instance.registerLazySingleton<AuthPreferences>(
       () => AuthPreferences(instance<SharedPreferences>()));
 
-=======
-  // auth prefs instance
-  instance.registerLazySingleton<AuthPreferences>(
-      () => AuthPreferences(instance<SharedPreferences>()));
-  // app prefs instance
-  instance.registerLazySingleton<AppPreferences>(
-      () => AppPreferences(instance<SharedPreferences>()));
->>>>>>> 5f20c89dfa42ac7d05e17a43a1a47a25fe2cea82
   // network info
   instance.registerLazySingleton<NetworkInfo>(
       () => NetworkInfoImpl(InternetConnectionChecker()));

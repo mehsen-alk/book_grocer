@@ -16,31 +16,31 @@ class AppPreferences {
       return language;
     } else {
       // return default lang
-      return LanguageType.ENGLISH.getValue();
+      return LanguageType.english.getValue();
     }
   }
 
   Future<void> changeAppLanguage() async {
     String currentLang = await getAppLanguage();
 
-    if (currentLang == LanguageType.ARABIC.getValue()) {
+    if (currentLang == LanguageType.arabic.getValue()) {
       // set english
       _sharedPreferences.setString(
-          prefsKeyLang, LanguageType.ENGLISH.getValue());
+          prefsKeyLang, LanguageType.english.getValue());
     } else {
       // set arabic
       _sharedPreferences.setString(
-          prefsKeyLang, LanguageType.ARABIC.getValue());
+          prefsKeyLang, LanguageType.arabic.getValue());
     }
   }
 
   Future<Locale> getLocal() async {
     String currentLang = await getAppLanguage();
 
-    if (currentLang == LanguageType.ARABIC.getValue()) {
-      return ARABIC_LOCAL;
+    if (currentLang == LanguageType.arabic.getValue()) {
+      return arabicLocal;
     } else {
-      return ENGLISH_LOCAL;
+      return englishLocal;
     }
   }
 }
