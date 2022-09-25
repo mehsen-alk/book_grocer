@@ -24,13 +24,9 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   runApp(
     EasyLocalization(
-<<<<<<< HEAD
       supportedLocales: const [englishLocal, arabicLocal],
       path: assetPathLocalization,
-=======
-      supportedLocales: const [ENGLISH_LOCAL,ARABIC_LOCAL,],
-      path: ASSET_PATH_LOCALISATIONS,
->>>>>>> 5f20c89dfa42ac7d05e17a43a1a47a25fe2cea82
+
       child: MyApp(),
     ),
   );
