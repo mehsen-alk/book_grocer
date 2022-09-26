@@ -5,5 +5,6 @@ import '../../data/models/requests.dart';
 import '../entities/entities.dart';
 
 abstract class SearchRepository {
-  Future<Either<Failure, List<Book>>> searchForBook(SearchFooBookRequest searchFooBookRequest);
+  Future<Either<Failure, List<Book>>> searchForBook(
+      SearchFooBookRequest searchFooBookRequest);
 }

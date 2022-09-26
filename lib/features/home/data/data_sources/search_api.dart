@@ -17,3 +17,4 @@ abstract class SearchServiceClient {
       { @Query("q") required String bookName,
       @Query("key") String apiKey = searchApiKey});
 }
+
