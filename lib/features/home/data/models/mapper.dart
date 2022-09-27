@@ -9,7 +9,7 @@ extension BookInfoResponseMapper on BookInfoResponse? {
         authors: this?.authors ?? [],
         description: this?.description ?? '',
         averageRating: this?.averageRating ?? 0,
-        categories: this?.categories ??[],
+        categories: this?.categories ?? [],
         pageCount: this?.pageCount ?? 0,
         thumbnail: this?.imageLinks?.thumbnail ?? '');
   }
@@ -24,5 +24,30 @@ extension SearchResponseMapper on SearchResponse? {
     });
 
     return books;
+  }
+}
+
+extension BookResponseMapper on BookResponse? {
+  List<HomeBookInfo> toDomain() {
+    List<HomeBookInfo> book = [];
+    this?.bookListInfoResponses?.forEach((element) {
+      HomeBookInfo homeBookInfo = HomeBookInfo(
+          imageLink: element.bookImage?.first.imageLink ?? "",
+          title: element.metadata?.title??"",
+          published: element.metadata?.published??"",
+          description: element.metadata?.description??"",
+          author: element.metadata?.bookAuthorResponse.toDomain()??[]);
+          book.add(homeBookInfo);
+    });
+    return book;
+  }
+}
+extension BookAuthors on List<BookAuthorResponse>?{
+  List<String> toDomain(){
+    List<String> author = [];
+    this?.forEach((element){
+      author.add(element.authorName??"");
+    });
+    return author;
   }
 }

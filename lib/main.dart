@@ -16,8 +16,9 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
   await initAppModule();
+   // Dio dio = await instance<DioFactory>().getDio();
+   // print(await HomeServiceClient(dio).bookListInfo());
   Bloc.observer = MyBlocObserver();
   runApp(
     EasyLocalization(

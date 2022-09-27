@@ -120,9 +120,7 @@ class ImageLinksResponse {
 class BookResponse extends BaseResponse {
   @JsonKey(name: "publications")
   List<BookListInfoResponses>? bookListInfoResponses;
-  @JsonKey(name: "metadata")
-  JsonMetadataResponse? jsonMetadataResponse;
-  BookResponse({this.bookListInfoResponses, this.jsonMetadataResponse});
+  BookResponse({this.bookListInfoResponses});
   // from json
   factory BookResponse.fromJson(Map<String, dynamic> json) =>
       _$BookResponseFromJson(json);
@@ -130,17 +128,6 @@ class BookResponse extends BaseResponse {
   Map<String, dynamic> toJson() => _$BookResponseToJson(this);
 }
 
-@JsonSerializable()
-class JsonMetadataResponse {
-  @JsonKey(name: "numberOfItems")
-  int? numberOfItems;
-  JsonMetadataResponse({this.numberOfItems});
-  // from json
-  factory JsonMetadataResponse.fromJson(Map<String, dynamic> json) =>
-      _$JsonMetadataResponseFromJson(json);
-  // to json
-  Map<String, dynamic> toJson() => _$JsonMetadataResponseToJson(this);
-}
 
 @JsonSerializable()
 class BookListInfoResponses {

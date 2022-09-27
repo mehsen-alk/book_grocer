@@ -77,14 +77,12 @@ class Book {
 }
 
 class HomeBookInfo extends Equatable {
-  final int numberOfItems;
   final String imageLink;
   final String title;
   final String published;
   final String description;
   final List<String> author;
   const HomeBookInfo({
-    required this.numberOfItems,
     required this.imageLink,
     required this.title,
     required this.published,
@@ -94,5 +92,5 @@ class HomeBookInfo extends Equatable {
 
   @override
   List<Object?> get props =>
-      [numberOfItems, imageLink, title, published, description, author];
+      [imageLink, title, published, description, author];
 }

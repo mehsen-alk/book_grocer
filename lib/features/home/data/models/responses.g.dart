@@ -94,10 +94,6 @@ BookResponse _$BookResponseFromJson(Map<String, dynamic> json) => BookResponse(
           ?.map(
               (e) => BookListInfoResponses.fromJson(e as Map<String, dynamic>))
           .toList(),
-      jsonMetadataResponse: json['metadata'] == null
-          ? null
-          : JsonMetadataResponse.fromJson(
-              json['metadata'] as Map<String, dynamic>),
     )
       ..status = json['Status'] as int?
       ..message = json['message'] as String?;
@@ -107,19 +103,6 @@ Map<String, dynamic> _$BookResponseToJson(BookResponse instance) =>
       'Status': instance.status,
       'message': instance.message,
       'publications': instance.bookListInfoResponses,
-      'metadata': instance.jsonMetadataResponse,
-    };
-
-JsonMetadataResponse _$JsonMetadataResponseFromJson(
-        Map<String, dynamic> json) =>
-    JsonMetadataResponse(
-      numberOfItems: json['numberOfItems'] as int?,
-    );
-
-Map<String, dynamic> _$JsonMetadataResponseToJson(
-        JsonMetadataResponse instance) =>
-    <String, dynamic>{
-      'numberOfItems': instance.numberOfItems,
     };
 
 BookListInfoResponses _$BookListInfoResponsesFromJson(

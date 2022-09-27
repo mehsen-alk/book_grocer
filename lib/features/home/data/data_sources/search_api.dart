@@ -18,3 +18,4 @@ abstract class SearchServiceClient {
       @Query("key") String apiKey = searchApiKey});
 }
 
+

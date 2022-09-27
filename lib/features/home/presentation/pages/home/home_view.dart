@@ -72,7 +72,6 @@ class HomeView extends StatelessWidget {
       color: ColorManager.blue,
     )
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
