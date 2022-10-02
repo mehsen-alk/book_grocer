@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:book_grocer/core/app/di.dart';
-import 'package:book_grocer/features/home/data/repository/home_repository_impl.dart';
 import 'package:book_grocer/features/home/domain/entities/entities.dart';
 import 'package:equatable/equatable.dart';
 
@@ -10,7 +9,7 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  final HomeRepository _homeRepository = instance<HomeRepositoryImpl>();
+  final HomeRepository _homeRepository = instance<HomeRepository>();
   HomeBloc() : super(HomeInitial()) {
     on<HomeEvent>((event, emit) async {
       if (event is GetTheBookList) {

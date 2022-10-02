@@ -1,19 +1,16 @@
 import 'package:book_grocer/config/values_manager.dart';
+import 'package:book_grocer/features/home/domain/entities/entities.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BookInfo extends StatelessWidget {
-  final String bookName;
-  final String bookInfo;
-  final String image;
+  final HomeBookInfo book;
 
-  const BookInfo(
-      {Key? key,
-      required this.bookName,
-      required this.bookInfo,
-      required this.image})
-      : super(key: key);
+  const BookInfo({
+    Key? key,
+    required this.book,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +18,7 @@ class BookInfo extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ImageContainer(
-          image: image,
+          image: book.imageLink,
           height: AppSize.s180,
           width: AppSize.s127,
           right: AppPadding.p20,
@@ -33,19 +30,8 @@ class BookInfo extends StatelessWidget {
             bottom: AppPadding.p8.h,
           ),
           child: Text(
-            bookName,
+            book.title,
             style: Theme.of(context).textTheme.displayLarge,
-            textAlign: TextAlign.center,
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(
-            top: AppPadding.p8.h,
-            bottom: AppPadding.p8.h,
-          ),
-          child: Text(
-            bookInfo,
-            style: Theme.of(context).textTheme.labelSmall,
             textAlign: TextAlign.center,
           ),
         ),
@@ -180,14 +166,14 @@ class ImageContainer extends StatelessWidget {
         bottom: button?.h ?? 0,
       ),
       child: Align(
-        alignment: alignment??Alignment.center,
+        alignment: alignment ?? Alignment.center,
         child: Container(
           height: height.h,
           width: width.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppSize.s20.r),
             image: DecorationImage(
-              image: AssetImage(image),
+              image: NetworkImage(image),
               fit: BoxFit.cover,
             ),
           ),

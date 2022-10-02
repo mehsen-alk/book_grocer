@@ -17,7 +17,7 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
 
   List<Widget> pages = [
-    HomeView(),
+    const HomeView(),
     const SearchView()
   ];
 
