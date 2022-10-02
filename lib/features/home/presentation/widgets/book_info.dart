@@ -98,7 +98,7 @@ class BookGenresInfo extends StatelessWidget {
         left: AppPadding.p20.w,
       ),
       child: Container(
-        height: AppSize.s190.h,
+        height: AppSize.s200.h,
         width: AppSize.s250.w,
         decoration: BoxDecoration(
           color: color,

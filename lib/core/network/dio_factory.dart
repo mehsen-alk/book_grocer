@@ -11,7 +11,7 @@ const String accept = "accept";
 const String authorization = "authorization";
 const String language = "language";
 
-const int apiTimeOut = 3000;
+const int apiTimeOut = 4000;
 
 class DioFactory {
   final LanguagePref _languagePref;

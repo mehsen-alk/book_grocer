@@ -29,31 +29,25 @@ extension SearchResponseMapper on SearchResponse? {
 
 extension BookResponseMapper on BookResponse? {
   List<HomeBookInfo> toDomain() {
-    List<HomeBookInfo> books = [];
-
+    List<HomeBookInfo> book = [];
     this?.bookListInfoResponses?.forEach((element) {
       HomeBookInfo homeBookInfo = HomeBookInfo(
-          imageLink: element.bookImage?.first.imageLink ?? '',
-          title: element.metadata?.title ?? '',
-          published: element.metadata?.published ?? '',
-          description: element.metadata?.description ?? '',
-          author: element.metadata?.bookAuthorResponse.toDomain() ?? []);
-
-      books.add(homeBookInfo);
+          imageLink: element.bookImage?.first.imageLink ?? "",
+          title: element.metadata?.title??"",
+          published: element.metadata?.published??"",
+          description: element.metadata?.description??"",
+          author: element.metadata?.bookAuthorResponse.toDomain()??[]);
+          book.add(homeBookInfo);
     });
-
-    return books;
+    return book;
   }
 }
-
-extension BookAuthors on List<BookAuthorResponse>? {
-  List<String> toDomain() {
-    List<String> authors = [];
-
-    this?.forEach((element) {
-      authors.add(element.authorName ?? '');
+extension BookAuthors on List<BookAuthorResponse>?{
+  List<String> toDomain(){
+    List<String> author = [];
+    this?.forEach((element){
+      author.add(element.authorName??"");
     });
-
-    return authors;
+    return author;
   }
 }

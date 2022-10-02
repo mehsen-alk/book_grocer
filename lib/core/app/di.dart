@@ -9,8 +9,11 @@ import '../../features/auth/data/data_sources/auth_prefs.dart';
 import '../../features/auth/data/data_sources/firebase.dart';
 import '../../features/auth/data/repository/repository_impl.dart';
 import '../../features/auth/domain/repository/repository.dart';
+import '../../features/home/data/data_sources/home_api.dart';
 import '../../features/home/data/data_sources/search_api.dart';
+import '../../features/home/data/repository/home_repository_impl.dart';
 import '../../features/home/data/repository/search_repository_imp.dart';
+import '../../features/home/domain/repository/home_repository.dart';
 import '../../features/home/domain/repository/search_repository.dart';
 import '../network/dio_factory.dart';
 import '../network/network_info.dart';
@@ -58,5 +61,13 @@ void initHomeModule() async {
     Dio dio = await instance<DioFactory>().getDio();
     instance.registerLazySingleton<SearchServiceClient>(
         () => SearchServiceClient(dio));
+  }
+  if (!GetIt.I.isRegistered<HomeRepository>()) {
+    instance.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(
+        instance<NetworkInfo>(),instance<HomeServiceClient>()));
+
+    Dio dio = await instance<DioFactory>().getDio();
+    instance.registerLazySingleton<HomeServiceClient>(
+        () => HomeServiceClient(dio));
   }
 }
