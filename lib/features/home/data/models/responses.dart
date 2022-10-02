@@ -74,7 +74,7 @@ class BookInfoResponse {
   List<String>? categories;
 
   @JsonKey(name: 'averageRating')
-  int? averageRating;
+  double? averageRating;
 
   @JsonKey(name: 'imageLinks')
   ImageLinksResponse? imageLinks;
@@ -118,10 +118,13 @@ class ImageLinksResponse {
 /// Home
 @JsonSerializable()
 class BookResponse extends BaseResponse {
+
   @JsonKey(name: "publications")
   List<BookListInfoResponses>? bookListInfoResponses;
+
   @JsonKey(name: "metadata")
   JsonMetadataResponse? jsonMetadataResponse;
+
   BookResponse({this.bookListInfoResponses, this.jsonMetadataResponse});
   // from json
   factory BookResponse.fromJson(Map<String, dynamic> json) =>
@@ -132,8 +135,10 @@ class BookResponse extends BaseResponse {
 
 @JsonSerializable()
 class JsonMetadataResponse {
+
   @JsonKey(name: "numberOfItems")
   int? numberOfItems;
+
   JsonMetadataResponse({this.numberOfItems});
   // from json
   factory JsonMetadataResponse.fromJson(Map<String, dynamic> json) =>
@@ -144,10 +149,13 @@ class JsonMetadataResponse {
 
 @JsonSerializable()
 class BookListInfoResponses {
+
   @JsonKey(name: "metadata")
   BookMetadataResponse? metadata;
+
   @JsonKey(name: "images")
   List<BookImageResponse>? bookImage;
+
   BookListInfoResponses({
     this.metadata,
     this.bookImage,
@@ -163,6 +171,7 @@ class BookListInfoResponses {
 class BookImageResponse {
   @JsonKey(name: "href")
   String? imageLink;
+
   BookImageResponse({
     this.imageLink,
   });
@@ -175,12 +184,16 @@ class BookImageResponse {
 
 @JsonSerializable()
 class BookMetadataResponse {
+
   @JsonKey(name: "title")
   String? title;
   @JsonKey(name: "published")
+
   String? published;
   @JsonKey(name: "description")
+
   String? description;
+
   @JsonKey(name: "author")
   List<BookAuthorResponse>? bookAuthorResponse;
   BookMetadataResponse({
@@ -198,8 +211,10 @@ class BookMetadataResponse {
 
 @JsonSerializable()
 class BookAuthorResponse {
+
   @JsonKey(name: "name")
   String? authorName;
+
   BookAuthorResponse({
     this.authorName,
   });

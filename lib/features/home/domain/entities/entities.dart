@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
@@ -8,7 +9,7 @@ class Book {
   final String description;
   final int pageCount;
   final List<String> categories;
-  final int averageRating;
+  final double averageRating;
   final String thumbnail;
 
   Book({
@@ -22,10 +23,7 @@ class Book {
     required this.thumbnail,
   });
 
-  @override
-  String toString() {
-    return 'Book(title: $title, subtitle: $subtitle, authors: $authors, description: $description, pageCount: $pageCount, categories: $categories, averageRating: $averageRating, thumbnail: $thumbnail)';
-  }
+  
 
   Book copyWith({
     String? title,
@@ -34,7 +32,7 @@ class Book {
     String? description,
     int? pageCount,
     List<String>? categories,
-    int? averageRating,
+    double? averageRating,
     String? thumbnail,
   }) {
     return Book(
@@ -50,41 +48,45 @@ class Book {
   }
 
   @override
+  String toString() {
+    return 'Book(title: $title, subtitle: $subtitle, authors: $authors, description: $description, pageCount: $pageCount, categories: $categories, averageRating: $averageRating, thumbnail: $thumbnail)';
+  }
+
+  @override
   bool operator ==(covariant Book other) {
     if (identical(this, other)) return true;
-
-    return other.title == title &&
-        other.subtitle == subtitle &&
-        listEquals(other.authors, authors) &&
-        other.description == description &&
-        other.pageCount == pageCount &&
-        listEquals(other.categories, categories) &&
-        other.averageRating == averageRating &&
-        other.thumbnail == thumbnail;
+  
+    return 
+      other.title == title &&
+      other.subtitle == subtitle &&
+      listEquals(other.authors, authors) &&
+      other.description == description &&
+      other.pageCount == pageCount &&
+      listEquals(other.categories, categories) &&
+      other.averageRating == averageRating &&
+      other.thumbnail == thumbnail;
   }
 
   @override
   int get hashCode {
     return title.hashCode ^
-        subtitle.hashCode ^
-        authors.hashCode ^
-        description.hashCode ^
-        pageCount.hashCode ^
-        categories.hashCode ^
-        averageRating.hashCode ^
-        thumbnail.hashCode;
+      subtitle.hashCode ^
+      authors.hashCode ^
+      description.hashCode ^
+      pageCount.hashCode ^
+      categories.hashCode ^
+      averageRating.hashCode ^
+      thumbnail.hashCode;
   }
 }
 
 class HomeBookInfo extends Equatable {
-  final int numberOfItems;
   final String imageLink;
   final String title;
   final String published;
   final String description;
   final List<String> author;
   const HomeBookInfo({
-    required this.numberOfItems,
     required this.imageLink,
     required this.title,
     required this.published,
@@ -94,5 +96,5 @@ class HomeBookInfo extends Equatable {
 
   @override
   List<Object?> get props =>
-      [numberOfItems, imageLink, title, published, description, author];
+      [imageLink, title, published, description, author];
 }

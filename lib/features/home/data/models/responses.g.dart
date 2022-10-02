@@ -6,16 +6,6 @@ part of 'responses.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-BaseResponse _$BaseResponseFromJson(Map<String, dynamic> json) => BaseResponse()
-  ..status = json['Status'] as int?
-  ..message = json['message'] as String?;
-
-Map<String, dynamic> _$BaseResponseToJson(BaseResponse instance) =>
-    <String, dynamic>{
-      'Status': instance.status,
-      'message': instance.message,
-    };
-
 SearchResponse _$SearchResponseFromJson(Map<String, dynamic> json) =>
     SearchResponse(
       totalItems: json['totalItems'] as int?,
@@ -60,7 +50,7 @@ BookInfoResponse _$BookInfoResponseFromJson(Map<String, dynamic> json) =>
       categories: (json['categories'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      averageRating: json['averageRating'] as int?,
+      averageRating: (json['averageRating'] as num?)?.toDouble(),
       imageLinks: json['imageLinks'] == null
           ? null
           : ImageLinksResponse.fromJson(

@@ -19,7 +19,7 @@ class _SearchServiceClient implements SearchServiceClient {
 
   @override
   Future<SearchResponse> searchForBook(
-      {required bookName, apiKey = searchApiKey}) async {
+      {required bookName, apiKey = Constants.searchApiKey}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'q': bookName, r'key': apiKey};
     final _headers = <String, dynamic>{};

@@ -1,4 +1,5 @@
 
+import 'package:book_grocer/features/home/data/models/responses.dart';
 import 'package:dartz/dartz.dart';
 
 
@@ -29,7 +30,7 @@ class SearchRepositoryImp extends SearchRepository {
     }
 
     try {
-      final response = await _searchServiceClient.searchForBook(
+      final SearchResponse response = await _searchServiceClient.searchForBook(
           bookName: searchFooBookRequest.searchWord);
       return Right(response.toDomain());
       // return Left(Failure(ApiInternalStatus.failure,

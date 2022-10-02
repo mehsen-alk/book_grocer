@@ -18,6 +18,8 @@ void main() async {
   );
 
   await initAppModule();
+
+
   Bloc.observer = MyBlocObserver();
   runApp(
     EasyLocalization(
