@@ -19,18 +19,23 @@ class BookInfo extends StatelessWidget {
       children: [
         ImageContainer(
           image: book.imageLink,
-          height: AppSize.s180,
-          width: AppSize.s127,
-          right: AppPadding.p20,
-          left: AppPadding.p20,
+          height: AppSize.s180.h,
+          width: AppSize.s127.w,
+          right: AppPadding.p20.w,
+          left: AppPadding.p20.w,
         ),
-        Padding(
+        Container(
+          width: AppSize.s127.w,
+          height: AppSize.s70.h,
           padding: EdgeInsets.only(
             top: AppPadding.p8.h,
             bottom: AppPadding.p8.h,
           ),
           child: Text(
             book.title,
+            maxLines: 5,
+            softWrap: false,
+            overflow: TextOverflow.ellipsis,
             style: Theme.of(context).textTheme.displayLarge,
             textAlign: TextAlign.center,
           ),
@@ -160,16 +165,16 @@ class ImageContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        right: right?.w ?? 0,
-        left: left?.w ?? 0,
-        top: top?.h ?? 0,
-        bottom: button?.h ?? 0,
+        right: right ?? 0,
+        left: left ?? 0,
+        top: top ?? 0,
+        bottom: button ?? 0,
       ),
       child: Align(
         alignment: alignment ?? Alignment.center,
         child: Container(
-          height: height.h,
-          width: width.w,
+          height: height,
+          width: width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppSize.s20.r),
             image: DecorationImage(

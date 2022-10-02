@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../config/color_manager.dart';
 import '../../../../../config/strings_manager.dart';
 import '../../../../../config/values_manager.dart';
+import '../../widgets/book_info.dart';
 import '../../widgets/book_list.dart';
 import 'bloc/home_bloc.dart';
 
@@ -72,7 +73,7 @@ class HomeView extends StatelessWidget {
                     const BookListContent()
                   ],
                 ),
-                // const HeadlineBookList(title: AppStrings.bestsellers),
+                 const HeadlineBookList(title: AppStrings.bestsellers),
                 // BookList(
                 //   list: _bookInfoList,
                 //   height: AppSize.s260,
