@@ -85,7 +85,6 @@ class AppStrings {
   static const String wishList = "wish_list"; 
   static const String shoppingCart = "shopping_cart";
   static const String homeTitle = "Our Top Picks";
-  static const String bestsellers = "Bestsellers";
   static const String genres = "Genres";
   static const String recentlyViewed = "Recently Viewed";
     static const String searchForBook = "search_for_book";

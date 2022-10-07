@@ -18,15 +18,129 @@ class _HomeServiceClient implements HomeServiceClient {
   String? baseUrl;
 
   @override
-  Future<BookResponse> bookListInfo() async {
+  Future<BookResponse> popularBookList({required currentPage}) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'page': currentPage};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<BookResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, 'homepage.json',
+                .compose(_dio.options, 'top.json?',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = BookResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<BookResponse> recentBookList({required currentPage}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'page': currentPage};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BookResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, 'recent.json?',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = BookResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<BookResponse> mysteryAndDetectiveBookList(
+      {required currentPage}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'page': currentPage};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BookResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, 'top.json?cat=FBFIC022000&',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = BookResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<BookResponse> romanceBookList({required currentPage}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'page': currentPage};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BookResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, 'top.json?cat=FBFIC027000&',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = BookResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<BookResponse> horrorBookList({required currentPage}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'page': currentPage};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BookResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, 'top.json?cat=FBFIC015000&',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = BookResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<BookResponse> actionAndAdventureBookList(
+      {required currentPage}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'page': currentPage};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BookResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, 'top.json?cat=FBFIC002000&',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = BookResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<BookResponse> shortStoriesBookList({required currentPage}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'page': currentPage};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BookResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, 'top.json?cat=FBFIC029000&',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = BookResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<BookResponse> scienceFictionBookList({required currentPage}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'page': currentPage};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BookResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, 'top.json?cat=FBFIC028000&',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = BookResponse.fromJson(_result.data!);

@@ -17,7 +17,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeBloc()..add(GetTheBookList()),
+      create: (context) => HomeBloc()..add(GetBookLists()),
       child: Scaffold(
         body: NestedScrollView(
           headerSliverBuilder: (context, _) => [
@@ -38,7 +38,7 @@ class HomeView extends StatelessWidget {
                 Stack(
                   children: [
                     Container(
-                      height: AppSize.s260,
+                      height: AppSize.s260.h,
                       decoration: BoxDecoration(
                           color: ColorManager.primary,
                           borderRadius: BorderRadius.vertical(
@@ -70,27 +70,12 @@ class HomeView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const BookListContent()
+                    PopularBookListContent(topPadding: AppPadding.p80.h),
                   ],
                 ),
-                 const HeadlineBookList(title: AppStrings.bestsellers),
-                // BookList(
-                //   list: _bookInfoList,
-                //   height: AppSize.s260,
-                // ),
-                // const HeadlineBookList(
-                //   title: AppStrings.genres,
-                // ),
-                // BookList(
-                //   list: _bookGenresInfoList,
-                //   height: AppSize.s190,
-                //   bottom: AppPadding.p10,
-                // ),
-                // const HeadlineBookList(title: AppStrings.recentlyViewed),
-                // BookList(
-                //   list: _bookInfoList,
-                //   height: AppSize.s260,
-                // ),
+                const HeadlineBookList(title: AppStrings.recentlyViewed),
+                RecentBookListContent(topPadding: AppPadding.p8.h),
+                const HeadlineBookList(title: AppStrings.genres),
               ],
             ),
           ),

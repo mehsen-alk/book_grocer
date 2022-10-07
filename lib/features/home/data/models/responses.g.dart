@@ -6,6 +6,16 @@ part of 'responses.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+BaseResponse _$BaseResponseFromJson(Map<String, dynamic> json) => BaseResponse()
+  ..status = json['Status'] as int?
+  ..message = json['message'] as String?;
+
+Map<String, dynamic> _$BaseResponseToJson(BaseResponse instance) =>
+    <String, dynamic>{
+      'Status': instance.status,
+      'message': instance.message,
+    };
+
 SearchResponse _$SearchResponseFromJson(Map<String, dynamic> json) =>
     SearchResponse(
       totalItems: json['totalItems'] as int?,
@@ -84,6 +94,9 @@ BookResponse _$BookResponseFromJson(Map<String, dynamic> json) => BookResponse(
           ?.map(
               (e) => BookListInfoResponses.fromJson(e as Map<String, dynamic>))
           .toList(),
+      jsonMetadata: json['metadata'] == null
+          ? null
+          : JsonMetadata.fromJson(json['metadata'] as Map<String, dynamic>),
     )
       ..status = json['Status'] as int?
       ..message = json['message'] as String?;
@@ -93,6 +106,16 @@ Map<String, dynamic> _$BookResponseToJson(BookResponse instance) =>
       'Status': instance.status,
       'message': instance.message,
       'publications': instance.bookListInfoResponses,
+      'metadata': instance.jsonMetadata,
+    };
+
+JsonMetadata _$JsonMetadataFromJson(Map<String, dynamic> json) => JsonMetadata(
+      jsonTitle: json['title'] as String?,
+    );
+
+Map<String, dynamic> _$JsonMetadataToJson(JsonMetadata instance) =>
+    <String, dynamic>{
+      'title': instance.jsonTitle,
     };
 
 BookListInfoResponses _$BookListInfoResponsesFromJson(

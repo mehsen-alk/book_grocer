@@ -66,7 +66,6 @@ void initHomeModule() async {
   if (!GetIt.I.isRegistered<HomeRepository>()) {
     instance.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(
         instance<NetworkInfo>(),instance<HomeServiceClient>()));
-
     Dio dio = await instance<DioFactory>().getDio();
     instance.registerLazySingleton<HomeServiceClient>(
         () => HomeServiceClient(dio));
