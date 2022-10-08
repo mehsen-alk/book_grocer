@@ -36,6 +36,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => RegisterView());
       case Routes.mainRoute:
         initHomeModule();
+        initSearchModule();
         return MaterialPageRoute(builder: (_) => const MainView());
       default:
         return unDefinedRoute();

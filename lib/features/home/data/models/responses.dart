@@ -118,21 +118,38 @@ class ImageLinksResponse {
 /// Home
 @JsonSerializable()
 class BookResponse extends BaseResponse {
-
   @JsonKey(name: "publications")
   List<BookListInfoResponses>? bookListInfoResponses;
-  BookResponse({this.bookListInfoResponses});
+  @JsonKey(name: "metadata")
+  JsonMetadata? jsonMetadata;
+
+  BookResponse({this.bookListInfoResponses, this.jsonMetadata});
+
   // from json
   factory BookResponse.fromJson(Map<String, dynamic> json) =>
       _$BookResponseFromJson(json);
+
   // to json
   Map<String, dynamic> toJson() => _$BookResponseToJson(this);
 }
 
+@JsonSerializable()
+class JsonMetadata {
+  @JsonKey(name: "title")
+  String? jsonTitle;
+
+  JsonMetadata({this.jsonTitle});
+
+  // from json
+  factory JsonMetadata.fromJson(Map<String, dynamic> json) =>
+      _$JsonMetadataFromJson(json);
+
+  // to json
+  Map<String, dynamic> toJson() => _$JsonMetadataToJson(this);
+}
 
 @JsonSerializable()
 class BookListInfoResponses {
-
   @JsonKey(name: "metadata")
   BookMetadataResponse? metadata;
 
@@ -143,9 +160,11 @@ class BookListInfoResponses {
     this.metadata,
     this.bookImage,
   });
+
   // from json
   factory BookListInfoResponses.fromJson(Map<String, dynamic> json) =>
       _$BookListInfoResponsesFromJson(json);
+
   // to json
   Map<String, dynamic> toJson() => _$BookListInfoResponsesToJson(this);
 }
@@ -158,52 +177,55 @@ class BookImageResponse {
   BookImageResponse({
     this.imageLink,
   });
+
   // from json
   factory BookImageResponse.fromJson(Map<String, dynamic> json) =>
       _$BookImageResponseFromJson(json);
+
   // to json
   Map<String, dynamic> toJson() => _$BookImageResponseToJson(this);
 }
 
 @JsonSerializable()
 class BookMetadataResponse {
-
   @JsonKey(name: "title")
   String? title;
   @JsonKey(name: "published")
-
   String? published;
   @JsonKey(name: "description")
-
   String? description;
 
   @JsonKey(name: "author")
   List<BookAuthorResponse>? bookAuthorResponse;
+
   BookMetadataResponse({
     this.title,
     this.published,
     this.description,
     this.bookAuthorResponse,
   });
+
   // from json
   factory BookMetadataResponse.fromJson(Map<String, dynamic> json) =>
       _$BookMetadataResponseFromJson(json);
+
   // to json
   Map<String, dynamic> toJson() => _$BookMetadataResponseToJson(this);
 }
 
 @JsonSerializable()
 class BookAuthorResponse {
-
   @JsonKey(name: "name")
   String? authorName;
 
   BookAuthorResponse({
     this.authorName,
   });
+
   // from json
   factory BookAuthorResponse.fromJson(Map<String, dynamic> json) =>
       _$BookAuthorResponseFromJson(json);
+
   // to json
   Map<String, dynamic> toJson() => _$BookAuthorResponseToJson(this);
 }

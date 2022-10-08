@@ -66,11 +66,10 @@
   "home": "البيت",
   "search": "البحث",
   "wish_list": "المفضلة",
-  "shoping_cart": "سلة المشتريات",
+  "shopping_cart": "سلة المشتريات",
   "Our Top Picks": "أفضل اختياراتنا",
-  "Bestsellers": "الأكثر مبيعًا",
   "Genres": "الأنواع",
   "Recently Viewed":"شوهدت مؤخرا",
-  "search_for_book": "ابحث عن كتاب"
-
+  "search_for_book": "ابحث عن كتاب",
+  "try_again": "حاول مرة أخرى"
 }

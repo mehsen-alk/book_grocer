@@ -1,19 +1,17 @@
 import 'package:book_grocer/config/values_manager.dart';
+import 'package:book_grocer/features/home/domain/entities/entities.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+import '../../../../config/color_manager.dart';
 
 class BookInfo extends StatelessWidget {
-  final String bookName;
-  final String bookInfo;
-  final String image;
+  final HomeBookInfo book;
 
-  const BookInfo(
-      {Key? key,
-      required this.bookName,
-      required this.bookInfo,
-      required this.image})
-      : super(key: key);
+  const BookInfo({Key? key, required this.book}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,34 +19,38 @@ class BookInfo extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ImageContainer(
-          image: image,
-          height: AppSize.s180,
-          width: AppSize.s127,
-          right: AppPadding.p20,
-          left: AppPadding.p20,
+          image: book.imageLink,
+          height: AppSize.s180.h,
+          width: AppSize.s127.w,
+          right: AppPadding.p20.w,
+          left: AppPadding.p20.w,
         ),
-        Padding(
+        Container(
+          width: AppSize.s127.w,
+          height: AppSize.s60.h,
           padding: EdgeInsets.only(
             top: AppPadding.p8.h,
-            bottom: AppPadding.p8.h,
           ),
           child: Text(
-            bookName,
+            book.bookTitle,
+            maxLines: 3,
+            softWrap: false,
+            overflow: TextOverflow.ellipsis,
             style: Theme.of(context).textTheme.displayLarge,
             textAlign: TextAlign.center,
           ),
         ),
-        Padding(
-          padding: EdgeInsets.only(
-            top: AppPadding.p8.h,
-            bottom: AppPadding.p8.h,
-          ),
-          child: Text(
-            bookInfo,
-            style: Theme.of(context).textTheme.labelSmall,
-            textAlign: TextAlign.center,
-          ),
-        ),
+        Text(
+          book.author.first,
+          textAlign: TextAlign.center,
+          style: Theme.of(context)
+              .textTheme
+              .bodyMedium
+              ?.copyWith(color: ColorManager.labelSmallColor),
+          maxLines: 2,
+          softWrap: false,
+          overflow: TextOverflow.ellipsis,
+        )
       ],
     );
   }
@@ -62,9 +64,11 @@ class HeadlineBookList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(AppPadding.p10.h).copyWith(
+      padding: EdgeInsets.only(
+        bottom: AppPadding.p20.h,
         left: AppPadding.p20.w,
         right: AppPadding.p20.w,
+        top: AppPadding.p10.w,
       ),
       child: Text(
         title,
@@ -75,18 +79,12 @@ class HeadlineBookList extends StatelessWidget {
 }
 
 class BookGenresInfo extends StatelessWidget {
-  final String packageName;
-  final String image1;
-  final String image2;
-  final String image3;
+  final List<HomeBookInfo> bookList;
   final Color color;
 
   const BookGenresInfo({
     Key? key,
-    required this.packageName,
-    required this.image1,
-    required this.image2,
-    required this.image3,
+    required this.bookList,
     required this.color,
   }) : super(key: key);
 
@@ -111,7 +109,7 @@ class BookGenresInfo extends StatelessWidget {
               alignment: AlignmentDirectional.centerStart,
               children: [
                 ImageContainer(
-                  image: image1,
+                  image: bookList[0].imageLink,
                   height: AppSize.s130.h,
                   width: AppSize.s110.h,
                   left: AppPadding.p10.w,
@@ -121,13 +119,13 @@ class BookGenresInfo extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                 ),
                 ImageContainer(
-                  image: image3,
+                  image: bookList[1].imageLink,
                   height: AppSize.s130.h,
                   width: AppSize.s110.h,
                   alignment: Alignment.center,
                 ),
                 ImageContainer(
-                  image: image2,
+                  image: bookList[2].imageLink,
                   height: AppSize.s130.h,
                   width: AppSize.s110.h,
                   left: AppPadding.p10.w,
@@ -137,7 +135,7 @@ class BookGenresInfo extends StatelessWidget {
               ],
             ),
             Text(
-              packageName,
+              bookList[0].jsonTitle,
               style: Theme.of(context).textTheme.displayMedium,
               textAlign: TextAlign.center,
             )
@@ -174,22 +172,36 @@ class ImageContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        right: right?.w ?? 0,
-        left: left?.w ?? 0,
-        top: top?.h ?? 0,
-        bottom: button?.h ?? 0,
+        right: right ?? 0,
+        left: left ?? 0,
+        top: top ?? 0,
+        bottom: button ?? 0,
       ),
       child: Align(
-        alignment: alignment??Alignment.center,
-        child: Container(
-          height: height.h,
-          width: width.w,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(AppSize.s20.r),
-            image: DecorationImage(
-              image: AssetImage(image),
-              fit: BoxFit.cover,
+        alignment: alignment ?? Alignment.center,
+        child: SizedBox(
+          height: height,
+          width: width,
+          child: CachedNetworkImage(
+            imageUrl: image,
+            imageBuilder: (context, imageProvider) => Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(AppSize.s20.r),
+                image: DecorationImage(
+                  image: imageProvider,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
+            placeholder: (context, url) => SpinKitFoldingCube(
+              itemBuilder: (BuildContext context, int index) {
+                return DecoratedBox(
+                  decoration: BoxDecoration(color: ColorManager.black12),
+                );
+              },
+            ),
+            errorWidget: (context, url, error) =>
+                Icon(Icons.error, color: ColorManager.error),
           ),
         ),
       ),

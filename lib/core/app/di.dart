@@ -50,7 +50,7 @@ void initAuthenticationModule() {
   }
 }
 
-void initHomeModule() async {
+void initSearchModule() async {
   if (!GetIt.I.isRegistered<SearchRepository>()) {
     instance.registerLazySingleton<SearchRepository>(() => SearchRepositoryImp(
         instance<SearchServiceClient>(), instance<NetworkInfo>()));
@@ -58,11 +58,11 @@ void initHomeModule() async {
     Dio dio = await instance<DioFactory>().getDio();
     instance.registerLazySingleton<SearchServiceClient>(
         () => SearchServiceClient(dio));
-  }
+  }}
+void initHomeModule() async {
   if (!GetIt.I.isRegistered<HomeRepository>()) {
     instance.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(
         instance<NetworkInfo>(),instance<HomeServiceClient>()));
-
     Dio dio = await instance<DioFactory>().getDio();
     instance.registerLazySingleton<HomeServiceClient>(
         () => HomeServiceClient(dio));
