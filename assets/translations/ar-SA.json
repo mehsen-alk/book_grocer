@@ -1,7 +1,7 @@
 {
   "no_route_found": "لا توجد شاشه",
 
-  "book_grocer": "كتاب البقال",
+  "Book Grocer": "كتاب البقال",
 
   "success": "تم النجاح",
   "bad_request_error": "طلب غير صالح. حاول مرة أخرى لاحقًا",
@@ -69,7 +69,13 @@
   "shopping_cart": "سلة المشتريات",
   "Our Top Picks": "أفضل اختياراتنا",
   "Genres": "الأنواع",
+  "Romance": "رومانسي",
+  "Horror": "رعب",
+  "Mystery detective": "بحث و غموض",
+  "Short stories": "قصص قصيرة",
   "Recently Viewed":"شوهدت مؤخرا",
+  "actionAndAdventure":"الأكشن ومغامرة",
+  "scienceFiction":"الخيال العلمي",
   "search_for_book": "ابحث عن كتاب",
   "try_again": "حاول مرة أخرى"
 }

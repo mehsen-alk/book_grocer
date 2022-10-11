@@ -66,7 +66,7 @@ class OnBoardingView extends StatelessWidget {
         automaticallyImplyLeading: false,
         backgroundColor: ColorManager.white,
         elevation: AppSize.s0,
-        systemOverlayStyle: SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
             statusBarColor: ColorManager.white,
             statusBarIconBrightness: Brightness.dark),
       ),

@@ -57,7 +57,7 @@ void showCustomDialog(BuildContext context,
                 if (jsonPath == null && message == null)
                   Padding(
                     padding: EdgeInsets.all(AppPadding.p8.h),
-                    child: CircularProgressIndicator(
+                    child: const CircularProgressIndicator(
                       color: ColorManager.primary,
                     ),
                   ),

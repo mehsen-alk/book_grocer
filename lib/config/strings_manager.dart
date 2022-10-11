@@ -3,7 +3,7 @@ class AppStrings {
   static const noRouteFound = "no_route_found";
 
   // app title
-  static const String appTitle = 'book_grocer';
+  static const String appTitle = 'Book Grocer';
 
   // exception handler
   static const String success = "success";
@@ -86,8 +86,14 @@ class AppStrings {
   static const String shoppingCart = "shopping_cart";
   static const String homeTitle = "Our Top Picks";
   static const String genres = "Genres";
+  static const String romance = "Romance";
+  static const String mysteryDetective = "Mystery detective";
+  static const String horror = "Horror";
+  static const String actionAndAdventure = "actionAndAdventure";
+  static const String shortStories = "Short stories";
+  static const String scienceFiction = "scienceFiction";
   static const String recentlyViewed = "Recently Viewed";
-    static const String searchForBook = "search_for_book";
+  static const String searchForBook = "search_for_book";
 
   
 }
