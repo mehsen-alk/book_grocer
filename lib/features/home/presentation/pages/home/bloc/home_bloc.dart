@@ -3,6 +3,8 @@ import 'package:book_grocer/core/app/di.dart';
 import 'package:book_grocer/features/home/domain/entities/entities.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../../../domain/repository/home_repository.dart';
+
 
 part 'home_event.dart';
 
