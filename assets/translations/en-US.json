@@ -1,6 +1,6 @@
 {
   "no_route_found": "No Route Found",
-  "book_grocer": "Book Grocer",
+  "Book Grocer": "Book Grocer",
   "success": "success",
   "bad_request_error": "bad request. try again later",
   "forbidden_error": "forbidden request. try again later",
@@ -61,6 +61,12 @@
   "shopping_cart": "Shopping Cart",
   "Our Top Picks": "Our Top Picks",
   "Genres": "Genres",
+  "Romance": "Romance",
+  "Short stories": "Short stories",
+  "scienceFiction": "science Fiction",
+  "Mystery detective": "Mystery detective",
+  "Horror": "Horror",
+  "actionAndAdventure": "Action&Adventure",
   "Recently Viewed": "Recently Viewed",
   "search_for_book": "search for book"
 }

@@ -16,7 +16,7 @@ ThemeData getApplicationTheme() {
     splashColor: ColorManager.lightPrimary,
 
     // card view theme
-    cardTheme: CardTheme(
+    cardTheme: const CardTheme(
         color: ColorManager.white,
         shadowColor: ColorManager.grey,
         elevation: AppSize.s4),
@@ -26,15 +26,15 @@ ThemeData getApplicationTheme() {
     appBarTheme: AppBarTheme(
         centerTitle: true,
         color: ColorManager.white,
-        foregroundColor: ColorManager.primary,
+        foregroundColor: ColorManager.white,
         elevation: AppSize.s0,
         shadowColor: ColorManager.lightPrimary,
         titleTextStyle: getRegularStyle(
             fontSize: FontSize.s16.sp, color: ColorManager.white)),
 
     // button theme
-    buttonTheme: ButtonThemeData(
-        shape: const StadiumBorder(),
+    buttonTheme: const ButtonThemeData(
+        shape: StadiumBorder(),
         disabledColor: ColorManager.grey1,
         buttonColor: ColorManager.primary,
         splashColor: ColorManager.lightPrimary),
@@ -58,10 +58,14 @@ ThemeData getApplicationTheme() {
         /// BookGenresInfo text
         displayMedium:
             getBoldStyle(color: ColorManager.white, fontSize: FontSize.s15.sp),
-        headlineLarge: getSemiBoldStyle(
+
+        /// Highlight Book Details
+        headlineLarge: getBoldStyle(
+            color: ColorManager.primary, fontSize: FontSize.s24.sp),
+
+        /// Text Book Details
+        headlineMedium: getSemiBoldStyle(
             color: ColorManager.darkGrey, fontSize: FontSize.s16.sp),
-        headlineMedium:
-            getBoldStyle(color: ColorManager.white, fontSize: FontSize.s15.sp),
 
         /// Text title
         titleLarge:
@@ -101,25 +105,25 @@ ThemeData getApplicationTheme() {
       // enabled border style
       enabledBorder: OutlineInputBorder(
           borderSide:
-              BorderSide(color: ColorManager.lightGrey, width: AppSize.s1_5),
+              BorderSide(color: ColorManager.lightGrey, width: AppSize.s1_5.w),
           borderRadius: BorderRadius.all(Radius.circular(AppSize.s18.r))),
 
       // focused border style
       focusedBorder: OutlineInputBorder(
           borderSide:
-              BorderSide(color: ColorManager.primary, width: AppSize.s1_5),
+              BorderSide(color: ColorManager.primary, width: AppSize.s1_5.w),
           borderRadius: BorderRadius.all(Radius.circular(AppSize.s18.r))),
 
       // error border style
       errorBorder: OutlineInputBorder(
           borderSide:
-              BorderSide(color: ColorManager.error, width: AppSize.s1_5),
+              BorderSide(color: ColorManager.error, width: AppSize.s1_5.w),
           borderRadius: BorderRadius.all(Radius.circular(AppSize.s18.r))),
 
       // focused border style
       focusedErrorBorder: OutlineInputBorder(
           borderSide:
-              BorderSide(color: ColorManager.error, width: AppSize.s1_5),
+              BorderSide(color: ColorManager.error, width: AppSize.s1_5.w),
           borderRadius: BorderRadius.all(Radius.circular(AppSize.s18.r))),
     ),
 
@@ -165,7 +169,7 @@ ThemeData getApplicationTheme() {
             }
           }),
           side: MaterialStateProperty.resolveWith(
-              (states) => BorderSide(color: ColorManager.primary)),
+              (states) => const BorderSide(color: ColorManager.primary)),
           elevation: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.disabled)) {
               return AppSize.s0;

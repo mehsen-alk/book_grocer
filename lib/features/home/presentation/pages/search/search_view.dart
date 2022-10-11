@@ -90,7 +90,7 @@ class _SearchBarState extends State<SearchBar> {
                     widget.onPressed(searchWord);
                   }
                 : null,
-            icon: Icon(
+            icon: const Icon(
               Icons.search,
               color: ColorManager.primary,
             )),

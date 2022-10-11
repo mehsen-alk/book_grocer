@@ -21,7 +21,8 @@ class Routes {
 }
 
 class RouteGenerator {
-  static Route getRoute(RouteSettings settings)  {
+
+  static Route getRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.onBoardingRoute:
         return MaterialPageRoute(builder: (_) => OnBoardingView());

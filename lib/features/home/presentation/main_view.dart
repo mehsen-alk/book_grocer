@@ -32,7 +32,7 @@ class _MainViewState extends State<MainView> {
           unselectedItemColor: ColorManager.grey,
           currentIndex: _currentPage,
           onTap: onTap,
-          items:   [
+          items:  <BottomNavigationBarItem> [
             BottomNavigationBarItem(
                 icon: const Icon(Icons.home_outlined), label: AppStrings.home.tr()),
             BottomNavigationBarItem(
@@ -50,7 +50,6 @@ class _MainViewState extends State<MainView> {
     onTap(int index) {
     setState(() {
       _currentPage = index;
-    
     });
   }
 

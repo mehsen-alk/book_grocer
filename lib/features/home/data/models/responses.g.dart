@@ -156,6 +156,9 @@ BookMetadataResponse _$BookMetadataResponseFromJson(
       bookAuthorResponse: (json['author'] as List<dynamic>?)
           ?.map((e) => BookAuthorResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
+      subject: (json['subject'] as List<dynamic>?)
+          ?.map((e) => SubjectResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$BookMetadataResponseToJson(
@@ -165,6 +168,17 @@ Map<String, dynamic> _$BookMetadataResponseToJson(
       'published': instance.published,
       'description': instance.description,
       'author': instance.bookAuthorResponse,
+      'subject': instance.subject,
+    };
+
+SubjectResponse _$SubjectResponseFromJson(Map<String, dynamic> json) =>
+    SubjectResponse(
+      subjectName: json['name'] as String?,
+    );
+
+Map<String, dynamic> _$SubjectResponseToJson(SubjectResponse instance) =>
+    <String, dynamic>{
+      'name': instance.subjectName,
     };
 
 BookAuthorResponse _$BookAuthorResponseFromJson(Map<String, dynamic> json) =>

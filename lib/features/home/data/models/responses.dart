@@ -197,12 +197,15 @@ class BookMetadataResponse {
 
   @JsonKey(name: "author")
   List<BookAuthorResponse>? bookAuthorResponse;
+  @JsonKey(name: "subject")
+  List<SubjectResponse>? subject;
 
   BookMetadataResponse({
     this.title,
     this.published,
     this.description,
     this.bookAuthorResponse,
+    this.subject,
   });
 
   // from json
@@ -211,6 +214,21 @@ class BookMetadataResponse {
 
   // to json
   Map<String, dynamic> toJson() => _$BookMetadataResponseToJson(this);
+}
+
+@JsonSerializable()
+class SubjectResponse {
+  @JsonKey(name: "name")
+  String? subjectName;
+
+  SubjectResponse({this.subjectName});
+
+  // from json
+  factory SubjectResponse.fromJson(Map<String, dynamic> json) =>
+      _$SubjectResponseFromJson(json);
+
+  // to json
+  Map<String, dynamic> toJson() => _$SubjectResponseToJson(this);
 }
 
 @JsonSerializable()

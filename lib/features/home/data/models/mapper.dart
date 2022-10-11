@@ -38,6 +38,7 @@ extension BookResponseMapper on BookResponse? {
         description: element.metadata?.description ?? "",
         author: element.metadata?.bookAuthorResponse.toDomain() ?? [],
         jsonTitle: this?.jsonMetadata?.jsonTitle.toDomain() ?? "",
+        subject: element.metadata?.subject.toDomain()??[],
       );
       book.add(homeBookInfo);
     });
@@ -54,8 +55,17 @@ extension BookAuthors on List<BookAuthorResponse>? {
     return author;
   }
 }
+extension BookSubject on List<SubjectResponse>? {
+  List<String> toDomain() {
+    List<String> subject = [];
+    this?.forEach((element) {
+      subject.add(element.subjectName ?? "");
+    });
+    return subject;
+  }
+}
 
-extension JsonMetadateExtension on String? {
+extension PagkageName on String? {
   String toDomain() {
     switch (this) {
       case "Most popular: Mystery & detective":

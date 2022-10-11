@@ -33,6 +33,7 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
     ]);
+
   }
   @override
   void dispose() {
