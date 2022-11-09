@@ -9,6 +9,8 @@ import 'bloc_observer.dart';
 import 'config/language_manager.dart';
 import 'core/app/app.dart';
 import 'core/app/di.dart';
+
+
 import 'firebase_options.dart';
 
 void main() async {
@@ -23,6 +25,20 @@ void main() async {
     statusBarColor: Colors.transparent,
   ));
   Bloc.observer = MyBlocObserver();
+  ErrorWidget.builder = (FlutterErrorDetails details) => Material(
+        color: Colors.green.shade200,
+        child: Center(
+          child: Text(
+            details.exception.toString(),
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+        ),
+      );
   runApp(
     EasyLocalization(
       supportedLocales: const [englishLocal, arabicLocal],

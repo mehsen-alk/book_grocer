@@ -8,13 +8,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../config/values_manager.dart';
 import '../../domain/entities/entities.dart';
-import '../pages/home/bloc/home_bloc.dart';
+import '../pages/home/bloc/home/home_bloc.dart';
 
 class BookList extends StatelessWidget {
   final List<HomeBookInfo> books;
   final double? top;
+  final double height;
+  final Axis axis;
 
-  const BookList({Key? key, required this.books, this.top}) : super(key: key);
+  const BookList(
+      {Key? key,
+      required this.books,
+      this.top,
+      required this.height,
+      required this.axis,
+     })
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +38,11 @@ class BookList extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(top: top?.h ?? 1.h),
       child: SizedBox(
-        height: AppSize.s280.h,
+        height: height,
         child: ListView.builder(
+            physics: const AlwaysScrollableScrollPhysics(),
             shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
+            scrollDirection: axis,
             itemCount: books.length,
             itemBuilder: (_, index) {
               return BookInfo(
@@ -47,6 +57,38 @@ class BookList extends StatelessWidget {
   }
 }
 
+class CategoryBookList extends StatelessWidget {
+  const CategoryBookList({Key? key, required this.books}) : super(key: key);
+  final List<HomeBookInfo> books;
+
+  @override
+  Widget build(BuildContext context) {
+    void pushBookDetails(HomeBookInfo book) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => BookDetails(book: book),
+          ));
+    }
+
+    return GridView.builder(
+      padding: EdgeInsets.symmetric(vertical: AppPadding.p20.h),
+      shrinkWrap: true,
+      physics: const AlwaysScrollableScrollPhysics(),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, childAspectRatio: 0.52.h),
+      itemCount: books.length,
+      itemBuilder: (_, index) {
+        return BookInfo(
+            book: books[index],
+            onTap: () {
+              pushBookDetails(books[index]);
+            });
+      },
+    );
+  }
+}
+
 class PopularBookListContent extends StatelessWidget {
   final double topPadding;
 
@@ -57,6 +99,7 @@ class PopularBookListContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         if (state.popularBookListStatus == Status.loading) {
@@ -64,13 +107,17 @@ class PopularBookListContent extends StatelessWidget {
         } else if (state.popularBookListStatus == Status.notAccepted) {
           return HomeErrorView(
             errorMessage: state.popularBookListError ?? AppStrings.undefined,
-            tryAgainFunction: () {},
+            tryAgainFunction: () {
+              BlocProvider.of<HomeBloc>(context).add(GetPopularBookList());
+            },
             topPadding: AppPadding.p300.h,
           );
         } else if (state.popularBookListStatus == Status.accepted) {
           return BookList(
             books: state.popularBookList ?? [],
             top: topPadding,
+            height: AppSize.s280.h,
+            axis: Axis.horizontal,
           );
         }
         return Container();
@@ -92,17 +139,21 @@ class RecentBookListContent extends StatelessWidget {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         if (state.recentBookListStatus == Status.loading) {
-          return HomeLoadingView(topPadding: AppPadding.p0.h);
+          return HomeLoadingView(topPadding: AppPadding.p35.h);
         } else if (state.recentBookListStatus == Status.notAccepted) {
           return HomeErrorView(
             errorMessage: state.recentBookListError ?? AppStrings.undefined,
-            tryAgainFunction: () {},
+            tryAgainFunction: () {
+              BlocProvider.of<HomeBloc>(context).add(GetRecentBookList());
+            },
             topPadding: AppPadding.p60.h,
           );
         } else if (state.recentBookListStatus == Status.accepted) {
           return BookList(
             books: state.recentBookList ?? [],
             top: topPadding,
+            height: AppSize.s280.h,
+            axis: Axis.horizontal,
           );
         }
         return Container();
@@ -124,18 +175,22 @@ class ShortStoriesBookListContent extends StatelessWidget {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         if (state.shortStoriesBookListStatus == Status.loading) {
-          return HomeLoadingView(topPadding: AppPadding.p0.h);
+          return HomeLoadingView(topPadding: AppPadding.p35.h);
         } else if (state.shortStoriesBookListStatus == Status.notAccepted) {
           return HomeErrorView(
             errorMessage:
                 state.shortStoriesBookListError ?? AppStrings.undefined,
-            tryAgainFunction: () {},
+            tryAgainFunction: () {
+              BlocProvider.of<HomeBloc>(context).add(GetShortStoriesBookList());
+            },
             topPadding: AppPadding.p60.h,
           );
         } else if (state.shortStoriesBookListStatus == Status.accepted) {
           return BookList(
             books: state.shortStoriesBookList ?? [],
             top: topPadding,
+            height: AppSize.s280.h,
+            axis: Axis.horizontal,
           );
         }
         return Container();
@@ -145,17 +200,22 @@ class ShortStoriesBookListContent extends StatelessWidget {
 }
 
 class BookGenresInfoList extends StatelessWidget {
-  const BookGenresInfoList({Key? key}) : super(key: key);
+  const BookGenresInfoList({Key? key, required this.verticalPadding})
+      : super(key: key);
+  final double verticalPadding;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppSize.s220.h,
-      child: ListView.builder(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: Constants.bookGenresInfoList.length,
-        itemBuilder: (_, index) => Constants.bookGenresInfoList[index],
+      height: AppSize.s260.h,
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: verticalPadding),
+        child: ListView.builder(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemCount: Constants.bookGenresInfoList.length,
+          itemBuilder: (_, index) => Constants.bookGenresInfoList[index],
+        ),
       ),
     );
   }

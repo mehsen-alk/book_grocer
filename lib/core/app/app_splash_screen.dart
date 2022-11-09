@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:book_grocer/features/home/presentation/pages/home/bloc/category/category_bloc.dart';
+import 'package:book_grocer/features/home/presentation/pages/home/category_view.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 

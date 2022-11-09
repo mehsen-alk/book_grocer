@@ -9,6 +9,9 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../../../../config/color_manager.dart';
 import '../../../../config/font_manager.dart';
 import '../../../../config/strings_manager.dart';
+import '../../../../core/app/di.dart';
+import '../pages/home/bloc/category/category_bloc.dart';
+import '../pages/home/category_view.dart';
 
 class BookInfo extends StatelessWidget {
   final Function onTap;
@@ -19,48 +22,53 @@ class BookInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        GestureDetector(
-          onTap: () {
-            onTap();
-          },
-          child: ImageContainer(
-            image: book.imageLink,
-            height: AppSize.s180.h,
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GestureDetector(
+            onTap: () {
+              onTap();
+            },
+            child: ImageContainer(
+              image: book.imageLink,
+              height: AppSize.s180.h,
+              width: AppSize.s127.w,
+              right: AppPadding.p20.w,
+              left: AppPadding.p20.w,
+            ),
+          ),
+          Container(
             width: AppSize.s127.w,
-            right: AppPadding.p20.w,
-            left: AppPadding.p20.w,
+            height: AppSize.s40.h,
+            padding: EdgeInsets.only(
+              top: AppPadding.p8.h,
+            ),
+            child: Text(
+              book.bookTitle,
+              maxLines: 2,
+              softWrap: false,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.displayLarge,
+              textAlign: TextAlign.center,
+            ),
           ),
-        ),
-        Container(
-          width: AppSize.s127.w,
-          height: AppSize.s50.h,
-          padding: EdgeInsets.only(
-            top: AppPadding.p8.h,
-          ),
-          child: Text(
-            book.bookTitle,
-            maxLines: 2,
-            softWrap: false,
-            overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.displayLarge,
-            textAlign: TextAlign.center,
-          ),
-        ),
-        Text(
-          book.author.first,
-          textAlign: TextAlign.center,
-          style: Theme.of(context)
-              .textTheme
-              .bodyMedium
-              ?.copyWith(color: ColorManager.labelSmallColor),
-          maxLines: 2,
-          softWrap: false,
-          overflow: TextOverflow.ellipsis,
-        )
-      ],
+          Padding(
+            padding: EdgeInsets.only(bottom: AppPadding.p20.h),
+            child: Text(
+              book.author.first,
+              textAlign: TextAlign.center,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium
+                  ?.copyWith(color: ColorManager.labelSmallColor),
+              maxLines: 2,
+              softWrap: false,
+              overflow: TextOverflow.ellipsis,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
@@ -73,8 +81,7 @@ class HeadlineBookList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: AppPadding.p20.w, vertical: AppPadding.p20.h),
+      padding: EdgeInsets.symmetric(horizontal: AppPadding.p20.w),
       child: Text(
         title,
         style: Theme.of(context).textTheme.titleLarge,
@@ -89,71 +96,84 @@ class BookGenresInfo extends StatelessWidget {
   final String image3;
   final String packageName;
   final Color color;
+  final CategoryEvent event;
 
-  const BookGenresInfo({
-    Key? key,
-    required this.image1,
-    required this.image2,
-    required this.image3,
-    required this.packageName,
-    required this.color,
-  }) : super(key: key);
+  const BookGenresInfo(
+      {Key? key,
+      required this.image1,
+      required this.image2,
+      required this.image3,
+      required this.packageName,
+      required this.color,
+      required this.event})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        right: AppPadding.p20.w,
-        left: AppPadding.p20.w,
-      ),
-      child: Container(
-        height: AppSize.s220.h,
-        width: AppSize.s250.w,
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(AppSize.s20.r),
+    return GestureDetector(
+      onTap: () {
+        initHomeModule();
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => CategoryView(event: event),
+          ),
+        );
+      },
+      child: Padding(
+        padding: EdgeInsets.only(
+          right: AppPadding.p20.w,
+          left: AppPadding.p20.w,
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Stack(
-              alignment: AlignmentDirectional.centerStart,
-              children: [
-                ImageContainer(
-                  image: image1,
-                  height: AppSize.s165.h,
-                  width: AppSize.s110.h,
-                  left: AppPadding.p10.w,
-                  right: AppPadding.p10.w,
-                  top: AppPadding.p10.h,
-                  button: AppPadding.p10.h,
-                  alignment: Alignment.centerLeft,
-                ),
-                ImageContainer(
-                  image: image2,
-                  height: AppSize.s165.h,
-                  width: AppSize.s110.h,
-                  alignment: Alignment.center,
-                ),
-                ImageContainer(
-                  image: image3,
-                  height: AppSize.s165.h,
-                  width: AppSize.s110.h,
-                  left: AppPadding.p10.w,
-                  right: AppPadding.p10.w,
-                  alignment: Alignment.centerRight,
-                ),
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.all(AppPadding.p8.h),
-              child: Text(
-                packageName,
-                style: Theme.of(context).textTheme.displayMedium,
-                textAlign: TextAlign.center,
+        child: Container(
+          height: AppSize.s220.h,
+          width: AppSize.s250.w,
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(AppSize.s20.r),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Stack(
+                alignment: AlignmentDirectional.centerStart,
+                children: [
+                  ImageContainer(
+                    image: image1,
+                    height: AppSize.s165.h,
+                    width: AppSize.s110.h,
+                    left: AppPadding.p10.w,
+                    right: AppPadding.p10.w,
+                    top: AppPadding.p10.h,
+                    button: AppPadding.p10.h,
+                    alignment: Alignment.centerLeft,
+                  ),
+                  ImageContainer(
+                    image: image2,
+                    height: AppSize.s165.h,
+                    width: AppSize.s110.h,
+                    alignment: Alignment.center,
+                  ),
+                  ImageContainer(
+                    image: image3,
+                    height: AppSize.s165.h,
+                    width: AppSize.s110.h,
+                    left: AppPadding.p10.w,
+                    right: AppPadding.p10.w,
+                    alignment: Alignment.centerRight,
+                  ),
+                ],
               ),
-            )
-          ],
+              Padding(
+                padding: EdgeInsets.all(AppPadding.p8.h),
+                child: Text(
+                  packageName,
+                  style: Theme.of(context).textTheme.displayMedium,
+                  textAlign: TextAlign.center,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -202,6 +222,7 @@ class ImageContainer extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(AppSize.s20.r),
                 image: DecorationImage(
+                  filterQuality: FilterQuality.high,
                   image: imageProvider,
                   fit: BoxFit.cover,
                 ),
@@ -324,15 +345,16 @@ class BookDetailsCard extends StatelessWidget {
       imageBuilder: (context, imageProvider) => Container(
         decoration: BoxDecoration(
             image: DecorationImage(
+              filterQuality: FilterQuality.high,
               image: imageProvider,
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
-            borderRadius: BorderRadius.all(Radius.circular(40.r)),
+            borderRadius: BorderRadius.all(Radius.circular(AppSize.s40.r)),
             boxShadow: [
               BoxShadow(
                   color: Colors.black.withOpacity(.2),
-                  blurRadius: 20.h,
-                  offset: Offset(0.h, 20.h))
+                  blurRadius: AppSize.s20.h,
+                  offset: Offset(AppSize.s0.h, AppSize.s20.h))
             ]),
       ),
     );
@@ -349,8 +371,8 @@ class BookInfoTableItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 170.w,
-      height: 100.h,
+      width: AppSize.s170.w,
+      height: AppSize.s100.h,
       child: Column(
         children: [
           Padding(
@@ -386,17 +408,20 @@ class BookInfoTable extends StatelessWidget {
     final bool isSame =
         book.subject[book.subject.length - 1] == book.subject.first;
     return SizedBox(
-      width: 360.w,
-      height: 100.h,
+      width: AppSize.s360.w,
+      height: AppSize.s100.h,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           BookInfoTableItem(
-              title: "Type",
+              title: AppStrings.category.tr(),
               content:
                   "${book.subject.first}${isSame ? "" : ",${book.subject[book.subject.length - 1]}"}"),
-          SizedBox(width: AppSize.s12.w,),
-          BookInfoTableItem(title: "Author", content: book.author.first),
+          SizedBox(
+            width: AppSize.s12.w,
+          ),
+          BookInfoTableItem(
+              title: AppStrings.author.tr(), content: book.author.first),
         ],
       ),
     );

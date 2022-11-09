@@ -6,15 +6,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../widgets/home_widgets.dart';
 
 class BookDetails extends StatelessWidget {
-  final HomeBookInfo book;
-
   const BookDetails({Key? key, required this.book}) : super(key: key);
+  final HomeBookInfo book;
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      final w = constraints.maxWidth;
-      final h = constraints.maxHeight;
+      final w = constraints.maxWidth.w;
+      final h = constraints.maxHeight.h;
       return Scaffold(
         body: SizedBox(
           height: h.h,
@@ -22,9 +21,9 @@ class BookDetails extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             children: [
               Positioned(
-                top: h * -.09,
-                width: w,
-                height: h * .6,
+                top: h * -.1.h,
+                width: w.w,
+                height: h * .5.h,
                 child: Hero(
                   tag: book.imageLink,
                   child: OpacityTween(
@@ -33,13 +32,13 @@ class BookDetails extends StatelessWidget {
                 ),
               ),
               Positioned(
-                height: h * .5,
-                width: w,
+                height: h * .38.h,
+                width: w.w,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      const SizedBox(
-                        height: 30.0,
+                      SizedBox(
+                        height: AppSize.s30.h,
                       ),
                       OpacityTween(
                         child: Hero(
@@ -56,8 +55,8 @@ class BookDetails extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 20.0,
+                      SizedBox(
+                        height: AppSize.s20.h,
                       ),
                       OpacityTween(
                         child: Padding(
@@ -72,16 +71,14 @@ class BookDetails extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 30.0,
+                      SizedBox(
+                        height: AppSize.s30.h,
                       ),
                       OpacityTween(
-                        child: BookInfoTable(
-                          book: book,
-                        ),
+                        child: BookInfoTable(book:book),
                       ),
-                      const SizedBox(
-                        height: 20.0,
+                      SizedBox(
+                        height: AppSize.s20.h,
                       ),
                     ],
                   ),

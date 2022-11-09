@@ -1,6 +1,8 @@
 import 'package:book_grocer/config/color_manager.dart';
 import 'package:book_grocer/config/strings_manager.dart';
+import 'package:book_grocer/features/home/presentation/pages/home/bloc/category/category_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 
 import '../../features/home/presentation/widgets/home_widgets.dart';
 
@@ -9,7 +11,7 @@ class Constants {
   static const String searchApiKey = 'AIzaSyB5zWwIEDqZhI8pAAsvFJ3KKpvUys2URaU';
   static const String homeUrl =
       'https://catalog.feedbooks.com/publicdomain/browse/';
-  static List<BookGenresInfo> bookGenresInfoList = [
+  static List<Widget> bookGenresInfoList = [
     BookGenresInfo(
       image1:
           "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1549389901-512Dk0Md54L.jpg?crop=1.00xw:0.932xh;0,0.00200xh&resize=768:*",
@@ -19,6 +21,7 @@ class Constants {
           "http://books.google.com/books/publisher/content?id=CHwmEAAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE70HaJae-Oxgrjcv-x_pk_vcSRETrKEMR_uQWMS44XqeQ_yc-EOAEiFRIrwGXe9XaeIKSkgBFCfI86P5o6B9v5xymOrsSrZv9zVirIovZmYCREsuskBddEERWRVs5vAOBYN2Q2GK&source=gbs_api",
       packageName: AppStrings.romance.tr(),
       color: ColorManager.pink,
+      event: GetRomanceBookList(),
     ),
     BookGenresInfo(
       image1:
@@ -29,6 +32,7 @@ class Constants {
           "http://books.google.com/books/content?id=EBPjAQAACAAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE729kGXC6iMBa6plL0M22xykJEYJaTdm4R3wIU4pWfAW7rnooijJ9pM3aCMAVCNCaiYgLGmaYfqCUImI4TOMKnG4O9YeuMQwHPkXoNv5j18JVUuv9Fkfv5B3R3hIctGek9HkniNa&source=gbs_api",
       packageName: AppStrings.mysteryDetective.tr(),
       color: ColorManager.deepPurple,
+      event: GetMysteryAndDetectiveBookList(),
     ),
     BookGenresInfo(
       image1:
@@ -39,6 +43,7 @@ class Constants {
           "http://books.google.com/books/publisher/content?id=SR-MDQAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE70iHm0pMAU7iDhyy-wVl4lzaFAR5JC5-5Mk1VPXRmopRj8sF3SB4kW5t_HzU0zz891cpDj4zrZHHXP_cio54_anFWtD-YzqjKkkYtRrju7j-asKc41nnUetukPTYpXLsA6-Ps_E&source=gbs_api",
       packageName: AppStrings.horror.tr(),
       color: ColorManager.error,
+      event: GetHorrorBookList(),
     ),
     BookGenresInfo(
       image1:
@@ -49,6 +54,7 @@ class Constants {
           "http://books.google.com/books/publisher/content?id=Mj5XDwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73BLM0nJ1j3UQMHw67-WAcdtwspyvb9VoIiAszczFj_HGxAMPQ9dpThegwpuew5yjsjogZL29iBwg2q9JJ1iEjnc_G_LpLOHpBKv77dicYvsfUjpuZ6tO_4PqFzBTqGgDmnuz8o&source=gbs_api",
       packageName: AppStrings.actionAndAdventure.tr(),
       color: ColorManager.green,
+      event: GetActionAndAdventureBookList(),
     ),
     BookGenresInfo(
       image1:
@@ -59,6 +65,7 @@ class Constants {
           "http://books.google.com/books/publisher/content?id=95gQDgAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72NSCrb3ACFAWg-gQyJhf9x4NfWCx_CdHEZvC4oFKMsSQVqD11j2PFjjxxuF2w0zulLegLdCb5HPL6YbIEdZThDReM9Kp6Z-NSAT66KWHyWY3eqYsCBrH_I27Z3hXzeuCyiT_kW&source=gbs_api",
       packageName: AppStrings.scienceFiction.tr(),
       color: ColorManager.indigo,
+      event: GetScienceFictionBookList(),
     ),
   ];
 }

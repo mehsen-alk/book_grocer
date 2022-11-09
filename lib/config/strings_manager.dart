@@ -87,6 +87,8 @@ class AppStrings {
   static const String homeTitle = "Our Top Picks";
   static const String genres = "Genres";
   static const String romance = "Romance";
+  static const String category = "Category";
+  static const String author = "Author";
   static const String mysteryDetective = "Mystery detective";
   static const String horror = "Horror";
   static const String actionAndAdventure = "actionAndAdventure";
