@@ -1,4 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:book_grocer/config/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -81,7 +81,7 @@ class _SearchBarState extends State<SearchBar> {
               }
             });
           },
-          decoration: InputDecoration(hintText: AppStrings.searchForBook.tr()),
+          decoration: InputDecoration(hintText: AppStrings.searchForBook.tr(context)),
         )),
         IconButton(
             onPressed: hasWord
@@ -108,7 +108,7 @@ class BodyContent extends StatelessWidget {
       if (state is SearchInProgress) {
         return const CircularProgressIndicator();
       } else if (state is SearchFailed) {
-        return Text(state.message.tr());
+        return Text(state.message);
       } else if (state is SearchSuccess) {
         return BookCardList(books: state.books);
       }

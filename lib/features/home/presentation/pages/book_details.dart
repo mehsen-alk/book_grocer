@@ -3,7 +3,7 @@ import 'package:book_grocer/features/home/domain/entities/entities.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../widgets/home_widgets.dart';
+import '../widgets/home_widgets.dart';
 
 class BookDetails extends StatelessWidget {
   const BookDetails({Key? key, required this.book}) : super(key: key);

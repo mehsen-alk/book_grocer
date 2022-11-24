@@ -1,4 +1,5 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:book_grocer/features/home/presentation/pages/settings/language_view.dart';
+//import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../core/app/app_splash_screen.dart';
@@ -17,6 +18,7 @@ class Routes {
   static const String registerRoute = '/register';
   static const String resetPassword = '/resetPassword';
   static const String bookDetailsRoute = '/bookDetails';
+  static const String languageRoute = '/languageView';
 
   static const String mainRoute = '/home';
 }
@@ -33,6 +35,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => LoginView());
       case Routes.resetPassword:
         return MaterialPageRoute(builder: (_) => ResetPasswordView());
+      case Routes.languageRoute:
+        return MaterialPageRoute(builder: (_) => const LanguageView());
       case Routes.registerRoute:
         return MaterialPageRoute(builder: (_) => RegisterView());
       case Routes.mainRoute:
@@ -50,10 +54,10 @@ class RouteGenerator {
         appBar: AppBar(
           title: const Text(
             AppStrings.noRouteFound,
-          ).tr(),
+          ),
         ),
-        body: Center(
-          child: const Text(AppStrings.noRouteFound).tr(),
+        body: const Center(
+          child: Text(AppStrings.noRouteFound),
         ),
       ),
     );

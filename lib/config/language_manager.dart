@@ -11,8 +11,8 @@ const String assetPathLocalization = "assets/translations";
 
 const String prefKeyLang = 'pref_key_lang';
 
-const Locale arabicLocal = Locale("ar", "SA");
-const Locale englishLocal = Locale("en", "US");
+const Locale arabicLocal = Locale("ar");
+const Locale englishLocal = Locale("en");
 
 extension LanguageTypeExtension on LanguageType {
   String getValue() {
@@ -25,12 +25,12 @@ extension LanguageTypeExtension on LanguageType {
   }
 }
 
-class LanguagePref {
+class LanguageCacheHelper {
   final SharedPreferences _sharedPreferences;
 
-  LanguagePref(
-    this._sharedPreferences,
-  );
+  LanguageCacheHelper(
+      this._sharedPreferences,
+      );
 
   Future<String> getAppLanguage() async {
     String? language = _sharedPreferences.getString(prefKeyLang);
@@ -38,23 +38,10 @@ class LanguagePref {
       return language!;
     } else {
       // return default lang
-      return LanguageType.english.getValue();
+      return LanguageType.arabic.getValue();
     }
   }
 
-  Future<void> changeAppLanguage() async {
-    String currentLang = await getAppLanguage();
-
-    if (currentLang == LanguageType.arabic.getValue()) {
-      // set english
-      _sharedPreferences.setString(
-          prefKeyLang, LanguageType.english.getValue());
-    } else {
-      // set arabic
-      _sharedPreferences.setString(
-          prefKeyLang, LanguageType.arabic.getValue());
-    }
-  }
 
   Future<Locale> getLocal() async {
     String currentLang = await getAppLanguage();

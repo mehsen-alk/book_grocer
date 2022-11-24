@@ -57,6 +57,11 @@
   "try_again": "Try Again",
   "home": "Home",
   "search": "Search",
+  "Settings": "Settings",
+  "Profile": "Profile",
+  "Language": "Language",
+  "Dark_mode": "Dark mode",
+  "Logout": "Logout",
   "Category": "Category",
   "Author": "Author",
   "wish_list": "Wish List",
@@ -70,5 +75,8 @@
   "Horror": "Horror",
   "actionAndAdventure": "Action&Adventure",
   "Recently Viewed": "Recently Viewed",
-  "search_for_book": "search for book"
+  "search_for_book": "search for book",
+  "Contact_us": "Contact us",
+  "English": "English",
+  "Arabic": "Arabic"
 }

@@ -1,4 +1,5 @@
-import 'package:easy_localization/easy_localization.dart';
+//import 'package:easy_localization/easy_localization.dart';
+import 'package:book_grocer/config/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,7 +34,7 @@ class LoginView extends StatelessWidget {
       body: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => LoginBloc(),
+            create: (context) => LoginBloc(context: context),
           ),
           BlocProvider(
             create: (context) => AuthenticationBloc(),
@@ -51,9 +52,9 @@ class LoginView extends StatelessWidget {
                   children: [
                     SizedBox(height: AppSize.s60.h),
                     Text(
-                      AppStrings.signIn,
+                      AppStrings.signIn.tr(context),
                       style: Theme.of(context).textTheme.titleLarge,
-                    ).tr(),
+                    ),
                     SizedBox(height: AppSize.s60.h),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -63,8 +64,8 @@ class LoginView extends StatelessWidget {
                             builder: (context, errorText) {
                               return TextInput(
                                 controller: _emailTextEditingController,
-                                label: AppStrings.email.tr(),
-                                errorText: errorText?.tr(),
+                                label: AppStrings.email.tr(context),
+                                errorText: errorText,
                                 onChanged: (email) =>
                                     BlocProvider.of<LoginBloc>(context)
                                         .add(EmailChanged(email)),
@@ -76,8 +77,8 @@ class LoginView extends StatelessWidget {
                             builder: (context, errorText) {
                               return TextInput(
                                 controller: _passwordTextEditingController,
-                                label: AppStrings.password.tr(),
-                                errorText: errorText?.tr(),
+                                label: AppStrings.password.tr(context),
+                                errorText: errorText,
                                 onChanged: (password) =>
                                     BlocProvider.of<LoginBloc>(context)
                                         .add(PasswordChanged(password)),
@@ -87,7 +88,7 @@ class LoginView extends StatelessWidget {
                           onPressed: () {
                             Navigator.pushNamed(context, Routes.resetPassword);
                           },
-                          child: const Text(AppStrings.forgetYourPassword).tr(),
+                          child: Text(AppStrings.forgetYourPassword.tr(context)),
                         )
                       ],
                     ),
@@ -110,17 +111,17 @@ class LoginView extends StatelessWidget {
                                                     .text)));
                                       }
                                     : null),
-                                text: AppStrings.signIn.tr());
+                                text: AppStrings.signIn.tr(context));
                           },
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            const Text(AppStrings.notHaveAccountYet).tr(),
+                             Text(AppStrings.notHaveAccountYet.tr(context)),
                             TextButton(
                                 onPressed: () => Navigator.pushReplacementNamed(
                                     context, Routes.registerRoute),
-                                child: const Text(AppStrings.signUp).tr()),
+                                child: Text(AppStrings.signUp.tr(context))),
                           ],
                         )
                       ],

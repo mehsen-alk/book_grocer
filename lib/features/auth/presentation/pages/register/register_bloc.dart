@@ -1,11 +1,14 @@
 import 'package:bloc/bloc.dart';
+import 'package:book_grocer/config/app_localizations.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../../config/strings_manager.dart';
 import '../../../../../core/app/functions.dart';
 import '../../../../../core/app/extensions.dart';
 
 part 'register_event.dart';
+
 part 'register_state.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
@@ -14,8 +17,9 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   bool _emailEntered = false;
   bool _mobileNumberEntered = false;
   bool _passwordEntered = false;
+  final BuildContext context;
 
-  RegisterBloc() : super(const RegisterState()) {
+  RegisterBloc({required this.context}) : super(const RegisterState()) {
     on<NameChanged>((event, emit) {
       _onNameChanged(event, emit);
       _areAllInputAccepted(emit);
@@ -40,10 +44,12 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   _onNameChanged(NameChanged event, Emitter<RegisterState> emit) {
     _nameEntered = true;
     if (event.name.nullOrEmpty()) {
-      emit(state.copyWith(nameErrorMessage: AppStrings.pleaseEnterName));
+      emit(state.copyWith(
+          nameErrorMessage: AppStrings.pleaseEnterName.tr(context)));
     } else if ((event.name?.length ?? 0) < 3) {
       emit(state.copyWith(
-          nameErrorMessage: AppStrings.nameShouldAtLeast3Character));
+          nameErrorMessage:
+              AppStrings.nameShouldAtLeast3Character.tr(context)));
     } else {
       emit(state.copyWith(nameErrorMessage: ''));
     }
@@ -52,9 +58,11 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   _onEmailChanged(EmailChanged event, Emitter<RegisterState> emit) {
     _emailEntered = true;
     if (event.email.nullOrEmpty()) {
-      emit(state.copyWith(emailErrorMessage: AppStrings.pleaseEnterEmail));
+      emit(state.copyWith(
+          emailErrorMessage: AppStrings.pleaseEnterEmail.tr(context)));
     } else if (!isEmailFormatCorrect(event.email ?? '')) {
-      emit(state.copyWith(emailErrorMessage: AppStrings.emailFormatNotCorrect));
+      emit(state.copyWith(
+          emailErrorMessage: AppStrings.emailFormatNotCorrect.tr(context)));
     } else {
       emit(state.copyWith(emailErrorMessage: ''));
     }
@@ -65,14 +73,16 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     _mobileNumberEntered = true;
     if (event.mobileNumber.nullOrEmpty()) {
       emit(state.copyWith(
-          mobileNumberErrorMessage: AppStrings.pleaseEnterMobileNumber));
+          mobileNumberErrorMessage:
+              AppStrings.pleaseEnterMobileNumber.tr(context)));
     } else if (!isMobileNumberCorrect(event.mobileNumber ?? '')) {
       emit(state.copyWith(
-          mobileNumberErrorMessage: AppStrings.mobileNumberFormatNotCorrect));
+          mobileNumberErrorMessage:
+              AppStrings.mobileNumberFormatNotCorrect.tr(context)));
     } else if ((event.mobileNumber?.length ?? 0) < 5) {
       emit(state.copyWith(
           mobileNumberErrorMessage:
-              AppStrings.mobileNumberShouldAtLeast5Character));
+              AppStrings.mobileNumberShouldAtLeast5Character.tr(context)));
     } else {
       emit(state.copyWith(mobileNumberErrorMessage: ''));
     }
@@ -81,11 +91,12 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   _onPasswordChanged(PasswordChanged event, Emitter<RegisterState> emit) {
     _passwordEntered = true;
     if (event.password.nullOrEmpty()) {
-      emit(
-          state.copyWith(passwordErrorMessage: AppStrings.pleaseEnterPassword));
+      emit(state.copyWith(
+          passwordErrorMessage: AppStrings.pleaseEnterPassword.tr(context)));
     } else if ((event.password?.length ?? 0) < 6) {
       emit(state.copyWith(
-          passwordErrorMessage: AppStrings.passwordShouldAtLeast6Character));
+          passwordErrorMessage:
+              AppStrings.passwordShouldAtLeast6Character.tr(context)));
     } else {
       emit(state.copyWith(passwordErrorMessage: ''));
     }

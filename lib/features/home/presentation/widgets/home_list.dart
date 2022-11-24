@@ -1,6 +1,7 @@
+import 'package:book_grocer/config/app_localizations.dart';
 import 'package:book_grocer/config/strings_manager.dart';
 import 'package:book_grocer/core/app/constants.dart';
-import 'package:book_grocer/features/home/presentation/pages/home/book_details.dart';
+import 'package:book_grocer/features/home/presentation/pages/book_details.dart';
 import 'package:book_grocer/features/home/presentation/widgets/home_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../config/values_manager.dart';
 import '../../domain/entities/entities.dart';
-import '../pages/home/bloc/home/home_bloc.dart';
+import '../pages/home/bloc/home_bloc.dart';
 
 class BookList extends StatelessWidget {
   final List<HomeBookInfo> books;
@@ -106,7 +107,7 @@ class PopularBookListContent extends StatelessWidget {
           return HomeLoadingView(topPadding: AppPadding.p300.h);
         } else if (state.popularBookListStatus == Status.notAccepted) {
           return HomeErrorView(
-            errorMessage: state.popularBookListError ?? AppStrings.undefined,
+            errorMessage: state.popularBookListError ?? AppStrings.undefined.tr(context),
             tryAgainFunction: () {
               BlocProvider.of<HomeBloc>(context).add(GetPopularBookList());
             },
@@ -142,7 +143,7 @@ class RecentBookListContent extends StatelessWidget {
           return HomeLoadingView(topPadding: AppPadding.p35.h);
         } else if (state.recentBookListStatus == Status.notAccepted) {
           return HomeErrorView(
-            errorMessage: state.recentBookListError ?? AppStrings.undefined,
+            errorMessage: state.recentBookListError ?? AppStrings.undefined.tr(context),
             tryAgainFunction: () {
               BlocProvider.of<HomeBloc>(context).add(GetRecentBookList());
             },
@@ -179,7 +180,7 @@ class ShortStoriesBookListContent extends StatelessWidget {
         } else if (state.shortStoriesBookListStatus == Status.notAccepted) {
           return HomeErrorView(
             errorMessage:
-                state.shortStoriesBookListError ?? AppStrings.undefined,
+                state.shortStoriesBookListError ?? AppStrings.undefined.tr(context),
             tryAgainFunction: () {
               BlocProvider.of<HomeBloc>(context).add(GetShortStoriesBookList());
             },
@@ -207,7 +208,7 @@ class BookGenresInfoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppSize.s260.h,
+      height: AppSize.s265.h,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: verticalPadding),
         child: ListView.builder(

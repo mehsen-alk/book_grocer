@@ -38,11 +38,11 @@ Future<void> initAppModule() async {
 
   // language pref
   instance
-      .registerLazySingleton(() => LanguagePref(instance<SharedPreferences>()));
+      .registerLazySingleton(() => LanguageCacheHelper(instance<SharedPreferences>()));
 
   // dio factory
   instance.registerLazySingleton<DioFactory>(
-      () => DioFactory(instance<LanguagePref>()));
+      () => DioFactory(instance<LanguageCacheHelper>()));
 }
 
 void initAuthenticationModule() {

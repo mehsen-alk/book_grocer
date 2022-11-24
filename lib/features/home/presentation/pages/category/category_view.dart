@@ -1,8 +1,8 @@
+import 'package:book_grocer/config/app_localizations.dart';
 import 'package:book_grocer/config/color_manager.dart';
 import 'package:book_grocer/config/strings_manager.dart';
-import 'package:book_grocer/features/home/presentation/pages/home/bloc/category/category_bloc.dart';
+import 'package:book_grocer/features/home/presentation/pages/category/category_bloc.dart';
 import 'package:book_grocer/features/home/presentation/widgets/home_list.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,7 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/values_manager.dart';
 import '../../widgets/home_widgets.dart';
-import 'bloc/category/category_bloc.dart';
+import 'category_bloc.dart';
 
 class CategoryView extends StatelessWidget {
   final CategoryEvent event;
@@ -28,12 +28,12 @@ class CategoryView extends StatelessWidget {
               statusBarIconBrightness: Brightness.light),
           backgroundColor: ColorManager.primary,
           title: Text(
-            AppStrings.appTitle,
+            AppStrings.appTitle.tr(context),
             style: Theme.of(context)
                 .textTheme
                 .titleLarge
                 ?.copyWith(color: ColorManager.white),
-          ).tr(),
+          ),
         ),
         body: BlocBuilder<CategoryBloc, CategoryState>(
           builder: (context, state) {

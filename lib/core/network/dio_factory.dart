@@ -14,7 +14,7 @@ const String language = "language";
 const int apiTimeOut = 4000;
 
 class DioFactory {
-  final LanguagePref _languagePref;
+  final LanguageCacheHelper _languagePref;
 
   DioFactory(this._languagePref);
 

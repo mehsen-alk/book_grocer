@@ -39,6 +39,7 @@ class AppStrings {
   static const String password = "password";
   static const String pleaseEnterEmail = "please_enter_email";
   static const String pleaseEnterPassword = "please_enter_password";
+  static const String logout = "Logout";
 
   // sign up stuff
   static const String name = "name";
@@ -83,6 +84,7 @@ class AppStrings {
   static const String tryAgain = "try_again";
   static const String search = "search";
   static const String wishList = "wish_list"; 
+  static const String settings = "Settings";
   static const String shoppingCart = "shopping_cart";
   static const String homeTitle = "Our Top Picks";
   static const String genres = "Genres";
@@ -96,6 +98,10 @@ class AppStrings {
   static const String scienceFiction = "scienceFiction";
   static const String recentlyViewed = "Recently Viewed";
   static const String searchForBook = "search_for_book";
-
-  
+  static const String profile = "Profile";
+  static const String language = "Language";
+  static const String darkMode = "Dark_mode";
+  static const String contactUs = "Contact_us";
+  static const String english = "English";
+  static const String arabic = "Arabic";
 }

@@ -2,10 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../../../../../core/app/di.dart';
-import '../../../../../../../core/data/failure.dart';
-import '../../../../../domain/entities/entities.dart';
-import '../../../../../domain/repository/home_repository.dart';
+import '../../../../../core/app/di.dart';
+import '../../../../../core/data/failure.dart';
+import '../../../domain/entities/entities.dart';
+import '../../../domain/repository/home_repository.dart';
 
 part 'category_event.dart';
 

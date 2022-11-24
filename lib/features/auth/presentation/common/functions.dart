@@ -1,4 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
+//import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/scheduler.dart';
 
@@ -13,13 +13,13 @@ manageDialog(BuildContext context, AuthenticationState state) {
     showCustomDialog(context);
   } else if (state is AuthenticationFailed) {
     showCustomDialog(context,
-        jsonPath: JsonAssets.error, message: state.message.tr());
+        jsonPath: JsonAssets.error, message: state.message);
   } else if (state is AuthenticationSuccess) {
     SchedulerBinding.instance.addPostFrameCallback((_) {
       dismissDialog(context);
       Navigator.pushReplacementNamed(context, Routes.mainRoute);
     });
   } else if (state is ResetPasswordRequestSuccess) {
-    showCustomDialog(context, message: AppStrings.resetEmailSendMessage.tr());
+    showCustomDialog(context, message: AppStrings.resetEmailSendMessage);
   }
 }

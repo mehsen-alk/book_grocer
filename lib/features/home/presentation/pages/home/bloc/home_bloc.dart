@@ -4,7 +4,7 @@ import 'package:book_grocer/features/home/domain/entities/entities.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../domain/repository/home_repository.dart';
+import '../../../../domain/repository/home_repository.dart';
 
 part 'home_event.dart';
 

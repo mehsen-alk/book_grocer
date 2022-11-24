@@ -79,5 +79,13 @@
   "actionAndAdventure":"الأكشن ومغامرة",
   "scienceFiction":"الخيال العلمي",
   "search_for_book": "ابحث عن كتاب",
-  "try_again": "حاول مرة أخرى"
+  "try_again": "حاول مرة أخرى",
+  "Settings": "الاعدادات",
+  "Profile": "الملف الشخصي",
+  "Language": "اللغة",
+  "Dark_mode": "الوضع المظلم",
+  "Logout": "تسجيل الخروج",
+  "Contact_us": "اتصل بنا",
+  "English": "إنجليزي",
+  "Arabic": "عربي"
 }

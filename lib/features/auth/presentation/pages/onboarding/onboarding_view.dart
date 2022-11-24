@@ -1,6 +1,7 @@
+import 'package:book_grocer/config/app_localizations.dart';
 import 'package:book_grocer/config/color_manager.dart';
 import 'package:book_grocer/config/routes_manager.dart';
-import 'package:easy_localization/easy_localization.dart';
+//import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -19,41 +20,41 @@ class OnBoardingView extends StatelessWidget {
     return [
       PageViewModel(
         titleWidget: Text(
-          AppStrings.title1,
+          AppStrings.title1.tr(context),
           style: Theme.of(context).textTheme.titleSmall,
           textAlign: TextAlign.center,
-        ).tr(),
+        ),
         bodyWidget: Text(
-          AppStrings.subtitle1,
+          AppStrings.subtitle1.tr(context),
           style: Theme.of(context).textTheme.bodySmall,
           textAlign: TextAlign.center,
-        ).tr(),
+        ),
         image: SvgPicture.asset(ImageAssets.onboardingLogo1),
       ),
       PageViewModel(
         titleWidget: Text(
-          AppStrings.title2,
+          AppStrings.title2.tr(context),
           style: Theme.of(context).textTheme.titleSmall,
           textAlign: TextAlign.center,
-        ).tr(),
+        ),
         bodyWidget: Text(
-          AppStrings.subtitle2,
+          AppStrings.subtitle2.tr(context),
           style: Theme.of(context).textTheme.bodySmall,
           textAlign: TextAlign.center,
-        ).tr(),
+        ),
         image: SvgPicture.asset(ImageAssets.onboardingLogo2),
       ),
       PageViewModel(
         titleWidget: Text(
-          AppStrings.title3,
+          AppStrings.title3.tr(context),
           style: Theme.of(context).textTheme.titleSmall,
           textAlign: TextAlign.center,
-        ).tr(),
+        ),
         bodyWidget: Text(
-          AppStrings.subtitle3,
+          AppStrings.subtitle3.tr(context),
           style: Theme.of(context).textTheme.bodySmall,
           textAlign: TextAlign.center,
-        ).tr(),
+        ),
         image: SvgPicture.asset(ImageAssets.onboardingLogo3),
       ),
     ];
@@ -73,15 +74,15 @@ class OnBoardingView extends StatelessWidget {
       body: IntroductionScreen(
         pages: _list(context),
         showDoneButton: true,
-        done: const Text(AppStrings.done).tr(),
+        done: Text(AppStrings.done.tr(context)),
         onDone: () {
           Navigator.pushReplacementNamed(context, Routes.loginRoute);
           _authPreferences.setOnBoardingScreenViewed();
         },
         showNextButton: true,
-        next: const Text(AppStrings.next).tr(),
+        next: Text(AppStrings.next.tr(context)),
         showSkipButton: true,
-        skip: const Text(AppStrings.skip).tr(),
+        skip: Text(AppStrings.skip.tr(context)),
         onSkip: () {
           Navigator.pushReplacementNamed(context, Routes.loginRoute);
           _authPreferences.setOnBoardingScreenViewed();

@@ -1,4 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:book_grocer/config/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +20,7 @@ class ResetPasswordView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider<ResetPasswordBloc>(
-        create: (context) => ResetPasswordBloc(),
+        create: (context) => ResetPasswordBloc(context: context),
         child: Padding(
           padding: EdgeInsets.all(AppPadding.p20.h),
           child: BlocBuilder<auth.AuthenticationBloc, auth.AuthenticationState>(
@@ -32,7 +32,7 @@ class ResetPasswordView extends StatelessWidget {
                 children: [
                   const SizedBox(),
                   Text(
-                    AppStrings.resetPassword.tr(),
+                    AppStrings.resetPassword.tr(context),
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   BlocBuilder<ResetPasswordBloc, ResetPasswordState>(
@@ -40,9 +40,9 @@ class ResetPasswordView extends StatelessWidget {
                       return Column(
                         children: [
                           TextInput(
-                            label: AppStrings.email.tr(),
+                            label: AppStrings.email.tr(context),
                             controller: _emailTextEditingController,
-                            errorText: state.emailErrorMessage?.tr(),
+                            errorText: state.emailErrorMessage,
                             keyboardType: TextInputType.emailAddress,
                             onChanged: (email) {
                               BlocProvider.of<ResetPasswordBloc>(context)
@@ -65,7 +65,7 @@ class ResetPasswordView extends StatelessWidget {
                                                       .text));
                                     }
                                   : null,
-                              text: AppStrings.sendVerificationCode.tr()),
+                              text: AppStrings.sendVerificationCode.tr(context)),
                         ],
                       );
                     },

@@ -1,4 +1,5 @@
-import 'package:easy_localization/easy_localization.dart';
+//import 'package:easy_localization/easy_localization.dart';
+import 'package:book_grocer/config/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,7 +37,7 @@ class RegisterView extends StatelessWidget {
       body: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => RegisterBloc(),
+            create: (context) => RegisterBloc(context: context),
           ),
           BlocProvider(
             create: (context) => AuthenticationBloc(),
@@ -53,9 +54,9 @@ class RegisterView extends StatelessWidget {
                   children: [
                     SizedBox(height: AppSize.s60.h),
                     Text(
-                      AppStrings.signUp,
+                      AppStrings.signUp.tr(context),
                       style: Theme.of(context).textTheme.titleLarge,
-                    ).tr(),
+                    ),
                     SizedBox(height: AppSize.s60.h),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -65,8 +66,8 @@ class RegisterView extends StatelessWidget {
                           builder: (context, errorMessage) {
                             return TextInput(
                               controller: _nameTextEditingController,
-                              label: AppStrings.name.tr(),
-                              errorText: errorMessage?.tr(),
+                              label: AppStrings.name.tr(context),
+                              errorText: errorMessage,
                               onChanged: (name) {
                                 BlocProvider.of<RegisterBloc>(context)
                                     .add(NameChanged(name));
@@ -81,8 +82,8 @@ class RegisterView extends StatelessWidget {
                             return TextInput(
                               keyboardType: TextInputType.emailAddress,
                               controller: _emailTextEditingController,
-                              label: AppStrings.email.tr(),
-                              errorText: emailErrorMessage?.tr(),
+                              label: AppStrings.email.tr(context),
+                              errorText: emailErrorMessage,
                               onChanged: (email) {
                                 BlocProvider.of<RegisterBloc>(context)
                                     .add(EmailChanged(email));
@@ -97,8 +98,8 @@ class RegisterView extends StatelessWidget {
                             return TextInput(
                               keyboardType: TextInputType.phone,
                               controller: _mobileNumberTextEditingController,
-                              label: AppStrings.mobileNumber.tr(),
-                              errorText: mobileNumberErrorMessage?.tr(),
+                              label: AppStrings.mobileNumber.tr(context),
+                              errorText: mobileNumberErrorMessage,
                               onChanged: (mobileNumber) {
                                 BlocProvider.of<RegisterBloc>(context)
                                     .add(MobileNumberChanged(mobileNumber));
@@ -112,8 +113,8 @@ class RegisterView extends StatelessWidget {
                           builder: (context, passwordErrorMessage) {
                             return TextInput(
                               controller: _passwordTextEditingController,
-                              label: AppStrings.password.tr(),
-                              errorText: passwordErrorMessage?.tr(),
+                              label: AppStrings.password.tr(context),
+                              errorText: passwordErrorMessage,
                               onChanged: (password) {
                                 BlocProvider.of<RegisterBloc>(context)
                                     .add(PasswordChanged(password));
@@ -145,17 +146,17 @@ class RegisterView extends StatelessWidget {
                                                     .text)));
                                       }
                                     : null),
-                                text: AppStrings.signUp.tr());
+                                text: AppStrings.signUp.tr(context));
                           },
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            const Text(AppStrings.alreadyHaveAccount).tr(),
+                            Text(AppStrings.alreadyHaveAccount.tr(context)),
                             TextButton(
                                 onPressed: () => Navigator.pushReplacementNamed(
                                     context, Routes.loginRoute),
-                                child: const Text(AppStrings.signIn).tr()),
+                                child: Text(AppStrings.signIn.tr(context))),
                           ],
                         )
                       ],

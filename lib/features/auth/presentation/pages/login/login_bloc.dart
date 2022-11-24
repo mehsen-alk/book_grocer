@@ -1,17 +1,21 @@
 import 'package:bloc/bloc.dart';
+import 'package:book_grocer/config/app_localizations.dart';
 import 'package:book_grocer/config/strings_manager.dart';
 import 'package:book_grocer/core/app/extensions.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 part 'login_event.dart';
+
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   // to make sure that all field value was changed on time at list
   bool _emailEntered = false;
   bool _passwordEntered = false;
+  final BuildContext context;
 
-  LoginBloc() : super(const LoginState()) {
+  LoginBloc({required this.context}) : super(const LoginState()) {
     on<EmailChanged>((event, emit) {
       _emailEntered = true;
       _onEmailChanged(event, emit);
@@ -26,7 +30,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   _onEmailChanged(EmailChanged event, Emitter<LoginState> emit) {
     if (event.email.nullOrEmpty()) {
-      emit(state.copyWith(emailErrorMessage: AppStrings.pleaseEnterEmail));
+      emit(state.copyWith(
+          emailErrorMessage: AppStrings.pleaseEnterEmail.tr(context)));
     } else {
       emit(state.copyWith(emailErrorMessage: ''));
     }
@@ -35,7 +40,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   _onPasswordChanged(PasswordChanged event, Emitter<LoginState> emit) {
     if (event.password.nullOrEmpty()) {
       emit(
-          state.copyWith(passwordErrorMessage: AppStrings.pleaseEnterPassword));
+          state.copyWith(passwordErrorMessage: AppStrings.pleaseEnterPassword.tr(context)));
     } else {
       emit(state.copyWith(passwordErrorMessage: ''));
     }

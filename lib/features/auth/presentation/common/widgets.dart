@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../config/values_manager.dart';
 
@@ -33,7 +34,7 @@ class TextInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: _errorText == null ? AppSize.s56 : AppSize.s56 + 20,
+      height: _errorText == null ? AppSize.s56.h : AppSize.s56.h + 20,
       child: TextField(
         enabled: _enabled,
         keyboardType: _keyboardType,

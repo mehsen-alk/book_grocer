@@ -1,7 +1,6 @@
 import 'package:book_grocer/config/color_manager.dart';
 import 'package:book_grocer/config/strings_manager.dart';
-import 'package:book_grocer/features/home/presentation/pages/home/bloc/category/category_bloc.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:book_grocer/features/home/presentation/pages/category/category_bloc.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/home/presentation/widgets/home_widgets.dart';
@@ -19,7 +18,7 @@ class Constants {
           "http://books.google.com/books/content?id=HMWJWzdJ1WEC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73EX-ABmX25oLJV-etzCCBzVUWxE4C_pQtvvqfwSh_lZrGSHw8QMGJ4x01C3RF2I-LlW-2p_PmTsoUcnzWBJzDRaBx2wFhAkCHfTLKNfK5_xVq2BREHFXbj63Rj6bJf8XVuq7jA&source=gbs_api",
       image3:
           "http://books.google.com/books/publisher/content?id=CHwmEAAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE70HaJae-Oxgrjcv-x_pk_vcSRETrKEMR_uQWMS44XqeQ_yc-EOAEiFRIrwGXe9XaeIKSkgBFCfI86P5o6B9v5xymOrsSrZv9zVirIovZmYCREsuskBddEERWRVs5vAOBYN2Q2GK&source=gbs_api",
-      packageName: AppStrings.romance.tr(),
+      packageName: AppStrings.romance,
       color: ColorManager.pink,
       event: GetRomanceBookList(),
     ),
@@ -30,7 +29,7 @@ class Constants {
           "http://books.google.com/books/content?id=TbXBgzR2DBQC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72jrr6OsiUrG2KG0LAv7Xvi5LaLYyiy8aeZ6eDHbRgqVJXLlGs8JN1QW5NPCKqp4GJfrxq-ikdTe2JVVOyTu-i0yaa5YsIqora5R6a5f6BNQZaH026awJb1KgSz5q_gfNAdDAB5&source=gbs_api",
       image3:
           "http://books.google.com/books/content?id=EBPjAQAACAAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE729kGXC6iMBa6plL0M22xykJEYJaTdm4R3wIU4pWfAW7rnooijJ9pM3aCMAVCNCaiYgLGmaYfqCUImI4TOMKnG4O9YeuMQwHPkXoNv5j18JVUuv9Fkfv5B3R3hIctGek9HkniNa&source=gbs_api",
-      packageName: AppStrings.mysteryDetective.tr(),
+      packageName: AppStrings.mysteryDetective,
       color: ColorManager.deepPurple,
       event: GetMysteryAndDetectiveBookList(),
     ),
@@ -41,7 +40,7 @@ class Constants {
           "http://books.google.com/books/content?id=rgblc1_9IIkC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE71rIT_rlXaZCcQs7CjNvFcCK4fzz-txgfzaDy7IuLROQKpprb-wWqUBOlNwxQ9R6Q1dZBUw8bB9yVOl2QbejID6RIxWSg5Nl4G5jmBWsc6Ez9pFmhine9oflKbCV4ogC9EvueUe&source=gbs_api",
       image3:
           "http://books.google.com/books/publisher/content?id=SR-MDQAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE70iHm0pMAU7iDhyy-wVl4lzaFAR5JC5-5Mk1VPXRmopRj8sF3SB4kW5t_HzU0zz891cpDj4zrZHHXP_cio54_anFWtD-YzqjKkkYtRrju7j-asKc41nnUetukPTYpXLsA6-Ps_E&source=gbs_api",
-      packageName: AppStrings.horror.tr(),
+      packageName: AppStrings.horror,
       color: ColorManager.error,
       event: GetHorrorBookList(),
     ),
@@ -52,7 +51,7 @@ class Constants {
           "http://books.google.com/books/content?id=H8ON-dTgQQYC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE71li1OKi2AKZVCUAsyO9G-sDpPjegMzUVNIH9HdKMAMyJGWXMU5tkfpBzNboteei8JIp2zBkpXkr0MA8vnqUwUgy1tRQ2WvLN1B1Y8OmDAPuYh3hFInQUdIdlEOdrdP5lqi2NfG&source=gbs_api",
       image3:
           "http://books.google.com/books/publisher/content?id=Mj5XDwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73BLM0nJ1j3UQMHw67-WAcdtwspyvb9VoIiAszczFj_HGxAMPQ9dpThegwpuew5yjsjogZL29iBwg2q9JJ1iEjnc_G_LpLOHpBKv77dicYvsfUjpuZ6tO_4PqFzBTqGgDmnuz8o&source=gbs_api",
-      packageName: AppStrings.actionAndAdventure.tr(),
+      packageName: AppStrings.actionAndAdventure,
       color: ColorManager.green,
       event: GetActionAndAdventureBookList(),
     ),
@@ -63,7 +62,7 @@ class Constants {
           "http://books.google.com/books/publisher/content?id=OPAgEAAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE723X92Pr1tmaAGfXrEE0m8sZL9nnnWzEUqtK3om0LDBwR4iTLuuzanF0h-lEvvLEG1fNHyokvudcAaKNXR6hs9x6W7EtNqqU7f1VAVFgZUIBDO8nyvkBNQZIH3Av1Y7UFPrJ_Cl&source=gbs_api",
       image3:
           "http://books.google.com/books/publisher/content?id=95gQDgAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72NSCrb3ACFAWg-gQyJhf9x4NfWCx_CdHEZvC4oFKMsSQVqD11j2PFjjxxuF2w0zulLegLdCb5HPL6YbIEdZThDReM9Kp6Z-NSAT66KWHyWY3eqYsCBrH_I27Z3hXzeuCyiT_kW&source=gbs_api",
-      packageName: AppStrings.scienceFiction.tr(),
+      packageName: AppStrings.scienceFiction,
       color: ColorManager.indigo,
       event: GetScienceFictionBookList(),
     ),

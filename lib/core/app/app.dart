@@ -1,16 +1,17 @@
-import 'package:easy_localization/easy_localization.dart';
+
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../config/app_localizations.dart';
 import '../../config/language_manager.dart';
 import '../../config/routes_manager.dart';
 import '../../config/theme_manager.dart';
-import 'di.dart';
+import '../../features/home/presentation/pages/settings/cubit/locale_cubit.dart';
 
 class MyApp extends StatefulWidget {
-
-  
   // named constructor
   const MyApp._internal();
 
@@ -24,8 +25,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final LanguagePref _languagePref = instance<LanguagePref>();
-
   @override
   void initState() {
     super.initState();
@@ -33,8 +32,8 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
     ]);
-
   }
+
   @override
   void dispose() {
     SystemChrome.setPreferredOrientations([
@@ -45,24 +44,43 @@ class _MyAppState extends State<MyApp> {
     ]);
     super.dispose();
   }
-  
-  @override
-  void didChangeDependencies() {
-    _languagePref.getLocal().then((local) => {context.setLocale(local)});
-    super.didChangeDependencies();
-  }
-  
+
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      builder: (BuildContext context, Widget? child) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: Routes.splashRoute,
-        theme: getApplicationTheme(),
+    return BlocProvider(
+      create: (context) => LocaleCubit()..localeLanguage(),
+      child: BlocBuilder<LocaleCubit, LocaleState>(
+        builder: (context, state) {
+          if (state is ChangeLocalState) {
+            return ScreenUtilInit(
+              builder: (BuildContext context, Widget? child) => MaterialApp(
+                debugShowCheckedModeBanner: false,
+                localizationsDelegates: const [
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                  AppLocalizations.delegate,
+                ],
+                supportedLocales: const [englishLocal, arabicLocal],
+                localeResolutionCallback: (deviceLocale, supportedLocales) {
+                  for (var locale in supportedLocales) {
+                    if (deviceLocale != null &&
+                        deviceLocale.languageCode == locale.languageCode) {
+                      return deviceLocale;
+                    }
+                  }
+                  return supportedLocales.first;
+                },
+                locale: state.locale,
+                onGenerateRoute: RouteGenerator.getRoute,
+                initialRoute: Routes.splashRoute,
+                theme: getApplicationTheme(),
+              ),
+            );
+          } else {
+            return const SizedBox();
+          }
+        },
       ),
     );
   }

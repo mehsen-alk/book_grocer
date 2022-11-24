@@ -1,6 +1,6 @@
+import 'package:book_grocer/config/app_localizations.dart';
 import 'package:book_grocer/config/values_manager.dart';
 import 'package:book_grocer/features/home/domain/entities/entities.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -10,8 +10,8 @@ import '../../../../config/color_manager.dart';
 import '../../../../config/font_manager.dart';
 import '../../../../config/strings_manager.dart';
 import '../../../../core/app/di.dart';
-import '../pages/home/bloc/category/category_bloc.dart';
-import '../pages/home/category_view.dart';
+import '../pages/category/category_bloc.dart';
+import '../pages/category/category_view.dart';
 
 class BookInfo extends StatelessWidget {
   final Function onTap;
@@ -85,7 +85,7 @@ class HeadlineBookList extends StatelessWidget {
       child: Text(
         title,
         style: Theme.of(context).textTheme.titleLarge,
-      ).tr(),
+      ),
     );
   }
 }
@@ -167,7 +167,7 @@ class BookGenresInfo extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(AppPadding.p8.h),
                 child: Text(
-                  packageName,
+                  packageName.tr(context),
                   style: Theme.of(context).textTheme.displayMedium,
                   textAlign: TextAlign.center,
                 ),
@@ -264,13 +264,13 @@ class HomeErrorView extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              errorMessage.tr(),
+              errorMessage,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             TextButton(
               onPressed: () => tryAgainFunction(),
               style: Theme.of(context).textButtonTheme.style,
-              child: Text(AppStrings.tryAgain.tr()),
+              child: Text(AppStrings.tryAgain.tr(context)),
             )
           ],
         ),
@@ -414,14 +414,14 @@ class BookInfoTable extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           BookInfoTableItem(
-              title: AppStrings.category.tr(),
+              title: AppStrings.category.tr(context),
               content:
                   "${book.subject.first}${isSame ? "" : ",${book.subject[book.subject.length - 1]}"}"),
           SizedBox(
             width: AppSize.s12.w,
           ),
           BookInfoTableItem(
-              title: AppStrings.author.tr(), content: book.author.first),
+              title: AppStrings.author.tr(context), content: book.author.first),
         ],
       ),
     );
