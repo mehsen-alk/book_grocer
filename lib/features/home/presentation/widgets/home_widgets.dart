@@ -10,7 +10,7 @@ import '../../../../config/color_manager.dart';
 import '../../../../config/font_manager.dart';
 import '../../../../config/strings_manager.dart';
 import '../../../../core/app/di.dart';
-import '../pages/category/category_bloc.dart';
+import '../pages/category/bloc/category_bloc.dart';
 import '../pages/category/category_view.dart';
 
 class BookInfo extends StatelessWidget {
@@ -264,7 +264,7 @@ class HomeErrorView extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              errorMessage,
+              errorMessage.tr(context),
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             TextButton(

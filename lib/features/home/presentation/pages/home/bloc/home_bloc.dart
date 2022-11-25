@@ -23,13 +23,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             recentBookListStatus: Status.loading,
           ));
           final popularBookResponse =
-          await _homeRepository.getPopularBookList();
+              await _homeRepository.getPopularBookList();
           popularBookResponse.fold(
-                (failure) => emit(state.copyWith(
+            (failure) => emit(state.copyWith(
               popularBookListError: failure.message,
               popularBookListStatus: Status.notAccepted,
             )),
-                (bookList) {
+            (bookList) {
               emit(state.copyWith(
                 popularBookList: bookList,
                 popularBookListStatus: Status.accepted,
@@ -38,13 +38,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           );
 
           final shortStoriesBookListResponse =
-          await _homeRepository.getRecentBookList();
+              await _homeRepository.getRecentBookList();
           shortStoriesBookListResponse.fold(
-                (failure) => emit(state.copyWith(
+            (failure) => emit(state.copyWith(
               shortStoriesBookListError: failure.message,
               shortStoriesBookListStatus: Status.notAccepted,
             )),
-                (bookList) {
+            (bookList) {
               emit(state.copyWith(
                 shortStoriesBookList: bookList,
                 shortStoriesBookListStatus: Status.accepted,
@@ -52,13 +52,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             },
           );
           final recentBookListResponse =
-          await _homeRepository.getRecentBookList();
+              await _homeRepository.getRecentBookList();
           recentBookListResponse.fold(
-                (failure) => emit(state.copyWith(
+            (failure) => emit(state.copyWith(
               recentBookListError: failure.message,
               recentBookListStatus: Status.notAccepted,
             )),
-                (bookList) {
+            (bookList) {
               emit(state.copyWith(
                 recentBookList: bookList,
                 recentBookListStatus: Status.accepted,

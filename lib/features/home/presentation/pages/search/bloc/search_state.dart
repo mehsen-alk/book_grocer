@@ -13,7 +13,7 @@ class SearchInProgress extends SearchState {}
 
 class SearchSuccess extends SearchState {
   final List<Book> books;
-  
+
   const SearchSuccess({
     required this.books,
   });

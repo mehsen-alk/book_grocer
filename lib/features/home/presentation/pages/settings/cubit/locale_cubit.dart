@@ -12,13 +12,7 @@ part 'locale_state.dart';
 class LocaleCubit extends Cubit<LocaleState> {
   LocaleCubit() : super(LocaleInitial());
 
-  Future<void> localeLanguage() async {
-    if (await instance<LanguageCacheHelper>().getLocal() == englishLocal) {
-      instance<SharedPreferences>().setString(prefKeyLang, english);
-    }
-    else{
-      instance<SharedPreferences>().setString(prefKeyLang, arabic);
-    }
+  Future<void> getSavedLanguage() async {
     emit(ChangeLocalState(
         locale: await instance<LanguageCacheHelper>().getLocal()));
   }

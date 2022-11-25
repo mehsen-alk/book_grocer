@@ -32,13 +32,17 @@ class LanguageCacheHelper {
       this._sharedPreferences,
       );
 
+  Future<void> cachedLanguageCode(String languageCode)async{
+    _sharedPreferences.setString(prefKeyLang, languageCode);
+  }
+
   Future<String> getAppLanguage() async {
     String? language = _sharedPreferences.getString(prefKeyLang);
     if (!language.nullOrEmpty()) {
       return language!;
     } else {
       // return default lang
-      return LanguageType.arabic.getValue();
+      return LanguageType.english.getValue();
     }
   }
 

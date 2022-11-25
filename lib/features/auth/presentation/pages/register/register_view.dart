@@ -37,7 +37,7 @@ class RegisterView extends StatelessWidget {
       body: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => RegisterBloc(context: context),
+            create: (context) => RegisterBloc(),
           ),
           BlocProvider(
             create: (context) => AuthenticationBloc(),
@@ -62,7 +62,7 @@ class RegisterView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         BlocSelector<RegisterBloc, RegisterState, String?>(
-                          selector: (state) => state.nameErrorMessage,
+                          selector: (state) => state.nameErrorMessage?.tr(context),
                           builder: (context, errorMessage) {
                             return TextInput(
                               controller: _nameTextEditingController,
@@ -77,7 +77,7 @@ class RegisterView extends StatelessWidget {
                         ),
                         SizedBox(height: AppSize.s20.h),
                         BlocSelector<RegisterBloc, RegisterState, String?>(
-                          selector: (state) => state.emailErrorMessage,
+                          selector: (state) => state.emailErrorMessage?.tr(context),
                           builder: (context, emailErrorMessage) {
                             return TextInput(
                               keyboardType: TextInputType.emailAddress,
@@ -93,7 +93,7 @@ class RegisterView extends StatelessWidget {
                         ),
                         SizedBox(height: AppSize.s20.h),
                         BlocSelector<RegisterBloc, RegisterState, String?>(
-                          selector: (state) => state.mobileNumberErrorMessage,
+                          selector: (state) => state.mobileNumberErrorMessage?.tr(context),
                           builder: (context, mobileNumberErrorMessage) {
                             return TextInput(
                               keyboardType: TextInputType.phone,
@@ -109,7 +109,7 @@ class RegisterView extends StatelessWidget {
                         ),
                         SizedBox(height: AppSize.s20.h),
                         BlocSelector<RegisterBloc, RegisterState, String?>(
-                          selector: (state) => state.passwordErrorMessage,
+                          selector: (state) => state.passwordErrorMessage?.tr(context),
                           builder: (context, passwordErrorMessage) {
                             return TextInput(
                               controller: _passwordTextEditingController,

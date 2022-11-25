@@ -9,7 +9,7 @@ import 'package:book_grocer/core/app/extensions.dart';
 import '../../../../../config/color_manager.dart';
 import '../../../../../config/values_manager.dart';
 import '../../widgets/book_card_list.dart';
-import 'search_bloc.dart';
+import 'bloc/search_bloc.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({Key? key}) : super(key: key);
@@ -108,7 +108,7 @@ class BodyContent extends StatelessWidget {
       if (state is SearchInProgress) {
         return const CircularProgressIndicator();
       } else if (state is SearchFailed) {
-        return Text(state.message);
+        return Text(state.message.tr(context));
       } else if (state is SearchSuccess) {
         return BookCardList(books: state.books);
       }

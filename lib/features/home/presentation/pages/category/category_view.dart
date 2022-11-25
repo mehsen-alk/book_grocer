@@ -1,7 +1,7 @@
 import 'package:book_grocer/config/app_localizations.dart';
 import 'package:book_grocer/config/color_manager.dart';
 import 'package:book_grocer/config/strings_manager.dart';
-import 'package:book_grocer/features/home/presentation/pages/category/category_bloc.dart';
+import 'package:book_grocer/features/home/presentation/pages/category/bloc/category_bloc.dart';
 import 'package:book_grocer/features/home/presentation/widgets/home_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,7 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/values_manager.dart';
 import '../../widgets/home_widgets.dart';
-import 'category_bloc.dart';
+import 'bloc/category_bloc.dart';
 
 class CategoryView extends StatelessWidget {
   final CategoryEvent event;

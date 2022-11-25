@@ -34,7 +34,7 @@ class LoginView extends StatelessWidget {
       body: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => LoginBloc(context: context),
+            create: (context) => LoginBloc(),
           ),
           BlocProvider(
             create: (context) => AuthenticationBloc(),
@@ -60,7 +60,7 @@ class LoginView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         BlocSelector<LoginBloc, LoginState, String?>(
-                            selector: (state) => state.emailErrorMessage,
+                            selector: (state) => state.emailErrorMessage?.tr(context),
                             builder: (context, errorText) {
                               return TextInput(
                                 controller: _emailTextEditingController,
@@ -73,7 +73,7 @@ class LoginView extends StatelessWidget {
                             }),
                         SizedBox(height: AppSize.s20.h),
                         BlocSelector<LoginBloc, LoginState, String?>(
-                            selector: (state) => state.passwordErrorMessage,
+                            selector: (state) => state.passwordErrorMessage?.tr(context),
                             builder: (context, errorText) {
                               return TextInput(
                                 controller: _passwordTextEditingController,

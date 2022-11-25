@@ -20,7 +20,7 @@ class ResetPasswordView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider<ResetPasswordBloc>(
-        create: (context) => ResetPasswordBloc(context: context),
+        create: (context) => ResetPasswordBloc(),
         child: Padding(
           padding: EdgeInsets.all(AppPadding.p20.h),
           child: BlocBuilder<auth.AuthenticationBloc, auth.AuthenticationState>(
@@ -42,7 +42,7 @@ class ResetPasswordView extends StatelessWidget {
                           TextInput(
                             label: AppStrings.email.tr(context),
                             controller: _emailTextEditingController,
-                            errorText: state.emailErrorMessage,
+                            errorText: state.emailErrorMessage?.tr(context),
                             keyboardType: TextInputType.emailAddress,
                             onChanged: (email) {
                               BlocProvider.of<ResetPasswordBloc>(context)

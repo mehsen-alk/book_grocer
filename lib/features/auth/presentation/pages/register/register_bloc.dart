@@ -1,7 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:book_grocer/config/app_localizations.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
 import '../../../../../config/strings_manager.dart';
 import '../../../../../core/app/functions.dart';
@@ -17,9 +15,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   bool _emailEntered = false;
   bool _mobileNumberEntered = false;
   bool _passwordEntered = false;
-  final BuildContext context;
 
-  RegisterBloc({required this.context}) : super(const RegisterState()) {
+  RegisterBloc() : super(const RegisterState()) {
     on<NameChanged>((event, emit) {
       _onNameChanged(event, emit);
       _areAllInputAccepted(emit);
@@ -45,11 +42,11 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     _nameEntered = true;
     if (event.name.nullOrEmpty()) {
       emit(state.copyWith(
-          nameErrorMessage: AppStrings.pleaseEnterName.tr(context)));
+          nameErrorMessage: AppStrings.pleaseEnterName));
     } else if ((event.name?.length ?? 0) < 3) {
       emit(state.copyWith(
           nameErrorMessage:
-              AppStrings.nameShouldAtLeast3Character.tr(context)));
+              AppStrings.nameShouldAtLeast3Character));
     } else {
       emit(state.copyWith(nameErrorMessage: ''));
     }
@@ -59,10 +56,10 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     _emailEntered = true;
     if (event.email.nullOrEmpty()) {
       emit(state.copyWith(
-          emailErrorMessage: AppStrings.pleaseEnterEmail.tr(context)));
+          emailErrorMessage: AppStrings.pleaseEnterEmail));
     } else if (!isEmailFormatCorrect(event.email ?? '')) {
       emit(state.copyWith(
-          emailErrorMessage: AppStrings.emailFormatNotCorrect.tr(context)));
+          emailErrorMessage: AppStrings.emailFormatNotCorrect));
     } else {
       emit(state.copyWith(emailErrorMessage: ''));
     }
@@ -74,15 +71,15 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     if (event.mobileNumber.nullOrEmpty()) {
       emit(state.copyWith(
           mobileNumberErrorMessage:
-              AppStrings.pleaseEnterMobileNumber.tr(context)));
+              AppStrings.pleaseEnterMobileNumber));
     } else if (!isMobileNumberCorrect(event.mobileNumber ?? '')) {
       emit(state.copyWith(
           mobileNumberErrorMessage:
-              AppStrings.mobileNumberFormatNotCorrect.tr(context)));
+              AppStrings.mobileNumberFormatNotCorrect));
     } else if ((event.mobileNumber?.length ?? 0) < 5) {
       emit(state.copyWith(
           mobileNumberErrorMessage:
-              AppStrings.mobileNumberShouldAtLeast5Character.tr(context)));
+              AppStrings.mobileNumberShouldAtLeast5Character));
     } else {
       emit(state.copyWith(mobileNumberErrorMessage: ''));
     }
@@ -92,11 +89,11 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     _passwordEntered = true;
     if (event.password.nullOrEmpty()) {
       emit(state.copyWith(
-          passwordErrorMessage: AppStrings.pleaseEnterPassword.tr(context)));
+          passwordErrorMessage: AppStrings.pleaseEnterPassword));
     } else if ((event.password?.length ?? 0) < 6) {
       emit(state.copyWith(
           passwordErrorMessage:
-              AppStrings.passwordShouldAtLeast6Character.tr(context)));
+              AppStrings.passwordShouldAtLeast6Character));
     } else {
       emit(state.copyWith(passwordErrorMessage: ''));
     }
