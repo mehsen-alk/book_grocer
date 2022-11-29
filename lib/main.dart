@@ -8,7 +8,7 @@ import 'core/app/app.dart';
 import 'core/app/di.dart';
 
 import 'firebase_options.dart';
-
+//Dark mode
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
