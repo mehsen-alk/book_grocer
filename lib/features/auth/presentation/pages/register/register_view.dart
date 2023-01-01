@@ -1,6 +1,6 @@
-//import 'package:easy_localization/easy_localization.dart';
 import 'package:book_grocer/config/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,25 +15,19 @@ import 'register_bloc.dart';
 
 class RegisterView extends StatelessWidget {
   final TextEditingController _nameTextEditingController =
-      TextEditingController();
+  TextEditingController();
   final TextEditingController _emailTextEditingController =
-      TextEditingController();
+  TextEditingController();
   final TextEditingController _mobileNumberTextEditingController =
-      TextEditingController();
+  TextEditingController();
   final TextEditingController _passwordTextEditingController =
-      TextEditingController();
+  TextEditingController();
   RegisterView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new),
-          onPressed: () =>
-              Navigator.pushReplacementNamed(context, Routes.onBoardingRoute),
-        ),
-      ),
       body: MultiBlocProvider(
         providers: [
           BlocProvider(
@@ -52,7 +46,7 @@ class RegisterView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: AppSize.s60.h),
+                    SizedBox(height: AppSize.s100.h),
                     Text(
                       AppStrings.signUp.tr(context),
                       style: Theme.of(context).textTheme.titleLarge,
@@ -64,7 +58,8 @@ class RegisterView extends StatelessWidget {
                         BlocSelector<RegisterBloc, RegisterState, String?>(
                           selector: (state) => state.nameErrorMessage?.tr(context),
                           builder: (context, errorMessage) {
-                            return TextInput(
+                            return InputField(
+                              prefixIcon: Icons.person,
                               controller: _nameTextEditingController,
                               label: AppStrings.name.tr(context),
                               errorText: errorMessage,
@@ -79,7 +74,8 @@ class RegisterView extends StatelessWidget {
                         BlocSelector<RegisterBloc, RegisterState, String?>(
                           selector: (state) => state.emailErrorMessage?.tr(context),
                           builder: (context, emailErrorMessage) {
-                            return TextInput(
+                            return InputField(
+                              prefixIcon: Icons.email,
                               keyboardType: TextInputType.emailAddress,
                               controller: _emailTextEditingController,
                               label: AppStrings.email.tr(context),
@@ -95,7 +91,8 @@ class RegisterView extends StatelessWidget {
                         BlocSelector<RegisterBloc, RegisterState, String?>(
                           selector: (state) => state.mobileNumberErrorMessage?.tr(context),
                           builder: (context, mobileNumberErrorMessage) {
-                            return TextInput(
+                            return InputField(
+                              prefixIcon: Icons.phone,
                               keyboardType: TextInputType.phone,
                               controller: _mobileNumberTextEditingController,
                               label: AppStrings.mobileNumber.tr(context),
@@ -111,7 +108,8 @@ class RegisterView extends StatelessWidget {
                         BlocSelector<RegisterBloc, RegisterState, String?>(
                           selector: (state) => state.passwordErrorMessage?.tr(context),
                           builder: (context, passwordErrorMessage) {
-                            return TextInput(
+                            return InputField(
+                              prefixIcon: Icons.password,
                               controller: _passwordTextEditingController,
                               label: AppStrings.password.tr(context),
                               errorText: passwordErrorMessage,
@@ -124,7 +122,7 @@ class RegisterView extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: AppSize.s60.h),
+                    SizedBox(height: AppSize.s50.h),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
@@ -134,17 +132,17 @@ class RegisterView extends StatelessWidget {
                             return FullOutlinedButton(
                                 onPressed: (status == Status.accepted
                                     ? () {
-                                        BlocProvider.of<AuthenticationBloc>(
-                                                context)
-                                            .add(RegisterButtonPressed(RegisterRequest(
-                                                _nameTextEditingController.text,
-                                                _emailTextEditingController
-                                                    .text,
-                                                _mobileNumberTextEditingController
-                                                    .text,
-                                                _passwordTextEditingController
-                                                    .text)));
-                                      }
+                                  BlocProvider.of<AuthenticationBloc>(
+                                      context)
+                                      .add(RegisterButtonPressed(RegisterRequest(
+                                      _nameTextEditingController.text,
+                                      _emailTextEditingController
+                                          .text,
+                                      _mobileNumberTextEditingController
+                                          .text,
+                                      _passwordTextEditingController
+                                          .text)));
+                                }
                                     : null),
                                 text: AppStrings.signUp.tr(context));
                           },

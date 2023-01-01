@@ -32,11 +32,11 @@ class LanguageCacheHelper {
       this._sharedPreferences,
       );
 
-  Future<void> cachedLanguageCode(String languageCode)async{
+  void cachedLanguageCode(String languageCode){
     _sharedPreferences.setString(prefKeyLang, languageCode);
   }
 
-  Future<String> getAppLanguage() async {
+  String getAppLanguage() {
     String? language = _sharedPreferences.getString(prefKeyLang);
     if (!language.nullOrEmpty()) {
       return language!;
@@ -47,8 +47,8 @@ class LanguageCacheHelper {
   }
 
 
-  Future<Locale> getLocal() async {
-    String currentLang = await getAppLanguage();
+  Locale getLocal() {
+    String currentLang =  getAppLanguage();
 
     if (currentLang == LanguageType.arabic.getValue()) {
       return arabicLocal;

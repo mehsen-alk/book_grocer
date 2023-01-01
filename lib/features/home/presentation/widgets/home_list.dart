@@ -104,20 +104,20 @@ class PopularBookListContent extends StatelessWidget {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         if (state.popularBookListStatus == Status.loading) {
-          return HomeLoadingView(topPadding: AppPadding.p300.h);
+          return HomeLoadingView(topPadding: AppPadding.p320.h);
         } else if (state.popularBookListStatus == Status.notAccepted) {
           return HomeErrorView(
             errorMessage: state.popularBookListError ?? AppStrings.undefined.tr(context),
             tryAgainFunction: () {
               BlocProvider.of<HomeBloc>(context).add(GetPopularBookList());
             },
-            topPadding: AppPadding.p300.h,
+            topPadding: AppPadding.p310.h,
           );
         } else if (state.popularBookListStatus == Status.accepted) {
           return BookList(
             books: state.popularBookList ?? [],
             top: topPadding,
-            height: AppSize.s280.h,
+            height: AppSize.s260.h,
             axis: Axis.horizontal,
           );
         }
@@ -147,13 +147,13 @@ class RecentBookListContent extends StatelessWidget {
             tryAgainFunction: () {
               BlocProvider.of<HomeBloc>(context).add(GetRecentBookList());
             },
-            topPadding: AppPadding.p60.h,
+            topPadding: AppPadding.p20.h,
           );
         } else if (state.recentBookListStatus == Status.accepted) {
           return BookList(
             books: state.recentBookList ?? [],
             top: topPadding,
-            height: AppSize.s280.h,
+            height: AppSize.s260.h,
             axis: Axis.horizontal,
           );
         }
@@ -184,13 +184,13 @@ class ShortStoriesBookListContent extends StatelessWidget {
             tryAgainFunction: () {
               BlocProvider.of<HomeBloc>(context).add(GetShortStoriesBookList());
             },
-            topPadding: AppPadding.p60.h,
+            topPadding: AppPadding.p20.h,
           );
         } else if (state.shortStoriesBookListStatus == Status.accepted) {
           return BookList(
             books: state.shortStoriesBookList ?? [],
             top: topPadding,
-            height: AppSize.s280.h,
+            height: AppSize.s260.h,
             axis: Axis.horizontal,
           );
         }

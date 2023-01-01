@@ -116,7 +116,7 @@ class BookGenresInfo extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => CategoryView(event: event),
+            builder: (_) => CategoryView(event: event, genres: packageName),
           ),
         );
       },
@@ -349,7 +349,6 @@ class BookDetailsCard extends StatelessWidget {
               image: imageProvider,
               fit: BoxFit.fill,
             ),
-            borderRadius: BorderRadius.all(Radius.circular(AppSize.s40.r)),
             boxShadow: [
               BoxShadow(
                   color: Colors.black.withOpacity(.2),
@@ -376,7 +375,7 @@ class BookInfoTableItem extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(bottom: AppPadding.p10.h),
+            padding: EdgeInsets.all(AppPadding.p10.h),
             child: Text(
               title,
               style: Theme.of(context)
@@ -421,7 +420,9 @@ class BookInfoTable extends StatelessWidget {
             width: AppSize.s12.w,
           ),
           BookInfoTableItem(
-              title: AppStrings.author.tr(context), content: book.author.first),
+            title: AppStrings.author.tr(context),
+            content: book.author.first,
+          ),
         ],
       ),
     );

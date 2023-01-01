@@ -39,7 +39,7 @@ class ResetPasswordView extends StatelessWidget {
                     builder: (context, state) {
                       return Column(
                         children: [
-                          TextInput(
+                          InputField(
                             label: AppStrings.email.tr(context),
                             controller: _emailTextEditingController,
                             errorText: state.emailErrorMessage?.tr(context),
