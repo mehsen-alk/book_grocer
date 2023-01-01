@@ -21,7 +21,7 @@ class DioFactory {
   Future<Dio> getDio() async {
     Dio dio = Dio();
 
-    String language = await _languagePref.getAppLanguage();
+    String language = _languagePref.getAppLanguage();
     Map<String, String> headers = {
       contentType: applicationJson,
       accept: applicationJson,

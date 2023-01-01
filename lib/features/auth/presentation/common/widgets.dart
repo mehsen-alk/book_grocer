@@ -3,23 +3,25 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../config/values_manager.dart';
 
-class TextInput extends StatelessWidget {
-  const TextInput(
-      {Key? key,
-      TextEditingController? controller,
-      String? label,
-      String? hintText,
-      String? errorText,
-      Function(String)? onChanged,
-      TextInputType? keyboardType,
-      bool? enabled = true})
-      : _textEditingController = controller,
+class InputField extends StatelessWidget {
+  const InputField({
+    Key? key,
+    TextEditingController? controller,
+    String? label,
+    String? hintText,
+    String? errorText,
+    Function(String)? onChanged,
+    TextInputType? keyboardType,
+    bool? enabled = true,
+    IconData? prefixIcon,
+  })  : _textEditingController = controller,
         _label = label,
         _hintText = hintText,
         _errorText = errorText,
         _onChanged = onChanged,
         _keyboardType = keyboardType,
         _enabled = enabled,
+        _prefixIcon = prefixIcon,
         super(key: key);
 
   final TextEditingController? _textEditingController;
@@ -29,6 +31,7 @@ class TextInput extends StatelessWidget {
   final Function(String)? _onChanged;
   final TextInputType? _keyboardType;
   final bool? _enabled;
+  final IconData? _prefixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +47,10 @@ class TextInput extends StatelessWidget {
         onChanged: _onChanged,
         controller: _textEditingController,
         decoration: InputDecoration(
+          prefixIcon: Icon(_prefixIcon),
           hintText: _hintText,
           errorText: _errorText,
-          label: _label == null ? null : Text(_label!) ,
+          label: _label == null ? null : Text(_label!),
         ),
       ),
     );

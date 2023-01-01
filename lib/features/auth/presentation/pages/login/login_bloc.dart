@@ -29,7 +29,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (event.email.nullOrEmpty()) {
       emit(state.copyWith(
           emailErrorMessage: AppStrings.pleaseEnterEmail));
-    } else {
+    }
+    else {
       emit(state.copyWith(emailErrorMessage: ''));
     }
   }
@@ -38,7 +39,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (event.password.nullOrEmpty()) {
       emit(
           state.copyWith(passwordErrorMessage: AppStrings.pleaseEnterPassword));
-    } else {
+    }
+    else {
       emit(state.copyWith(passwordErrorMessage: ''));
     }
   }

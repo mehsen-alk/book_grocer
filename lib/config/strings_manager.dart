@@ -39,6 +39,7 @@ class AppStrings {
   static const String password = "password";
   static const String pleaseEnterEmail = "please_enter_email";
   static const String pleaseEnterPassword = "please_enter_password";
+  static const String shortPassword = "short_password";
   static const String logout = "Logout";
 
   // sign up stuff

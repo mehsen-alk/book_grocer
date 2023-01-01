@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/app_localizations.dart';
@@ -13,6 +14,12 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: ColorManager.primary,
+        statusBarIconBrightness: Brightness.light,
+      ),
+    );
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -20,33 +27,31 @@ class HomeView extends StatelessWidget {
           children: [
             Stack(children: [
               Container(
-                height: AppSize.s280.h,
+                height: AppSize.s300.h,
                 decoration: BoxDecoration(
                   color: ColorManager.primary,
-                  borderRadius: BorderRadius.vertical(
-                    bottom: Radius.circular(AppSize.s240.r),
-                  ),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      top: AppPadding.p80.h,
-                      bottom: AppPadding.p160.h,
-                      right: AppPadding.p20.w,
-                      left: AppPadding.p20.w),
-                  child: Row(
-                    children: [
-                      Text(
-                      AppStrings.homeTitle.tr(context),
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge
-                            ?.copyWith(color: ColorManager.white),
-                      ),
-                    ],
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(AppSize.s240.r),
+                    bottomRight: Radius.circular(AppSize.s240.r),
                   ),
                 ),
               ),
-              PopularBookListContent(topPadding: AppPadding.p120.h),
+              Positioned(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppPadding.p20,
+                    vertical: AppPadding.p100,
+                  ),
+                  child: Text(
+                    AppStrings.homeTitle.tr(context),
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge
+                        ?.copyWith(color: ColorManager.white),
+                  ),
+                ),
+              ),
+              PopularBookListContent(topPadding: AppPadding.p130.h),
             ]),
             HeadlineBookList(title: AppStrings.shortStories.tr(context)),
             ShortStoriesBookListContent(
@@ -55,7 +60,9 @@ class HomeView extends StatelessWidget {
             HeadlineBookList(title: AppStrings.recentlyViewed.tr(context)),
             RecentBookListContent(topPadding: AppPadding.p20.h),
             HeadlineBookList(title: AppStrings.genres.tr(context)),
-            BookGenresInfoList(verticalPadding: AppPadding.p20.h,),
+            BookGenresInfoList(
+              verticalPadding: AppPadding.p20.h,
+            ),
           ],
         ),
       ),

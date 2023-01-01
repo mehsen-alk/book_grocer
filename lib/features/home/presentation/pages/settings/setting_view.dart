@@ -15,8 +15,9 @@ class SettingsView extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           systemOverlayStyle: const SystemUiOverlayStyle(
-              statusBarBrightness: Brightness.light,
-              statusBarIconBrightness: Brightness.light),
+            statusBarColor: ColorManager.primary,
+            statusBarIconBrightness: Brightness.light,
+          ),
           backgroundColor: ColorManager.primary,
           title: Text(
             AppStrings.appTitle.tr(context),

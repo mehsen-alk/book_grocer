@@ -1,6 +1,5 @@
 import 'package:book_grocer/config/app_localizations.dart';
 import 'package:book_grocer/features/home/presentation/pages/settings/setting_view.dart';
-//import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../config/color_manager.dart';

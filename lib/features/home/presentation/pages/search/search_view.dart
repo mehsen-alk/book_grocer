@@ -1,5 +1,6 @@
 import 'package:book_grocer/config/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,9 +22,15 @@ class SearchView extends StatefulWidget {
 class _SearchViewState extends State<SearchView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: ColorManager.white,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
           padding: EdgeInsets.all(AppPadding.p20.h),
           child: BlocProvider<SearchBloc>(
             create: (context) => SearchBloc(),

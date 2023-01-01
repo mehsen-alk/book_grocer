@@ -1,6 +1,6 @@
-//import 'package:easy_localization/easy_localization.dart';
 import 'package:book_grocer/config/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,20 +17,14 @@ class LoginView extends StatelessWidget {
   LoginView({Key? key}) : super(key: key);
 
   final TextEditingController _emailTextEditingController =
-      TextEditingController();
+  TextEditingController();
   final TextEditingController _passwordTextEditingController =
-      TextEditingController();
+  TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new),
-          onPressed: () =>
-              Navigator.pushReplacementNamed(context, Routes.onBoardingRoute),
-        ),
-      ),
       body: MultiBlocProvider(
         providers: [
           BlocProvider(
@@ -50,7 +44,7 @@ class LoginView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(height: AppSize.s60.h),
+                    SizedBox(height: AppSize.s130.h),
                     Text(
                       AppStrings.signIn.tr(context),
                       style: Theme.of(context).textTheme.titleLarge,
@@ -62,7 +56,8 @@ class LoginView extends StatelessWidget {
                         BlocSelector<LoginBloc, LoginState, String?>(
                             selector: (state) => state.emailErrorMessage?.tr(context),
                             builder: (context, errorText) {
-                              return TextInput(
+                              return InputField(
+                                prefixIcon: Icons.email,
                                 controller: _emailTextEditingController,
                                 label: AppStrings.email.tr(context),
                                 errorText: errorText,
@@ -75,7 +70,8 @@ class LoginView extends StatelessWidget {
                         BlocSelector<LoginBloc, LoginState, String?>(
                             selector: (state) => state.passwordErrorMessage?.tr(context),
                             builder: (context, errorText) {
-                              return TextInput(
+                              return InputField(
+                                prefixIcon: Icons.password,
                                 controller: _passwordTextEditingController,
                                 label: AppStrings.password.tr(context),
                                 errorText: errorText,
@@ -92,7 +88,7 @@ class LoginView extends StatelessWidget {
                         )
                       ],
                     ),
-                    SizedBox(height: AppSize.s60.h),
+                    SizedBox(height: AppSize.s20.h),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
@@ -102,14 +98,14 @@ class LoginView extends StatelessWidget {
                             return FullOutlinedButton(
                                 onPressed: (status == Status.accepted
                                     ? () {
-                                        BlocProvider.of<AuthenticationBloc>(
-                                                context)
-                                            .add(LoginButtonPressed(LoginRequest(
-                                                _emailTextEditingController
-                                                    .text,
-                                                _passwordTextEditingController
-                                                    .text)));
-                                      }
+                                  BlocProvider.of<AuthenticationBloc>(
+                                      context)
+                                      .add(LoginButtonPressed(LoginRequest(
+                                      _emailTextEditingController
+                                          .text,
+                                      _passwordTextEditingController
+                                          .text)));
+                                }
                                     : null),
                                 text: AppStrings.signIn.tr(context));
                           },
@@ -117,7 +113,7 @@ class LoginView extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                             Text(AppStrings.notHaveAccountYet.tr(context)),
+                            Text(AppStrings.notHaveAccountYet.tr(context)),
                             TextButton(
                                 onPressed: () => Navigator.pushReplacementNamed(
                                     context, Routes.registerRoute),
